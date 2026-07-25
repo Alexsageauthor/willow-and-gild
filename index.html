@@ -48,8 +48,8 @@ header{
 .bar{display:flex;align-items:center;justify-content:space-between;
      padding:16px 32px;max-width:var(--measure);margin:0 auto}
 .brand{display:flex;align-items:center;gap:12px}
-.brand img{width:34px;height:34px}
-.brand span{font-family:'Cormorant Garamond',serif;font-size:1.22rem;letter-spacing:.16em;text-transform:uppercase}
+.brand img{height:30px;width:auto}          /* lockup: let width follow */
+.brand span{display:none}   /* the lockup carries the name itself */
 nav ul{display:flex;gap:30px;list-style:none}
 nav a{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--soft);padding:6px 0;border-bottom:1px solid transparent;transition:.25s}
 nav a:hover{color:var(--gold);border-color:var(--gold)}
@@ -57,7 +57,7 @@ nav a:hover{color:var(--gold);border-color:var(--gold)}
 
 /* ---------- hero ---------- */
 .hero{padding:clamp(70px,11vw,140px) 0 clamp(50px,7vw,90px);text-align:center}
-.hero img{width:min(430px,72vw);margin:0 auto clamp(24px,4vw,44px)}
+.hero img{width:min(250px,52vw);margin:0 auto clamp(22px,3.5vw,38px)}
 .hero h1{max-width:16ch;margin:0 auto}
 .hero .lede{margin:24px auto 0;text-align:center}
 .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:40px}
@@ -111,7 +111,8 @@ section{padding:clamp(56px,8vw,104px) 0}
 
 /* ---------- footer ---------- */
 footer{border-top:1px solid var(--stone);padding:64px 0 46px;text-align:center}
-footer .brand{justify-content:center;margin-bottom:20px}
+footer .brand{justify-content:center;margin-bottom:22px}
+footer .brand img{height:26px}
 .flinks{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;margin:24px 0}
 .flinks a{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--soft)}
 .flinks a:hover{color:var(--gold)}
@@ -137,8 +138,7 @@ footer .brand{justify-content:center;margin-bottom:20px}
 <header>
   <div class="bar">
     <a class="brand" href="index.html">
-      <img src="assets/mark.png" alt="">
-      <span>Willow &amp; Gild</span>
+      <img src="assets/lockup.png" alt="Willow &amp; Gild">
     </a>
     <nav>
       <ul>
@@ -152,8 +152,7 @@ footer .brand{justify-content:center;margin-bottom:20px}
 </header>
 
 <div class="hero wrap">
-  <img src="assets/hero.jpg" alt="Watercolour cranes beneath cherry blossom">
-  <p class="eyebrow">Printable Wedding Stationery</p>
+  <img src="assets/hero.jpg" alt="Willow &amp; Gild">
   <div class="rule"></div>
   <h1>Beautiful paper begins long before it is printed.</h1>
   <p class="lede">Complete stationery collections designed as a single world —
@@ -240,7 +239,7 @@ footer .brand{justify-content:center;margin-bottom:20px}
 <footer>
   <div class="wrap">
     <a class="brand" href="index.html">
-      <img src="assets/mark.png" alt=""><span>Willow &amp; Gild</span>
+      <img src="assets/wordmark.png" alt="Willow &amp; Gild">
     </a>
     <p class="eyebrow">Join the list</p>
     <div class="news">

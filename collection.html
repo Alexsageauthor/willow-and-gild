@@ -62,7 +62,7 @@ section{padding:clamp(48px,7vw,92px) 0}
 .more{display:grid;gap:26px;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));margin-top:12px}
 .mini{background:var(--linen);text-align:center;padding-bottom:20px;opacity:.62}
 .mini.live{opacity:1}
-.mini .art{aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;background:var(--paper)}
+.mini .art{aspect-ratio:1/1;display:flex;align-items:center;justify-content:center}
 .mini .art img{width:80%}
 .mini h3{font-size:1.05rem;margin-top:16px}
 .mini span{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--soft)}
@@ -144,7 +144,7 @@ const products = live ? `
 
 document.getElementById('main').innerHTML = `
   <div class="hero wrap">
-    <img src="assets/${c.id}.jpg" alt="${c.name}">
+    <img src="assets/${c.id}.webp" alt="${c.name}">
     <p class="eyebrow">The Collection</p>
     <div class="rule"></div>
     <h1 class="serif">${c.name}</h1>
@@ -161,7 +161,7 @@ document.getElementById('main').innerHTML = `
     <div class="more">
       ${COLLECTIONS.filter(x => x.id !== c.id).slice(0, 4).map(x => `
         <a class="mini ${x.status === 'live' ? 'live' : ''}" href="collection.html?c=${x.id}">
-          <div class="art"><img src="assets/${x.id}.jpg" alt="${x.name}" loading="lazy"></div>
+          <div class="art"><img src="assets/${x.id}.webp" alt="${x.name}" loading="lazy"></div>
           <h3 class="serif">${x.name}</h3>
           <span>${x.status === 'live' ? 'Available' : 'Coming soon'}</span>
         </a>`).join('')}

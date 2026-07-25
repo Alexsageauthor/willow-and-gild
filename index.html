@@ -52,7 +52,12 @@ header{
 .bar{display:flex;align-items:center;justify-content:space-between;
      padding:16px 32px;max-width:var(--measure);margin:0 auto}
 .brand{display:flex;align-items:center;gap:12px}
-.brand img{height:30px;width:auto}          /* lockup: let width follow */
+.brand img{height:30px;width:auto;max-width:46vw;object-fit:contain}
+@media(max-width:520px){
+  .brand img{height:22px}
+  .back{font-size:.6rem;letter-spacing:.14em}
+  .bar{padding:12px 14px;gap:10px}
+}
 .brand span{display:none}   /* the lockup carries the name itself */
 nav ul{display:flex;gap:30px;list-style:none}
 nav a{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--soft);padding:6px 0;border-bottom:1px solid transparent;transition:.25s}

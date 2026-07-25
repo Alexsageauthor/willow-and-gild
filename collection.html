@@ -32,19 +32,26 @@ h2{font-size:clamp(1.8rem,3.4vw,2.6rem)}
 .rule{width:54px;height:1px;background:var(--gold);margin:22px auto}
 header{position:sticky;top:0;z-index:50;background:rgba(248,246,242,.92);
        backdrop-filter:saturate(150%) blur(8px);border-bottom:1px solid var(--stone)}
-.bar{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;
+.bar{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px 20px;
      max-width:var(--measure);margin:0 auto}
 .brand{display:flex;align-items:center;gap:12px}
-.brand img{height:30px;width:auto}          /* lockup: let width follow */
+.brand img{height:30px;width:auto;max-width:46vw;object-fit:contain}
+@media(max-width:520px){
+  .brand img{height:22px}
+  .back{font-size:.6rem;letter-spacing:.14em}
+  .bar{padding:12px 14px;gap:10px}
+}
 .brand span{display:none}   /* the lockup carries the name itself */
-.back{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--soft)}
+.back{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--soft);
+      white-space:nowrap;flex:none}
 .back:hover{color:var(--gold)}
 .hero{text-align:center;padding:clamp(56px,8vw,110px) 0 clamp(36px,5vw,66px)}
 .hero img{width:min(360px,62vw);margin:0 auto clamp(20px,3vw,36px)}
 .lede{font-size:1.06rem;color:var(--soft);max-width:56ch;margin:22px auto 0}
 .palette{display:flex;gap:12px;justify-content:center;margin-top:30px}
 .palette i{width:34px;height:34px;border-radius:50%;display:block;border:1px solid rgba(0,0,0,.06)}
-section{padding:clamp(48px,7vw,92px) 0}
+section{padding:clamp(64px,8vw,104px) 0}
+section + section{padding-top:clamp(40px,5vw,64px)}
 .head{text-align:center;margin-bottom:clamp(30px,4vw,52px)}
 .list{display:grid;gap:1px;background:var(--stone);border:1px solid var(--stone)}
 .row{background:var(--paper);padding:26px 28px;display:grid;gap:6px;
@@ -63,7 +70,7 @@ section{padding:clamp(48px,7vw,92px) 0}
        grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
 .view{margin:0;text-align:center}
 .view img{width:100%}
-.view figcaption{margin-top:12px;font-size:.66rem;letter-spacing:.24em;
+.view figcaption{margin-top:14px;margin-bottom:6px;font-size:.66rem;letter-spacing:.24em;
                  text-transform:uppercase;color:var(--soft)}
 .more{display:grid;gap:26px;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));margin-top:12px}
 .mini{background:transparent;text-align:center;padding-bottom:20px;opacity:.62}
@@ -105,9 +112,9 @@ const live = c.status === 'live';
    silently if not - a gallery with a broken image in it is worse than a
    gallery of two. */
 const VIEWS = [
+  ['_hero',  'The Drawing'],
   ['',       'The Table'],
   ['_chair', 'The Room'],
-  ['_hero',  'The Drawing'],
 ];
 const views = VIEWS.map(([suf, label]) => `
   <figure class="view" data-src="assets/${c.id}${suf}.webp">
@@ -147,7 +154,7 @@ const products = live ? `
         no account to make.
       </p>
       <p style="color:var(--soft);max-width:46ch;margin:0 auto 26px">
-        Also available as eight smaller bundles if you only need part of it.
+        Also available as eight smaller bundles \u2014 if you only need part of it, or want to mix and match across collections.
       </p>
       <div class="buyrow">${buttons}</div>
       ${(!c.etsy && !c.gumroad) ? '<p style="color:var(--soft);font-size:.85rem;margin-top:18px">Listings going live shortly.</p>' : ''}

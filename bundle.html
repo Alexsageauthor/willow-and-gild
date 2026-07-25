@@ -46,7 +46,12 @@ section + section{padding-top:clamp(34px,4vw,54px)}
 
 /* gallery */
 .shots{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
-.shots img{width:100%;border:1px solid var(--stone)}
+.shots{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.shot{margin:0;border:1px solid var(--stone);overflow:hidden;background:var(--paper)}
+.shot img{width:100%;transition:transform .8s cubic-bezier(.2,.7,.3,1)}
+.shot:hover img{transform:scale(1.03)}
+.sell{font-size:1.12rem;color:var(--ink);max-width:46ch}
+.who{font-size:.95rem;color:var(--soft);max-width:48ch;margin:12px auto 0}
 
 /* what's included */
 .list{display:grid;gap:1px;background:var(--stone);border:1px solid var(--stone)}
@@ -113,19 +118,17 @@ const buttons = [
 
 /* The gallery uses the collection's own three views plus the bundle shot, so a
    bundle always looks like the collection it is being bought in. */
-const shots = [
-  `assets/${c.id}_hero.webp`,
-  `assets/${c.id}.webp`,
-  `assets/${c.id}_chair.webp`,
-].map(src => `<img src="${src}" alt="${c.name}" loading="lazy"
-     onerror="this.remove()">`).join('');
+const shots = (b.shots || []).map(s => `
+  <figure class="shot"><img src="assets/shots/${s}.webp" alt="${b.name}"
+       loading="lazy" onerror="this.closest('figure').remove()"></figure>`).join('');
 
 document.getElementById('main').innerHTML = `
   <div class="top wrap">
     <p class="eyebrow">${c.name} — Bundle</p>
     <div class="rule"></div>
     <h1 class="serif">${b.name}</h1>
-    <p class="lede">${b.line} ${b.who}</p>
+    <p class="lede sell">${b.sell || b.line}</p>
+    <p class="who">${b.who}</p>
     <div class="facts">
       <div class="fact"><b>${b.pages || '—'}</b><span>Pages</span></div>
       <div class="fact"><b>${b.files}</b><span>Files</span></div>
@@ -133,7 +136,13 @@ document.getElementById('main').innerHTML = `
     </div>
   </div>
 
-  <section class="wrap"><div class="shots">${shots}</div></section>
+  ${shots ? `<section class="wrap">
+    <div class="head"><p class="eyebrow">What It Looks Like</p>
+      <h2 class="serif">The paper itself</h2><div class="rule"></div>
+      <p style="color:var(--soft);max-width:50ch;margin:12px auto 0">
+        Shown filled in, exactly as it prints. Every line is yours to change.</p></div>
+    <div class="shots">${shots}</div>
+  </section>` : ''}
 
   <section class="wrap">
     <div class="head"><p class="eyebrow">What's Included</p><div class="rule"></div></div>
@@ -158,7 +167,10 @@ document.getElementById('main').innerHTML = `
       <p class="price">NZ$${b.price}<small>one payment · yours to keep · print as many as you need</small></p>
       <div class="buyrow">${buttons}</div>
       ${(!b.etsy && !b.gumroad) ? '<p class="note">Listings going live shortly.</p>' : ''}
-      <p class="note">Personal use for your own wedding. Not for resale or redistribution.</p>
+      <p class="note">Bundles work across collections &mdash; take the invitations from
+        one and the reception from another if you would rather mix.</p>
+      <p class="note" style="margin-top:10px">Personal use for your own wedding.
+        Not for resale or redistribution.</p>
     </div>
   </section>
 

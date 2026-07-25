@@ -109,7 +109,8 @@ section{padding:clamp(56px,8vw,104px) 0}
   text-transform:uppercase;color:var(--soft);
 }
 .card.live .tag{color:var(--gold)}
-.card.soon{opacity:.62}
+.card.soon{opacity:.62;transition:opacity .4s}
+.card.soon:hover{opacity:.85;border-color:var(--stone)}
 .card.soon .art img{filter:saturate(.55)}
 
 /* ---------- the promise strip ---------- */
@@ -286,9 +287,7 @@ grid.innerHTML = COLLECTIONS.map(c => {
       </div>
       <span class="tag">${live ? 'Shop the collection' : 'Coming soon'}</span>
     </div>`;
-  return live
-    ? `<a class="card live rv" href="collection.html?c=${c.id}">${inner}</a>`
-    : `<div class="card soon rv">${inner}</div>`;
+  return `<a class="card ${live ? 'live' : 'soon'} rv" href="collection.html?c=${c.id}">${inner}</a>`;
 }).join('');
 
 /* ---- what's in a collection ---- */

@@ -128,3 +128,53 @@ const KYOTO_PRODUCTS = [
   ['Keepsakes', 'Vows, anniversary letter, open-when letters, Plan B, getting-ready timeline'],
   ['And more', 'Engagement announcements, rehearsal dinner, welcome bags, advice cards, toast cards, envelope etiquette, print shop guide'],
 ];
+
+/* ---------------------------------------------------------------------------
+   THE EIGHT BUNDLES.
+
+   PRICES BELOW ARE PLACEHOLDERS. They are internally coherent - the ladder
+   makes sense against itself, and the Complete Collection saves about 45% on
+   buying the seven parts - but they are NOT anchored to the market, because
+   nobody has yet checked what comparable listings actually charge. Do that
+   before anything goes live: search Etsy for "printable wedding invitation
+   suite" and "wedding stationery bundle", sort by TOP SELLER not relevance,
+   and note the top ten in each. Then these move.
+
+   Same price on Etsy and Gumroad. An Etsy customer who finds the direct site
+   should not feel penalised for having come the long way round; put the
+   advantage in a bundle, never in the number.
+   --------------------------------------------------------------------------- */
+
+const BUNDLES = [
+  { id: 1, name: 'The Planning Bundle',        price: 28,
+    line: 'The wedding planner, the budget planner and the guest list.',
+    detail: '88 pages · A4 and US Letter · print or fillable' },
+
+  { id: 2, name: 'The Invitation Suite',       price: 24,
+    line: 'Save the date through to the RSVP, all filling from one sheet.',
+    detail: '11 pages · plus registry card, envelope guide and rehearsal invitation' },
+
+  { id: 3, name: 'Reception & Decor',          price: 38,
+    line: 'Everything the room needs — menus, place cards, table numbers, signage.',
+    detail: '383 pages across 49 files · six menus, five place card options, six table numbers' },
+
+  { id: 4, name: 'The Complete Collection',    price: 89,
+    line: 'The whole collection. Every piece, every option.',
+    detail: '736 pages across 132 files · saves 45% on buying the parts' },
+
+  { id: 5, name: 'The Thank You Bundle',       price: 16,
+    line: 'Thank you cards, envelope, labels and a gift tracker.',
+    detail: '7 pages · plus vows keepsake, anniversary letter and open-when letters' },
+
+  { id: 6, name: 'The Digital Wedding Website', price: 18,
+    line: 'A complete one-page wedding site with RSVP and guest book.',
+    detail: 'Ready to publish free · plus the paperless RSVP guide and a calendar file' },
+
+  { id: 7, name: 'The Digital Announcement Set', price: 12,
+    line: 'Engagement announcements for Instagram, sized and captioned.',
+    detail: 'Six graphics · square and story · three styles, with caption suggestions' },
+
+  { id: 8, name: 'Day-Of Coordination',        price: 22,
+    line: 'The order of service, the vendor briefs, and the paper for the day.',
+    detail: '22 pages · six vendor sheets, plus toast, reading and advice cards' },
+];

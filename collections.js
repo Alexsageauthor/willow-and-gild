@@ -18,6 +18,14 @@
    --------------------------------------------------------------------------- */
 
 const COLLECTIONS = [
+   ORDER IS A DESIGN DECISION, NOT ALPHABETICAL OR CHRONOLOGICAL.
+   Fifteen collections seen as a grid read as ONE thing unless the first screen
+   varies. Sorted by when they were built, the top row was Kyoto, English Rose,
+   Chateau and Art Deco - three botanicals in a row - and a visitor concluded in
+   one glance that the house does flowers. The sequence below alternates
+   texture, colour and temperature so no two neighbours are the same KIND of
+   thing: botanical, floral, graphic, woodland, coastal, cold, and so on.
+
   { id: 'Kyoto', name: 'Kyoto', status: 'live',
     ink: '#3F4A3C', gold: '#B7995C',
     etsy: '',        // paste the Etsy listing URL
@@ -33,35 +41,15 @@ const COLLECTIONS = [
     story: 'English country gardens, roses over a doorway, and the traditions of ' +
            'a village wedding.' },
 
-  { id: 'Chateau', name: 'French Château', status: 'soon',
-    ink: '#3A3835', gold: '#A9884F',
-    line: 'Stone, shutters and a long table.',
-    story: 'The proportions of a French country house — arched openings, aged ' +
-           'plaster and gold worn thin by time.' },
+  { id: 'MidCentury', name: 'Mid-Century', status: 'soon',
+    ink: '#3C3A34', gold: '#AE8E5A',
+    line: 'Warm walnut and confident shape.',
+    story: 'Nineteen-fifties optimism — clean silhouettes, mustard and teak.' },
 
-  { id: 'ArtDeco', name: 'Art Deco', status: 'soon',
-    ink: '#2B2B2B', gold: '#B7995C',
-    line: 'Jade, onyx and the geometry of the twenties.',
-    story: 'Peacocks, fans and fluted lines. Confident, symmetrical and cut ' +
-           'from a single geometry.' },
-
-  { id: 'BlueWillow', name: 'Blue Willow', status: 'soon',
-    ink: '#0E1531', gold: '#B7995C',
-    line: 'Porcelain blue and a story in a pattern.',
-    story: 'The willow pattern that has been on English tables for two hundred ' +
-           'years, redrawn for a wedding.' },
-
-  { id: 'Conservatory', name: 'Conservatory', status: 'soon',
-    ink: '#51624C', gold: '#B7995C',
-    line: 'Glasshouse ferns and cast iron.',
-    story: 'Victorian glasshouses, palm fronds under a curved roof, and the ' +
-           'green light of a room made for plants.' },
-
-  { id: 'OliveGold', name: 'Olive & Gold', status: 'soon',
-    ink: '#664519', gold: '#8A6A1E',
-    line: 'Olive groves and warm Mediterranean light.',
-    story: 'Silver-backed olive leaves, sun-warmed stone and gold with earth ' +
-           'in it.' },
+  { id: 'Woodlands', name: 'Woodlands', status: 'soon',
+    ink: '#3A4A3E', gold: '#A8905C',
+    line: 'Ferns, moss and a green canopy.',
+    story: 'Deep woodland — bracken, bark and light coming through leaves.' },
 
   { id: 'Riviera', name: 'Riviera', status: 'soon',
     ink: '#24414F', gold: '#BFA678',
@@ -69,15 +57,28 @@ const COLLECTIONS = [
     story: 'The southern coast in high summer — lemon trees, tiled terraces and ' +
            'water you can see the bottom of.' },
 
+  { id: 'Winter', name: 'Winter', status: 'soon',
+    ink: '#4C5A66', gold: '#B7995C',
+    line: 'Frost, evergreen and candlelight.',
+    story: 'A winter wedding — bare branches, deep green and gold against a ' +
+           'cold blue.' },
+
+  { id: 'ArtDeco', name: 'Art Deco', status: 'soon',
+    ink: '#2B2B2B', gold: '#B7995C',
+    line: 'Jade, onyx and the geometry of the twenties.',
+    story: 'Peacocks, fans and fluted lines. Confident, symmetrical and cut ' +
+           'from a single geometry.' },
+
   { id: 'Orchard', name: 'Orchard', status: 'soon',
     ink: '#5A4534', gold: '#BFA678',
     line: 'Blossom, bees and old fruit trees.',
     story: 'An orchard in late spring, all pale blossom and low branches.' },
 
-  { id: 'Woodlands', name: 'Woodlands', status: 'soon',
-    ink: '#3A4A3E', gold: '#A8905C',
-    line: 'Ferns, moss and a green canopy.',
-    story: 'Deep woodland — bracken, bark and light coming through leaves.' },
+  { id: 'BlueWillow', name: 'Blue Willow', status: 'soon',
+    ink: '#0E1531', gold: '#B7995C',
+    line: 'Porcelain blue and a story in a pattern.',
+    story: 'The willow pattern that has been on English tables for two hundred ' +
+           'years, redrawn for a wedding.' },
 
   { id: 'Nordic', name: 'Nordic', status: 'soon',
     ink: '#4A443C', gold: '#A2916F',
@@ -85,11 +86,17 @@ const COLLECTIONS = [
     story: 'Scandinavian restraint. Undyed linen, birch and almost no ' +
            'ornament at all.' },
 
-  { id: 'Winter', name: 'Winter', status: 'soon',
-    ink: '#4C5A66', gold: '#B7995C',
-    line: 'Frost, evergreen and candlelight.',
-    story: 'A winter wedding — bare branches, deep green and gold against a ' +
-           'cold blue.' },
+  { id: 'Chateau', name: 'French Château', status: 'soon',
+    ink: '#3A3835', gold: '#A9884F',
+    line: 'Stone, shutters and a long table.',
+    story: 'The proportions of a French country house — arched openings, aged ' +
+           'plaster and gold worn thin by time.' },
+
+  { id: 'Conservatory', name: 'Conservatory', status: 'soon',
+    ink: '#51624C', gold: '#B7995C',
+    line: 'Glasshouse ferns and cast iron.',
+    story: 'Victorian glasshouses, palm fronds under a curved roof, and the ' +
+           'green light of a room made for plants.' },
 
   { id: 'Minimal', name: 'Minimal', status: 'soon',
     ink: '#31302B', gold: '#BFA678',
@@ -97,16 +104,17 @@ const COLLECTIONS = [
     story: 'For couples who want the words to do the work. One rule, one mark, ' +
            'and a great deal of paper left empty.' },
 
+  { id: 'OliveGold', name: 'Olive & Gold', status: 'soon',
+    ink: '#664519', gold: '#8A6A1E',
+    line: 'Olive groves and warm Mediterranean light.',
+    story: 'Silver-backed olive leaves, sun-warmed stone and gold with earth ' +
+           'in it.' },
+
   { id: 'Classic', name: 'Classic', status: 'soon',
     ink: '#33363B', gold: '#BFA46B',
     line: 'Engraved formality, done properly.',
     story: 'The traditional wedding suite — crest, copperplate and a border ' +
            'that has not needed changing in a century.' },
-
-  { id: 'MidCentury', name: 'Mid-Century', status: 'soon',
-    ink: '#3C3A34', gold: '#AE8E5A',
-    line: 'Warm walnut and confident shape.',
-    story: 'Nineteen-fifties optimism — clean silhouettes, mustard and teak.' },
 ];
 
 /* The Kyoto product list is real: it is what is actually in the collection.

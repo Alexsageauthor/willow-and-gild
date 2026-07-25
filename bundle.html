@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light only">
+<meta name="theme-color" content="#F8F6F2">
+<title>Bundle — Willow &amp; Gild</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ONE PAGE SERVES ALL EIGHT BUNDLES, exactly as collection.html serves all
+   fifteen collections. It reads ?b=<id>&c=<collection> so the same bundle can
+   be shown in any collection's colours — the Invitation Suite in Kyoto's gold
+   or English Rose's — without a second file. */
+html{color-scheme:light only;background:#F8F6F2}
+:root{--paper:#F8F6F2;--linen:#F1EDE5;--stone:#E3DDD1;--ink:#33342F;--soft:#6B6659;--gold:#A8865B;--measure:1080px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#F8F6F2;color:#33342F;font-family:'Inter',system-ui,sans-serif;font-weight:300;line-height:1.75;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--measure);margin:0 auto;padding:0 24px}
+h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,serif;font-weight:300}
+h1{font-size:clamp(2.3rem,5.5vw,3.8rem);line-height:1.1}
+h2{font-size:clamp(1.6rem,3vw,2.2rem)}
+.eyebrow{font-size:.66rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
+.rule{width:52px;height:1px;background:var(--gold);margin:20px auto}
+header{position:sticky;top:0;z-index:50;background:rgba(248,246,242,.94);backdrop-filter:saturate(150%) blur(8px);border-bottom:1px solid var(--stone)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px 20px;max-width:var(--measure);margin:0 auto}
+.brand img{height:30px;width:auto;max-width:46vw;object-fit:contain}
+.back{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--soft);white-space:nowrap;flex:none}
+.back:hover{color:var(--gold)}
+@media(max-width:520px){.brand img{height:22px}.back{font-size:.6rem;letter-spacing:.14em}.bar{padding:12px 14px;gap:10px}}
+section{padding:clamp(56px,7vw,88px) 0}
+section + section{padding-top:clamp(34px,4vw,54px)}
+.head{text-align:center;margin-bottom:clamp(28px,4vw,44px)}
+
+/* hero */
+.top{text-align:center;padding:clamp(44px,6vw,84px) 0 clamp(28px,4vw,48px)}
+.top .lede{font-size:1.05rem;color:var(--soft);max-width:50ch;margin:18px auto 0}
+.facts{display:flex;gap:30px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.fact{text-align:center}
+.fact b{display:block;font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:300;line-height:1}
+.fact span{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--soft)}
+
+/* gallery */
+.shots{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.shots img{width:100%;border:1px solid var(--stone)}
+
+/* what's included */
+.list{display:grid;gap:1px;background:var(--stone);border:1px solid var(--stone)}
+.row{background:var(--paper);padding:18px 22px;font-size:.96rem}
+.row::before{content:'—';color:var(--gold);margin-right:12px}
+
+/* how it works */
+.steps{display:grid;gap:26px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.step b{display:block;font-family:'Cormorant Garamond',serif;font-size:1.15rem;margin:10px 0 6px}
+.step p{font-size:.92rem;color:var(--soft)}
+.step .n{font-size:.62rem;letter-spacing:.24em;color:var(--gold)}
+
+/* buy */
+.buy{background:var(--linen);border:1px solid var(--stone);padding:clamp(28px,4vw,50px);text-align:center}
+.price{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,5vw,3.4rem);line-height:1}
+.price small{font-size:.9rem;letter-spacing:.16em;color:var(--soft);display:block;margin-top:8px;font-family:'Inter',sans-serif}
+.btn{display:inline-block;padding:14px 32px;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;border:1px solid var(--gold);color:var(--ink);transition:.3s}
+.btn:hover{background:var(--gold);color:var(--paper)}
+.btn.solid{background:var(--gold);color:var(--paper)}
+.btn.solid:hover{background:transparent;color:var(--ink)}
+.buyrow{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+.note{font-size:.85rem;color:var(--soft);max-width:44ch;margin:14px auto 0}
+
+/* other bundles */
+.more{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.mini{border:1px solid var(--stone);padding:20px;transition:border-color .3s}
+.mini:hover{border-color:var(--gold)}
+.mini b{display:block;font-family:'Cormorant Garamond',serif;font-size:1.1rem;margin-bottom:4px}
+.mini span{font-size:.82rem;color:var(--soft)}
+.mini i{display:block;font-style:normal;font-size:.7rem;letter-spacing:.2em;color:var(--gold);margin-top:10px}
+footer{border-top:1px solid var(--stone);padding:52px 0 38px;text-align:center;color:var(--soft);font-size:.72rem}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <a class="brand" href="index.html"><img src="assets/lockup.png" alt="Willow &amp; Gild"></a>
+    <a class="back" id="back" href="index.html#collections">← Back</a>
+  </div>
+</header>
+
+<main id="main"></main>
+<footer>© <span id="yr"></span> Willow &amp; Gild — printable stationery, instant download.</footer>
+
+<script src="collections.js"></script>
+<script src="bundles.js"></script>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+const q = new URLSearchParams(location.search);
+const b = BUNDLES.find(x => x.id === q.get('b')) || BUNDLES[0];
+const c = COLLECTIONS.find(x => x.id === q.get('c')) || COLLECTIONS[0];
+document.title = b.name.replace('&amp;','&') + ' — ' + c.name + ' — Willow & Gild';
+document.getElementById('back').href = 'collection.html?c=' + c.id;
+document.getElementById('back').textContent = '← ' + c.name;
+
+/* Two shopfronts, and only the ones that exist — same rule as the collection
+   page. A dead buy button costs more trust than a missing one. */
+const buttons = [
+  b.gumroad ? `<a class="btn solid" href="${b.gumroad}" data-buy>Buy direct</a>` : '',
+  b.etsy    ? `<a class="btn" href="${b.etsy}" data-buy>Buy on Etsy</a>` : '',
+].filter(Boolean).join('');
+
+/* The gallery uses the collection's own three views plus the bundle shot, so a
+   bundle always looks like the collection it is being bought in. */
+const shots = [
+  `assets/${c.id}_hero.webp`,
+  `assets/${c.id}.webp`,
+  `assets/${c.id}_chair.webp`,
+].map(src => `<img src="${src}" alt="${c.name}" loading="lazy"
+     onerror="this.remove()">`).join('');
+
+document.getElementById('main').innerHTML = `
+  <div class="top wrap">
+    <p class="eyebrow">${c.name} — Bundle</p>
+    <div class="rule"></div>
+    <h1 class="serif">${b.name}</h1>
+    <p class="lede">${b.line} ${b.who}</p>
+    <div class="facts">
+      <div class="fact"><b>${b.pages || '—'}</b><span>Pages</span></div>
+      <div class="fact"><b>${b.files}</b><span>Files</span></div>
+      <div class="fact"><b>A4 · US</b><span>Both sizes</span></div>
+    </div>
+  </div>
+
+  <section class="wrap"><div class="shots">${shots}</div></section>
+
+  <section class="wrap">
+    <div class="head"><p class="eyebrow">What's Included</p><div class="rule"></div></div>
+    <div class="list">${b.includes.map(i => `<div class="row">${i}</div>`).join('')}</div>
+  </section>
+
+  <section class="wrap">
+    <div class="head"><p class="eyebrow">How It Works</p><h2 class="serif">Three steps, no software to buy</h2><div class="rule"></div></div>
+    <div class="steps">
+      <div class="step"><span class="n">ONE</span><b>Download</b>
+        <p>Your files arrive the moment you pay. Nothing is posted and nothing expires.</p></div>
+      <div class="step"><span class="n">TWO</span><b>Type your details</b>
+        <p>Open in any free PDF reader — Acrobat Reader, Preview, your phone. On the synced documents you type your names once and every page fills.</p></div>
+      <div class="step"><span class="n">THREE</span><b>Print</b>
+        <p>At home, at a copy shop, or send the file to a printer. A4 and US Letter are both included, with a print guide that tells them exactly what they need.</p></div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="buy">
+      <p class="eyebrow">Instant Download</p>
+      <p class="price">NZ$${b.price}<small>one payment · yours to keep · print as many as you need</small></p>
+      <div class="buyrow">${buttons}</div>
+      ${(!b.etsy && !b.gumroad) ? '<p class="note">Listings going live shortly.</p>' : ''}
+      <p class="note">Personal use for your own wedding. Not for resale or redistribution.</p>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="head"><p class="eyebrow">Other Bundles in ${c.name}</p><div class="rule"></div></div>
+    <div class="more">
+      ${BUNDLES.filter(x => x.id !== b.id).slice(0, 4).map(x => `
+        <a class="mini" href="bundle.html?b=${x.id}&c=${c.id}">
+          <b>${x.name}</b><span>${x.line}</span><i>NZ$${x.price}</i>
+        </a>`).join('')}
+    </div>
+  </section>`;
+</script>
+</body>
+</html>

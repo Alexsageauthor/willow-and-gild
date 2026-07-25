@@ -74,6 +74,13 @@ section + section{padding-top:clamp(40px,5vw,64px)}
 .view a:hover img{transform:scale(1.03)}
 .view figcaption{margin-top:14px;margin-bottom:6px;font-size:.66rem;letter-spacing:.24em;
                  text-transform:uppercase;color:var(--soft)}
+.bundles{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.bcard{border:1px solid var(--stone);padding:22px;transition:border-color .3s,transform .3s;display:block}
+.bcard:hover{border-color:var(--gold);transform:translateY(-2px)}
+.bcard.hero{border-color:var(--gold);background:var(--linen)}
+.bcard b{display:block;font-family:'Cormorant Garamond',serif;font-size:1.16rem;font-weight:300;margin-bottom:5px}
+.bcard span{font-size:.88rem;color:var(--soft)}
+.bcard i{display:block;font-style:normal;font-size:.68rem;letter-spacing:.2em;color:var(--gold);margin-top:12px}
 .more{display:grid;gap:26px;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));margin-top:12px}
 .mini{background:transparent;text-align:center;padding-bottom:20px;opacity:.62}
 .mini.live{opacity:1}
@@ -98,6 +105,7 @@ footer{border-top:1px solid var(--stone);padding:56px 0 40px;text-align:center;c
 <footer>© <span id="yr"></span> Willow &amp; Gild — printable stationery, instant download.</footer>
 
 <script src="collections.js"></script>
+<script src="bundles.js"></script>
 <script>
 document.getElementById('yr').textContent = new Date().getFullYear();
 
@@ -106,6 +114,15 @@ const c  = COLLECTIONS.find(x => x.id === id) || COLLECTIONS[0];
 document.title = c.name + ' — Willow & Gild';
 
 const live = c.status === 'live';
+
+/* Every bundle is reachable from every collection page, carrying the
+   collection through in the query string so the bundle shows in ITS colours. */
+const bundleCards = (typeof BUNDLES === 'undefined' ? [] : BUNDLES).map(x => `
+  <a class="bcard${x.hero ? ' hero' : ''}" href="bundle.html?b=${x.id}&c=${c.id}">
+    <b>${x.name}</b>
+    <span>${x.line}</span>
+    <i>NZ$${x.price}${x.pages ? ' &middot; ' + x.pages + ' pages' : ''}</i>
+  </a>`).join('');
 
 /* THREE VIEWS, AND ONLY THE ONES THAT EXIST.
    The plate is the table, the chair is the room, the hero is the drawing the
@@ -198,6 +215,19 @@ document.getElementById('main').innerHTML = `
       <div class="rule"></div>
     </div>
     <div class="views">${views}</div>
+  </section>
+
+  <section class="wrap">
+    <div class="head">
+      <p class="eyebrow">Buy the Whole Collection, or Part of It</p>
+      <h2 class="serif">Eight ways in</h2>
+      <div class="rule"></div>
+      <p style="color:var(--soft);max-width:52ch;margin:14px auto 0">
+        The complete collection, or a smaller bundle if you only need part of it
+        &mdash; or want to mix and match across collections.
+      </p>
+    </div>
+    <div class="bundles">${bundleCards}</div>
   </section>
   ${products}
   <section class="wrap">

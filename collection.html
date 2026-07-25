@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light only">
+<meta name="theme-color" content="#F8F6F2">
 <title>Collection — Willow &amp; Gild</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,6 +14,7 @@
    drift the moment one of them was edited; this reads ?c=Kyoto and builds
    itself from collections.js, so a new collection is a data entry and an
    image, never a new page to keep in step. */
+html{color-scheme:light only}
 :root{
   --paper:#F8F6F2;--linen:#F1EDE5;--stone:#E3DDD1;
   --ink:#33342F;--soft:#6B6659;--gold:#A8865B;--measure:1180px;
@@ -32,8 +35,8 @@ header{position:sticky;top:0;z-index:50;background:rgba(248,246,242,.92);
 .bar{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;
      max-width:var(--measure);margin:0 auto}
 .brand{display:flex;align-items:center;gap:12px}
-.brand img{width:34px;height:34px}
-.brand span{font-family:'Cormorant Garamond',serif;font-size:1.22rem;letter-spacing:.16em;text-transform:uppercase}
+.brand img{height:30px;width:auto}          /* lockup: let width follow */
+.brand span{display:none}   /* the lockup carries the name itself */
 .back{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--soft)}
 .back:hover{color:var(--gold)}
 .hero{text-align:center;padding:clamp(56px,8vw,110px) 0 clamp(36px,5vw,66px)}
@@ -70,7 +73,7 @@ footer{border-top:1px solid var(--stone);padding:56px 0 40px;text-align:center;c
 
 <header>
   <div class="bar">
-    <a class="brand" href="index.html"><img src="assets/mark.png" alt=""><span>Willow &amp; Gild</span></a>
+    <a class="brand" href="index.html"><img src="assets/wordmark.png" alt="Willow &amp; Gild"></a>
     <a class="back" href="index.html#collections">← All collections</a>
   </div>
 </header>

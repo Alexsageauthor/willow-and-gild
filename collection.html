@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Collection — Willow &amp; Gild</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ONE PAGE SERVES EVERY COLLECTION. Fifteen near-identical HTML files would
+   drift the moment one of them was edited; this reads ?c=Kyoto and builds
+   itself from collections.js, so a new collection is a data entry and an
+   image, never a new page to keep in step. */
+:root{
+  --paper:#F8F6F2;--linen:#F1EDE5;--stone:#E3DDD1;
+  --ink:#33342F;--soft:#6B6659;--gold:#A8865B;--measure:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,sans-serif;
+     font-weight:300;line-height:1.75;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--measure);margin:0 auto;padding:0 32px}
+h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,serif;font-weight:300}
+h1{font-size:clamp(2.6rem,6vw,4.4rem);line-height:1.08}
+h2{font-size:clamp(1.8rem,3.4vw,2.6rem)}
+.eyebrow{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+.rule{width:54px;height:1px;background:var(--gold);margin:22px auto}
+header{position:sticky;top:0;z-index:50;background:rgba(248,246,242,.92);
+       backdrop-filter:saturate(150%) blur(8px);border-bottom:1px solid var(--stone)}
+.bar{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;
+     max-width:var(--measure);margin:0 auto}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{width:34px;height:34px}
+.brand span{font-family:'Cormorant Garamond',serif;font-size:1.22rem;letter-spacing:.16em;text-transform:uppercase}
+.back{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--soft)}
+.back:hover{color:var(--gold)}
+.hero{text-align:center;padding:clamp(56px,8vw,110px) 0 clamp(36px,5vw,66px)}
+.hero img{width:min(360px,62vw);margin:0 auto clamp(20px,3vw,36px)}
+.lede{font-size:1.06rem;color:var(--soft);max-width:56ch;margin:22px auto 0}
+.palette{display:flex;gap:12px;justify-content:center;margin-top:30px}
+.palette i{width:34px;height:34px;border-radius:50%;display:block;border:1px solid rgba(0,0,0,.06)}
+section{padding:clamp(48px,7vw,92px) 0}
+.head{text-align:center;margin-bottom:clamp(30px,4vw,52px)}
+.list{display:grid;gap:1px;background:var(--stone);border:1px solid var(--stone)}
+.row{background:var(--paper);padding:26px 28px;display:grid;gap:6px;
+     grid-template-columns:minmax(210px,1fr) 2fr;align-items:baseline}
+.row h3{font-size:1.16rem}
+.row p{font-size:.92rem;color:var(--soft)}
+@media(max-width:700px){.row{grid-template-columns:1fr}}
+.buybox{background:var(--linen);border:1px solid var(--stone);padding:clamp(30px,4vw,54px);text-align:center}
+.btn{display:inline-block;padding:14px 34px;font-size:.72rem;letter-spacing:.22em;
+     text-transform:uppercase;border:1px solid var(--gold);color:var(--ink);transition:.3s}
+.btn:hover{background:var(--gold);color:var(--paper)}
+.btn.solid{background:var(--gold);color:var(--paper)}
+.btn.solid:hover{background:transparent;color:var(--ink)}
+.buyrow{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.more{display:grid;gap:26px;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));margin-top:12px}
+.mini{background:var(--linen);text-align:center;padding-bottom:20px;opacity:.62}
+.mini.live{opacity:1}
+.mini .art{aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;background:var(--paper)}
+.mini .art img{width:80%}
+.mini h3{font-size:1.05rem;margin-top:16px}
+.mini span{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--soft)}
+footer{border-top:1px solid var(--stone);padding:56px 0 40px;text-align:center;color:var(--soft);font-size:.72rem}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <a class="brand" href="index.html"><img src="assets/mark.png" alt=""><span>Willow &amp; Gild</span></a>
+    <a class="back" href="index.html#collections">← All collections</a>
+  </div>
+</header>
+
+<main id="main"></main>
+
+<footer>© <span id="yr"></span> Willow &amp; Gild — printable stationery, instant download.</footer>
+
+<script src="collections.js"></script>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+const id = new URLSearchParams(location.search).get('c') || 'Kyoto';
+const c  = COLLECTIONS.find(x => x.id === id) || COLLECTIONS[0];
+document.title = c.name + ' — Willow & Gild';
+
+const live = c.status === 'live';
+
+/* TWO SHOPFRONTS, AND ONLY THE ONES THAT EXIST.
+   Gumroad is the direct channel and takes the smaller cut, so it leads. Etsy
+   is where the search traffic is, so it stays - a customer who trusts Etsy
+   should not have to leave to buy. A button is only drawn if its link is
+   actually filled in: a dead buy button costs more trust than a missing one. */
+const buttons = [
+  c.gumroad ? `<a class="btn solid" href="${c.gumroad}" data-buy>Buy direct</a>` : '',
+  c.etsy    ? `<a class="btn" href="${c.etsy}" data-buy>Buy on Etsy</a>`        : '',
+].filter(Boolean).join('');
+
+const products = live ? `
+  <section class="wrap">
+    <div class="head">
+      <p class="eyebrow">What's Included</p>
+      <h2 class="serif">Every piece, designed together</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="list">
+      ${KYOTO_PRODUCTS.map(([t,d]) => `<div class="row"><h3 class="serif">${t}</h3><p>${d}</p></div>`).join('')}
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="buybox">
+      <p class="eyebrow">The Complete Collection</p>
+      <h2 class="serif" style="margin:12px 0 6px">${c.name}</h2>
+      <p style="color:var(--soft);max-width:46ch;margin:0 auto 8px">
+        Instant download. Edit in any free PDF reader — no software to buy,
+        no account to make.
+      </p>
+      <p style="color:var(--soft);max-width:46ch;margin:0 auto 26px">
+        Also available as eight smaller bundles if you only need part of it.
+      </p>
+      <div class="buyrow">${buttons}</div>
+      ${(!c.etsy && !c.gumroad) ? '<p style="color:var(--soft);font-size:.85rem;margin-top:18px">Listings going live shortly.</p>' : ''}
+    </div>
+  </section>` : `
+  <section class="wrap">
+    <div class="buybox">
+      <p class="eyebrow">In the studio</p>
+      <h2 class="serif" style="margin:12px 0 10px">Not quite ready</h2>
+      <p style="color:var(--soft);max-width:48ch;margin:0 auto 26px">
+        ${c.name} is drawn and built, and it goes on sale once it has been
+        through the same checks as every collection before it. Nothing here is
+        sold before it is finished.
+      </p>
+      <a class="btn" href="index.html#collections">See what's available now</a>
+    </div>
+  </section>`;
+
+document.getElementById('main').innerHTML = `
+  <div class="hero wrap">
+    <img src="assets/${c.id}.jpg" alt="${c.name}">
+    <p class="eyebrow">The Collection</p>
+    <div class="rule"></div>
+    <h1 class="serif">${c.name}</h1>
+    <p class="lede">${c.story}</p>
+    <div class="palette">
+      <i style="background:${c.ink}" title="ink"></i>
+      <i style="background:${c.gold}" title="gold"></i>
+      <i style="background:var(--paper);border-color:var(--stone)" title="paper"></i>
+    </div>
+  </div>
+  ${products}
+  <section class="wrap">
+    <div class="head"><p class="eyebrow">Also in the house</p><div class="rule"></div></div>
+    <div class="more">
+      ${COLLECTIONS.filter(x => x.id !== c.id).slice(0, 4).map(x => `
+        <a class="mini ${x.status === 'live' ? 'live' : ''}" href="collection.html?c=${x.id}">
+          <div class="art"><img src="assets/${x.id}.jpg" alt="${x.name}" loading="lazy"></div>
+          <h3 class="serif">${x.name}</h3>
+          <span>${x.status === 'live' ? 'Available' : 'Coming soon'}</span>
+        </a>`).join('')}
+    </div>
+  </section>`;
+</script>
+</body>
+</html>

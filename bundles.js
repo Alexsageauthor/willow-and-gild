@@ -15,7 +15,7 @@
    --------------------------------------------------------------------------- */
 
 const BUNDLES = [
-  { id: '4_Complete_Collection', sell: 'Buy it once and never think about paper again. Every piece already matches, so nothing has to be chosen twice.', shots: ['suite','menus','placecards','signage','seating','planners','numbers','tags'], name: 'The Complete Collection',
+  { id: '4_Complete_Collection', sell: 'Buy it once and never think about paper again. Every piece already matches, so nothing has to be chosen twice.', shots: ['invitation','menu_hero','placecards','welcome','seating','planner','tablenumber','tags','orderofservice','thankyou'], name: 'The Complete Collection',
     price: 125, pages: 736, files: 132, hero: true,
     line: 'Everything, in one download.',
     who: 'For couples who want the whole day to match — and would rather decide once.',
@@ -31,7 +31,7 @@ const BUNDLES = [
       'Keepsakes, rehearsal dinner, welcome bags and more',
     ] },
 
-  { id: '2_Invitation_Suite', sell: 'The first thing anyone sees. Type your names once and every card in the suite fills — including the envelopes and the address labels.', shots: ['invitation','suite'], name: 'The Invitation Suite',
+  { id: '2_Invitation_Suite', sell: 'The first thing anyone sees. Type your names once and every card in the suite fills — including the envelopes and the address labels.', shots: ['invitation','savethedate','details','rsvp','orderofservice'], name: 'The Invitation Suite',
     price: 35, pages: 11, files: 5,
     line: 'Save the date to RSVP, all from one sheet.',
     who: 'For couples who only need the paper that goes in the post.',
@@ -45,7 +45,7 @@ const BUNDLES = [
       'Type your names once on the master sheet — every page fills',
     ] },
 
-  { id: '1_Planning_Bundle', sell: 'The part of a wedding nobody photographs and everybody dreads. Made properly, so the lists and the budget are somewhere you do not mind looking.', shots: ['planners'], name: 'The Planning Bundle',
+  { id: '1_Planning_Bundle', sell: 'The part of a wedding nobody photographs and everybody dreads. Made properly, so the lists and the budget are somewhere you do not mind looking.', shots: ['planner','budget'], name: 'The Planning Bundle',
     price: 45, pages: 88, files: 8,
     line: 'The paperwork, made beautiful.',
     who: 'For the early months, when it is all lists and budgets.',
@@ -56,7 +56,7 @@ const BUNDLES = [
       'A4 and US Letter throughout',
     ] },
 
-  { id: '3_Reception_Decor', sell: 'The room, in one download. Menus, place cards, table numbers, signs and the seating plan — designed together, so the table looks composed rather than collected.', shots: ['menus','placecards','numbers','signage','seating','tags'], name: 'Reception &amp; Decor',
+  { id: '3_Reception_Decor', sell: 'The room, in one download. Menus, place cards, table numbers, signs and the seating plan — designed together, so the table looks composed rather than collected.', shots: ['menu_hero','menu_plate','menu_bough','placecards','tablenumber','welcome','bar','seating','tags'], name: 'Reception &amp; Decor',
     price: 69, pages: 383, files: 49,
     line: 'Everything on the table, and the signs around it.',
     who: 'For couples printing their own reception, and nothing else.',
@@ -69,7 +69,7 @@ const BUNDLES = [
       'Four favour tag designs',
     ] },
 
-  { id: '8_DayOf_Coordination', sell: 'The document you hand your planner and your suppliers. One master sheet fills all nine pages, so nobody works from an out-of-date version.', shots: ['signage','menus'], name: 'Day-Of Coordination',
+  { id: '8_DayOf_Coordination', sell: 'The document you hand your planner and your suppliers. One master sheet fills all nine pages, so nobody works from an out-of-date version.', shots: ['orderofservice','timeline','menu_plate'], name: 'Day-Of Coordination',
     price: 29, pages: 22, files: 14,
     line: 'The nine pages that keep the day on time.',
     who: 'For the couple, the planner and every supplier who needs the plan.',
@@ -80,7 +80,7 @@ const BUNDLES = [
       'Menus for the day, filled from the same master sheet',
     ] },
 
-  { id: '5_ThankYou_Bundle', sell: 'Written last, when you are tired. The tracker means nobody is missed and nothing is written twice.', shots: ['suite'], name: 'The Thank You Bundle',
+  { id: '5_ThankYou_Bundle', sell: 'Written last, when you are tired. The tracker means nobody is missed and nothing is written twice.', shots: ['thankyou','details'], name: 'The Thank You Bundle',
     price: 25, pages: 12, files: 6,
     line: 'The last thing you send, and the easiest to leave too late.',
     who: 'For afterwards — with a tracker so nobody is missed.',

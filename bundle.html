@@ -99,6 +99,8 @@ section + section{padding-top:clamp(34px,4vw,54px)}
 .row:hover::before{box-shadow:inset 0 0 0 2.5px var(--paper), inset 0 0 0 4.5px var(--gold)}
 .fine{font-size:.74rem;color:var(--soft);opacity:.8;margin:26px auto 0;max-width:44ch}
 footer{border-top:1px solid var(--stone);padding:52px 0 38px;text-align:center;color:var(--soft);font-size:.72rem}
+.chapter{margin:0 0 10px;font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold,#B7995C)}
+.was{opacity:.45;font-weight:400;margin-left:8px}
 </style>
 </head>
 <body>
@@ -182,7 +184,8 @@ document.getElementById('main').innerHTML = `
   <section class="wrap">
     <div class="buy">
       <p class="eyebrow">Instant Download</p>
-      <p class="price">NZ$${b.price}<small>one payment · yours to keep · print as many as you need</small></p>
+      <p class="chapter">${b.chapter && b.chapter !== "\u2014" ? `Chapter ${b.chapter} · ${b.when}` : b.when}</p>
+      <p class="price">NZ$${b.price}${b.wasPrice ? ` <s class="was">NZ$${b.wasPrice}</s>` : ''}<small>${b.wasPrice ? `every chapter, for less than half of buying them separately · ` : ''}one payment · yours to keep · print as many as you need</small></p>
       <div class="buyrow">${buttons}</div>
       ${(!b.etsy && !b.gumroad) ? '<p class="note">Listings going live shortly.</p>' : ''}
       <p class="note">Bundles work across collections &mdash; take the invitations from

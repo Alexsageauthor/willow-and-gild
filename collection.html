@@ -124,16 +124,22 @@ const bundleCards = (typeof BUNDLES === 'undefined' ? [] : BUNDLES).map(x => `
     <i>NZ$${x.price}${x.pages ? ' &middot; ' + x.pages + ' pages' : ''}</i>
   </a>`).join('');
 
-/* THREE VIEWS, AND ONLY THE ONES THAT EXIST.
+/* FOUR VIEWS, AND ONLY THE ONES THAT EXIST.
    The plate is the table, the chair is the room, the hero is the drawing the
-   lane is built from. Every collection has a plate; most have a chair; only
-   Kyoto has a hero so far. A view is drawn if its file is there and skipped
-   silently if not - a gallery with a broken image in it is worse than a
-   gallery of two. */
+   lane is built from, and the cake is the day itself. A view is drawn if its
+   file is there and skipped silently if not - a gallery with a broken image in
+   it is worse than a gallery of three.
+
+   THE CAKE GOES LAST ON PURPOSE. The first three run art -> detail -> space,
+   which is a sequence, not a list; the cake is the thing all of it is FOR, so
+   it closes rather than opens. It is also the most arresting of the four, and
+   an arresting image at the top makes the three after it look like footnotes.
+   The order of the first three is unchanged - it was a design decision. */
 const VIEWS = [
   ['_hero',  'The Drawing'],
   ['',       'The Table'],
   ['_chair', 'The Room'],
+  ['_cake',  'The Cake'],
 ];
 const views = VIEWS.map(([suf, label]) => `
   <figure class="view">
@@ -211,7 +217,7 @@ document.getElementById('main').innerHTML = `
   <section class="wrap">
     <div class="head">
       <p class="eyebrow">The Collection</p>
-      <h2 class="serif">Three views of one world</h2>
+      <h2 class="serif">Four views of one world</h2>
       <div class="rule"></div>
     </div>
     <div class="views">${views}</div>

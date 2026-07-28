@@ -135,6 +135,15 @@ footer{border-top:1px solid var(--stone);padding:52px 0 38px;text-align:center;c
 .viewer .vr::-webkit-scrollbar{display:none}
 .viewer .vr img{flex:0 0 min(70vw,340px);scroll-snap-align:center;
   height:auto;background:var(--paper);border:1px solid rgba(255,255,255,.12)}
+
+/* SECTION BREAKS in a long contents list. A full-width row inside the grid, so
+   the tiles below it start a fresh line — a heading that did not clear the row
+   would sit in a column and read as a caption. */
+.phase{grid-column:1/-1;margin:22px 0 -6px;padding-top:20px;
+  border-top:1px solid var(--stone);
+  font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold);text-align:left}
+.phase:first-child{margin-top:0;padding-top:0;border-top:0}
 </style>
 </head>
 <body>
@@ -223,7 +232,8 @@ document.getElementById('main').innerHTML = `
       <h2 class="serif">Every piece, shown</h2><div class="rule"></div>
       <p style="color:var(--soft);max-width:52ch;margin:12px auto 0">
         ${rows.length} products in this chapter. Every one is pictured as it prints.</p></div>
-    ${rows.length ? `<div class="grid">${rows.map(r => `
+    ${rows.length ? `<div class="grid">${rows.map(r => `${r.section ? `
+      <p class="phase">${r.section}</p>` : ''}
       <figure class="item${r.all ? ' many' : ''}"${r.all ? ` data-all="${r.all.join(',')}" data-name="${r.name}" tabindex="0" role="button" aria-label="${r.name}, ${r.all.length} designs — open"` : ''}>
         <img src="assets/contents/kyoto/${r.icon}" alt="${r.name}" loading="lazy">
         ${r.all ? `<b class="count">${r.all.length}</b>` : ''}

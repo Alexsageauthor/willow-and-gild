@@ -46,16 +46,6 @@ section + section{padding-top:clamp(34px,4vw,54px)}
 .fact span{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--soft)}
 
 /* gallery */
-.rail{display:flex;gap:clamp(14px,2vw,26px);overflow-x:auto;scroll-snap-type:x mandatory;
-  -webkit-overflow-scrolling:touch;scrollbar-width:none;
-  padding:0 max(24px,calc((100vw - var(--measure))/2 + 24px)) 6px}
-.rail::-webkit-scrollbar{display:none}
-.slide{flex:0 0 min(74vw,460px);scroll-snap-align:center;margin:0;
-  border:1px solid var(--stone);background:var(--paper)}
-.slide img{width:100%;display:block}
-.dots{display:flex;gap:8px;justify-content:center;margin-top:22px}
-.dot{width:6px;height:6px;border-radius:50%;background:var(--stone);transition:.3s;border:0;padding:0;cursor:pointer}
-.dot.on{background:var(--gold);transform:scale(1.35)}
 .sell{font-size:1.12rem;color:var(--ink);max-width:46ch}
 .who{font-size:.95rem;color:var(--soft);max-width:48ch;margin:12px auto 0}
 
@@ -159,15 +149,29 @@ const buttons = [
 
 /* The gallery uses the collection's own three views plus the bundle shot, so a
    bundle always looks like the collection it is being bought in. */
-const shots = (b.shots || []).map((s, i) => `
-  <figure class="slide"><img src="assets/shots/${s}.webp" alt="${b.name}"
-       loading="${i < 2 ? 'eager' : 'lazy'}"
-       onerror="this.onerror=null;this.src='assets/${c.id}.webp'"></figure>`).join('');
+
+/* WHERE THE PORTRAIT LIVES — try, do not assume.
+   These files have been packaged three different ways during the build, so a
+   repo may hold them at any of the paths below depending on which zip went up.
+   A hard-coded path turns a naming difference into a missing image on a live
+   page; a short fallback chain costs one failed request and cannot be wrong.
+   The order is most-recent-first, and the figure removes itself if none hit. */
+const PORTRAIT = [
+  `assets/contents/kyoto/bundle-${b.id}.webp`,
+  `assets/bundles/${b.id}.webp`,
+  `assets/bundles/bundle-${b.id}.webp`,
+  `assets/bundle-${b.id}.webp`,
+];
+function nextPortrait(img) {
+  const n = +img.dataset.try + 1;
+  if (n < PORTRAIT.length) { img.dataset.try = n; img.src = PORTRAIT[n]; }
+  else { const f = img.closest('figure'); if (f) f.remove(); }
+}
 
 document.getElementById('main').innerHTML = `
   <figure class="portrait">
-    <img src="assets/contents/kyoto/bundle-${b.id}.webp" alt="${b.name} — what is inside"
-         loading="eager" onerror="this.closest('figure').remove()">
+    <img src="${PORTRAIT[0]}" alt="${b.name} — what is inside" loading="eager"
+         data-try="0" onerror="nextPortrait(this)">
   </figure>
 
   <div class="top wrap">
@@ -183,14 +187,12 @@ document.getElementById('main').innerHTML = `
     </div>
   </div>
 
-  ${shots ? `<section>
-    <div class="wrap"><div class="head"><p class="eyebrow">What It Looks Like</p>
-      <h2 class="serif">The paper itself</h2><div class="rule"></div>
-      <p style="color:var(--soft);max-width:50ch;margin:12px auto 0">
-        Shown filled in, exactly as it prints. Every line is yours to change.</p></div></div>
-    <div class="rail" id="rail">${shots}</div>
-    <div class="dots" id="dots"></div>
-  </section>` : ''}
+  <!-- THE SHOTS RAIL IS GONE. It was a horizontally scrolling strip of the
+       same square product photos the portrait and the icon grid now cover
+       properly — the portrait shows the pieces together at the top, the grid
+       shows every one of them below. A third pass at the same content, needing
+       a swipe to see it, was the weakest of the three and the only one that
+       hid what it held. -->
 
   <section class="wrap">
     <div class="head"><p class="eyebrow">What's Included</p>
@@ -240,34 +242,6 @@ document.getElementById('main').innerHTML = `
     </div>
   </section>`;
 
-/* The dots are a POSITION INDICATOR, not decoration: on a rail that runs off
-   the edge of the screen a visitor needs to know how much is left. */
-(function(){
-  const rail = document.getElementById('rail');
-  const dots = document.getElementById('dots');
-  if (!rail || !dots) return;
-  const slides = [...rail.children];
-  slides.forEach((_, i) => {
-    const d = document.createElement('button');
-    d.className = 'dot' + (i ? '' : ' on');
-    d.setAttribute('aria-label', 'View ' + (i + 1) + ' of ' + slides.length);
-    d.onclick = () => slides[i].scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
-    dots.appendChild(d);
-  });
-  let t;
-  rail.addEventListener('scroll', () => {
-    clearTimeout(t);
-    t = setTimeout(() => {
-      const mid = rail.scrollLeft + rail.clientWidth / 2;
-      let best = 0, bd = 1e9;
-      slides.forEach((s, i) => {
-        const c = s.offsetLeft + s.clientWidth / 2;
-        if (Math.abs(c - mid) < bd) { bd = Math.abs(c - mid); best = i; }
-      });
-      [...dots.children].forEach((d, i) => d.classList.toggle('on', i === best));
-    }, 60);
-  }, {passive:true});
-})();
 </script>
 </body>
 </html>

@@ -141,6 +141,15 @@ footer .brand img{height:26px}
   .rv{opacity:1;transform:none;transition:none}
   html{scroll-behavior:auto}
 }
+
+/* The pick-and-mix note: set apart from the collections grid without shouting,
+   because it is a permission rather than an offer. */
+.mixnote{max-width:62ch;margin:6px auto clamp(38px,5vw,64px);text-align:center;
+         padding:clamp(26px,4vw,40px) clamp(22px,4vw,44px);
+         border:1px solid var(--stone);background:var(--paper)}
+.mixnote h3{margin:10px 0 14px}
+.mixnote p{color:var(--soft)}
+.mixnote em{font-style:italic;color:var(--ink)}
 </style>
 </head>
 <body>
@@ -167,7 +176,8 @@ footer .brand img{height:26px}
   <h1>Beautiful paper begins long before it is printed.</h1>
   <p class="lede">Complete stationery collections designed as a single world —
      so your invitation, your menu and the sign by the door all came from the
-     same hand.</p>
+     same hand. Take a whole collection, a single chapter, or one card at a
+     time.</p>
   <div class="cta-row">
     <a class="btn solid" href="#collections">Explore Collections</a>
     <a class="btn" href="collection.html?c=Kyoto">See a Collection in Full</a>
@@ -182,6 +192,22 @@ footer .brand img{height:26px}
     <p>A collection is not a matching set of three cards. It is every piece of
        paper a wedding needs, drawn together — and it is finished before it
        goes on sale.</p>
+  </div>
+
+  <!-- PICK AND MIX, SAID PLAINLY AND EARLY.
+       Nothing on the site told anyone they could buy across collections, or
+       take one card without the chapter around it. A shopper who assumes a
+       collection is all-or-nothing prices themselves out at the first page. -->
+  <div class="mixnote rv">
+    <p class="eyebrow">Pick &amp; mix</p>
+    <h3 class="serif">Nothing here is all or nothing</h3>
+    <p>Buy a whole collection, one chapter of it, or a single card. Mix designs
+       within a collection — six table numbers, five place cards, three menus,
+       choose the ones you like. And mix <em>across</em> collections too: Kyoto
+       invitations with Olive&nbsp;&amp;&nbsp;Gold signage is a decision, not a
+       mistake. Every collection shares the same paper, the same measures and
+       the same fillable fields, so pieces sit together whichever way you
+       combine them.</p>
   </div>
   <div class="grid" id="grid"></div>
 </section>

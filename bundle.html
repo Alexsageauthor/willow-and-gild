@@ -166,7 +166,7 @@ const shots = (b.shots || []).map((s, i) => `
 
 document.getElementById('main').innerHTML = `
   <figure class="portrait">
-    <img src="assets/bundles/${b.id}.webp" alt="${b.name} — what is inside"
+    <img src="assets/contents/kyoto/bundle-${b.id}.webp" alt="${b.name} — what is inside"
          loading="eager" onerror="this.closest('figure').remove()">
   </figure>
 
@@ -199,7 +199,7 @@ document.getElementById('main').innerHTML = `
         ${rows.length} products in this chapter. Every one is pictured as it prints.</p></div>
     ${rows.length ? `<div class="grid">${rows.map(r => `
       <figure class="item">
-        <img src="assets/contents/${b.id}/${r.icon}.webp" alt="${r.name}" loading="lazy">
+        <img src="assets/contents/kyoto/${r.icon}" alt="${r.name}" loading="lazy">
         <figcaption><b>${r.name}</b>${r.note ? `<span>${r.note}</span>` : ''}</figcaption>
       </figure>`).join('')}</div>`
       : `<div class="list">${b.includes.map(i => `<div class="row">${i}</div>`).join('')}</div>`}

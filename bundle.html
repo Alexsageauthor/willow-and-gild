@@ -111,6 +111,30 @@ footer{border-top:1px solid var(--stone);padding:52px 0 38px;text-align:center;c
 .item figcaption span{display:block;margin-top:3px;font-size:.74rem;letter-spacing:.06em;
                       text-transform:uppercase;color:var(--soft)}
 @media(max-width:520px){.grid{grid-template-columns:repeat(2,1fr);gap:20px 14px}}
+
+/* A row with more than one design says so, and opens. */
+.item.many{cursor:pointer;position:relative}
+.item.many .count{position:absolute;top:8px;right:8px;width:24px;height:24px;
+  border-radius:50%;background:var(--paper);border:1px solid var(--gold);
+  color:var(--ink);font-size:.72rem;font-weight:500;display:flex;
+  align-items:center;justify-content:center;letter-spacing:0}
+.item.many:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+
+.viewer{position:fixed;inset:0;z-index:50;display:none;
+  background:rgba(24,22,19,.92);padding:clamp(18px,5vw,54px);
+  flex-direction:column;justify-content:center}
+.viewer.on{display:flex}
+.viewer .x{position:absolute;top:14px;right:18px;background:none;border:0;
+  color:#EDE9E1;font-size:2.2rem;line-height:1;cursor:pointer}
+.viewer .vt{color:#EDE9E1;text-align:center;margin:0 0 4px;
+  font-size:1.05rem;letter-spacing:.02em}
+.viewer .vn{color:#A9A296;text-align:center;margin:14px 0 0;
+  font-size:.74rem;letter-spacing:.16em;text-transform:uppercase}
+.viewer .vr{display:flex;gap:clamp(12px,2vw,26px);overflow-x:auto;
+  scroll-snap-type:x mandatory;padding:14px 0;-webkit-overflow-scrolling:touch}
+.viewer .vr::-webkit-scrollbar{display:none}
+.viewer .vr img{flex:0 0 min(70vw,340px);scroll-snap-align:center;
+  height:auto;background:var(--paper);border:1px solid rgba(255,255,255,.12)}
 </style>
 </head>
 <body>
@@ -200,8 +224,9 @@ document.getElementById('main').innerHTML = `
       <p style="color:var(--soft);max-width:52ch;margin:12px auto 0">
         ${rows.length} products in this chapter. Every one is pictured as it prints.</p></div>
     ${rows.length ? `<div class="grid">${rows.map(r => `
-      <figure class="item">
+      <figure class="item${r.all ? ' many' : ''}"${r.all ? ` data-all="${r.all.join(',')}" data-name="${r.name}" tabindex="0" role="button" aria-label="${r.name}, ${r.all.length} designs — open"` : ''}>
         <img src="assets/contents/kyoto/${r.icon}" alt="${r.name}" loading="lazy">
+        ${r.all ? `<b class="count">${r.all.length}</b>` : ''}
         <figcaption><b>${r.name}</b>${r.note ? `<span>${r.note}</span>` : ''}</figcaption>
       </figure>`).join('')}</div>`
       : `<div class="list">${b.includes.map(i => `<div class="row">${i}</div>`).join('')}</div>`}
@@ -241,6 +266,60 @@ document.getElementById('main').innerHTML = `
         </a>`).join('')}
     </div>
   </section>`;
+
+
+/* THE DESIGN VIEWER.
+   A row that says '6 designs' and shows one of them is telling the customer
+   about a choice they cannot see — and the choice IS the proposition here, so
+   it has to be openable. Any row with more than one design becomes a button;
+   opening it lays the designs out to swipe through, with the keyboard arrows
+   working for anyone on a desktop. */
+(function () {
+  const grid = document.querySelector('.grid');
+  if (!grid) return;
+
+  const box = document.createElement('div');
+  box.className = 'viewer';
+  box.innerHTML = '<button class="x" aria-label="Close">&times;</button>' +
+                  '<p class="vt"></p><div class="vr"></div>' +
+                  '<p class="vn"></p>';
+  document.body.appendChild(box);
+  const rail = box.querySelector('.vr');
+
+  function open(fig) {
+    const all = fig.dataset.all.split(',');
+    box.querySelector('.vt').textContent = fig.dataset.name;
+    box.querySelector('.vn').textContent =
+      all.length + ' designs — swipe, or use the arrow keys';
+    rail.innerHTML = all.map(f =>
+      '<img src="assets/contents/kyoto/' + f + '" alt="">').join('');
+    box.classList.add('on');
+    document.body.style.overflow = 'hidden';
+  }
+  function close() {
+    box.classList.remove('on');
+    document.body.style.overflow = '';
+  }
+
+  grid.addEventListener('click', e => {
+    const fig = e.target.closest('.item.many');
+    if (fig) open(fig);
+  });
+  grid.addEventListener('keydown', e => {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    const fig = e.target.closest('.item.many');
+    if (fig) { e.preventDefault(); open(fig); }
+  });
+  box.querySelector('.x').onclick = close;
+  box.addEventListener('click', e => { if (e.target === box) close(); });
+  document.addEventListener('keydown', e => {
+    if (!box.classList.contains('on')) return;
+    if (e.key === 'Escape') return close();
+    const step = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+    if (step) rail.scrollBy({left: step * rail.clientWidth * 0.8,
+                             behavior: 'smooth'});
+  });
+})();
 
 </script>
 </body>

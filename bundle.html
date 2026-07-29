@@ -130,11 +130,23 @@ footer{border-top:1px solid var(--stone);padding:52px 0 38px;text-align:center;c
   font-size:1.05rem;letter-spacing:.02em}
 .viewer .vn{color:#A9A296;text-align:center;margin:14px 0 0;
   font-size:.74rem;letter-spacing:.16em;text-transform:uppercase}
-.viewer .vr{display:flex;gap:clamp(12px,2vw,26px);overflow-x:auto;
-  scroll-snap-type:x mandatory;padding:14px 0;-webkit-overflow-scrolling:touch}
+.viewer .vr{display:flex;align-items:center;gap:clamp(12px,2vw,26px);
+  overflow-x:auto;scroll-snap-type:x mandatory;padding:14px 0;
+  -webkit-overflow-scrolling:touch;
+  /* A FLEX ITEM WILL NOT SHRINK BELOW ITS CONTENT WITHOUT THIS. The rail sits
+     in a fixed, full-height column; with the default min-height:auto a tall
+     picture pushed it past the viewport and the overflow was simply cut off by
+     the fixed frame — no scrollbar, no warning, just a card sliced through. */
+  min-height:0}
 .viewer .vr::-webkit-scrollbar{display:none}
-.viewer .vr img{flex:0 0 min(70vw,340px);scroll-snap-align:center;
-  height:auto;background:var(--paper);border:1px solid rgba(255,255,255,.12)}
+/* HEIGHT LEADS, WIDTH CAPS — and it was the other way round. Pinning the width
+   means a portrait card at 340px is 437px tall, which overflows a landscape
+   phone. Height is the scarce dimension in a viewer. dvh follows the mobile
+   browser chrome; the vh line before it is the fallback. */
+.viewer .vr img{flex:0 0 auto;scroll-snap-align:center;
+  max-width:min(70vw,340px);width:auto;height:auto;
+  max-height:calc(100vh - 200px);max-height:calc(100dvh - 200px);
+  background:var(--paper);border:1px solid rgba(255,255,255,.12)}
 
 /* SECTION BREAKS in a long contents list. A full-width row inside the grid, so
    the tiles below it start a fresh line — a heading that did not clear the row
@@ -234,7 +246,7 @@ document.getElementById('main').innerHTML = `
         ${rows.length} products in this chapter. Every one is pictured as it prints.</p></div>
     ${rows.length ? `<div class="grid">${rows.map(r => `${r.section ? `
       <p class="phase">${r.section}</p>` : ''}
-      <figure class="item${r.all ? ' many' : ''}"${r.all ? ` data-all="${r.all.join(',')}" data-name="${r.name}" tabindex="0" role="button" aria-label="${r.name}, ${r.all.length} designs — open"` : ''}>
+      <figure class="item${r.all ? ' many' : ''}"${r.all ? ` data-all="${r.all.join(',')}" data-name="${r.name}" data-note="${r.note || ''}" tabindex="0" role="button" aria-label="${r.name}, ${r.all.length} pictures — open"` : ''}>
         <img src="assets/contents/kyoto/${r.icon}" alt="${r.name}" loading="lazy">
         ${r.all ? `<b class="count">${r.all.length}</b>` : ''}
         <figcaption><b>${r.name}</b>${r.note ? `<span>${r.note}</span>` : ''}</figcaption>
@@ -300,7 +312,15 @@ document.getElementById('main').innerHTML = `
     const all = fig.dataset.all.split(',');
     box.querySelector('.vt').textContent = fig.dataset.name;
     box.querySelector('.vn').textContent =
-      all.length + ' designs — swipe, or use the arrow keys';
+      // SAY WHAT THE ROW SAYS. The note already describes the AXES a customer
+      // picks from — 'for posts & stories · 5 messages · 3 photo shapes' —
+      // after '20 designs' was found to oversell by multiplying them together.
+      // The viewer was a SECOND copy of the same claim and went on saying 20
+      // over a row that had just stopped. Where a row has no note, count
+      // PICTURES: that is what is on screen to swipe, and it claims nothing
+      // about how many drawings the product contains.
+      (fig.dataset.note || (all.length + ' pictures')) +
+      ' — swipe, or use the arrow keys';
     rail.innerHTML = all.map(f =>
       '<img src="assets/contents/kyoto/' + f + '" alt="">').join('');
     box.classList.add('on');

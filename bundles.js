@@ -39,7 +39,7 @@ const BUNDLES = [
       'All six chapters, start to finish',
       'The Wedding Planner and the Budget Planner',
       'The Invitation Suite — type your names once, every card fills',
-      'Seating plan, six table number designs, four place card options',
+      'Seating plan, six table number designs, five place card options',
       'Menus, favour tags, signage, petal cones and seat cards',
       'The Thank You bundle and the keepsakes',
       'Your wedding website kit and the guest list',
@@ -133,7 +133,7 @@ const BUNDLES = [
     includes: [
       'The seating plan — cut-out tables you can move around',
       'The Find Your Seat poster',
-      'Four place card options, six table number designs',
+      'Five place card options, six table number designs',
       'Six menu designs — mix and match with the table numbers',
       'Four favour tag designs, and drink tags for the glasses',
       'Bar, Cards & Gifts and Welcome signs',

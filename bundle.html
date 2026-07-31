@@ -185,7 +185,13 @@ document.getElementById('back').textContent = '← ' + c.name;
 
 /* Two shopfronts, and only the ones that exist — same rule as the collection
    page. A dead buy button costs more trust than a missing one. */
-const rows = (typeof CONTENTS !== 'undefined' && CONTENTS[b.id]) || [];
+/* ROWS FOR THIS COLLECTION. CONTENTS_BY_COLLECTION is keyed by lane then by
+   bundle, because two collections both have a 'V_The_Reception'. CONTENTS is
+   the old flat shape, kept as a fallback for whichever collection was built
+   last, so this page still works against an older contents.js. */
+const rows = (typeof CONTENTS_BY_COLLECTION !== 'undefined'
+              && CONTENTS_BY_COLLECTION[c.id] && CONTENTS_BY_COLLECTION[c.id][b.id])
+             || (typeof CONTENTS !== 'undefined' && CONTENTS[b.id]) || [];
 
 const buttons = [
   b.gumroad ? `<a class="btn solid" href="${b.gumroad}" data-buy>Buy direct</a>` : '',
@@ -202,7 +208,7 @@ const buttons = [
    page; a short fallback chain costs one failed request and cannot be wrong.
    The order is most-recent-first, and the figure removes itself if none hit. */
 const PORTRAIT = [
-  `assets/kyoto/bundle-${b.id}.webp`,
+  `assets/${c.id.toLowerCase()}/bundle-${b.id}.webp`,
   `assets/bundles/${b.id}.webp`,
   `assets/bundles/bundle-${b.id}.webp`,
   `assets/bundle-${b.id}.webp`,
@@ -247,7 +253,7 @@ document.getElementById('main').innerHTML = `
     ${rows.length ? `<div class="grid">${rows.map(r => `${r.section ? `
       <p class="phase">${r.section}</p>` : ''}
       <figure class="item${r.all ? ' many' : ''}"${r.all ? ` data-all="${r.all.join(',')}" data-name="${r.name}" data-note="${r.note || ''}" tabindex="0" role="button" aria-label="${r.name}, ${r.all.length} pictures — open"` : ''}>
-        <img src="assets/kyoto/${r.icon}" alt="${r.name}" loading="lazy">
+        <img src="assets/${c.id.toLowerCase()}/${r.icon}" alt="${r.name}" loading="lazy">
         ${r.all ? `<b class="count">${r.all.length}</b>` : ''}
         <figcaption><b>${r.name}</b>${r.note ? `<span>${r.note}</span>` : ''}</figcaption>
       </figure>`).join('')}</div>`
@@ -322,7 +328,7 @@ document.getElementById('main').innerHTML = `
       (fig.dataset.note || (all.length + ' pictures')) +
       ' — swipe, or use the arrow keys';
     rail.innerHTML = all.map(f =>
-      '<img src="assets/kyoto/' + f + '" alt="">').join('');
+      '<img src="assets/' + c.id.toLowerCase() + '/' + f + '" alt="">').join('');
     box.classList.add('on');
     document.body.style.overflow = 'hidden';
   }

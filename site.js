@@ -34,7 +34,18 @@ const SITE = {
      No trailing slash. Include the protocol and the exact host you want
      indexed — pick www or bare and stay with it, they are different sites to
      a crawler. */
-  ORIGIN: 'https://willowandgild.com',
+  // THE VERCEL HOST, UNTIL THE DOMAIN RESOLVES.
+  // This was set to https://willowandgild.com before the domain was wired up,
+  // and vercel.json 301'd the working hostname to it — so every visitor was
+  // permanently redirected to an address that does not resolve, and the live
+  // site went down. A REDIRECT TO A DOMAIN THAT DOES NOT EXIST IS AN OUTAGE,
+  // and a 301 is CACHED BY THE BROWSER, so it keeps failing after the fix
+  // until the cache clears. Never point this at a domain before it answers.
+  //
+  // TO GO LIVE: bring willowandgild.com up in Vercel first and confirm it
+  // loads. THEN change this line and the two hosts in vercel.json together,
+  // and re-run build_site_meta.py.
+  ORIGIN: 'https://willow-and-gild.vercel.app',
 
   /* the hostname Vercel gives you, so vercel.json and the canonical agree on
      what is being redirected AWAY from. If ORIGIN is still the vercel.app

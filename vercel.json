@@ -2,7 +2,8 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "trailingSlash": false,
-  "redirects": [
+  "_comment": "REDIRECTS ARE OFF UNTIL willowandgild.com RESOLVES. They 301'd the working vercel.app host to a domain that did not exist, which took the site down. When the domain is live in Vercel and loading, restore the two redirects below and set site.js ORIGIN to match.",
+  "_redirects_when_domain_is_live": [
     {
       "source": "/(.*)",
       "has": [

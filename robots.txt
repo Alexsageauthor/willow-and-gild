@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# The seating planner is a free tool and the main reason anyone lands
+# here nine months before they buy. It is deliberately crawlable.
+
+Sitemap: https://willowandgild.com/sitemap.xml

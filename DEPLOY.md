@@ -29,6 +29,58 @@ collections.js    the data. this is the only file you edit regularly
 assets/           one square image per collection, plus hero and mark
 ```
 
+## The domain
+
+The site is `https://willowandgild.com`. The **apex, not www** — both will
+resolve, but only one may be canonical and everything else redirects into it.
+That choice is recorded in two files and they must agree:
+
+```
+site.js       ORIGIN: 'https://willowandgild.com'
+vercel.json   the destination of both redirects
+```
+
+Change one without the other and the canonical tag and the redirect point at
+different addresses, which is worse than either choice on its own.
+
+### Wiring it up (once, at the registrar)
+
+Vercel: Project → Settings → Domains → add `willowandgild.com` **and**
+`www.willowandgild.com`. Vercel then shows you the exact DNS records to create.
+**Use the records it shows you, not any written down here** — the values have
+changed before and a stale A record is a site that is simply down. The shape is
+an A record on the apex and a CNAME on `www`.
+
+Two things that catch people out:
+
+- **The `.vercel.app` address keeps working** after the domain is added. It is
+  not replaced. Left alone, the same shop is crawled and indexed under two
+  names and the ranking splits. `vercel.json` now 301s it into the apex.
+- **HTTPS takes a few minutes** after DNS resolves while the certificate is
+  issued. A browser warning in that window is normal and is not a fault.
+
+### After any domain change
+
+```
+python3 build_site_meta.py
+```
+
+That regenerates `sitemap.xml` and `robots.txt` from `collections.js` and
+`bundles.js`. It reads the origin out of `site.js`, so it can never disagree
+with the canonical tag. Run it after adding a collection too — the sitemap
+lists only collections marked `live`.
+
+## What is still not wired
+
+Not code — decisions and account URLs. The site is finished; the shopfront is
+not, and a live domain does not change that:
+
+- `etsy` and `gumroad` are **empty strings on all fifteen collections**. The
+  buttons render only for links that exist, so a collection flipped to `live`
+  today gets a page reading *"Listings going live shortly"* and no way to buy.
+- Currency is undecided.
+- The newsletter form in the footer of `index.html` posts nowhere.
+
 ## Adding or updating a collection
 
 Everything on the site is built from `collections.js`. To bring a collection
@@ -77,9 +129,12 @@ something to put in them.
 built — 11-page invitation suite, six menus, five place card options, six table
 number designs. Nothing on that list is aspirational.
 
-**Mid-Century has a placeholder image**, drawn in its own colours, because
-there is no artwork for that lane in the archive. Replace `assets/MidCentury.jpg`
-when there is.
+**Mid-Century is built.** This section used to say it carried a placeholder
+image because the lane had no artwork in the archive. It has its own hero,
+plate, chair, cake, three roundels, six signage illustrations and a full canon
+now, and `assets/MidCentury.*` are cut from that artwork. It is still marked
+`soon`, which means built but not signed off — the two are different things and
+the status field is the honest one.
 
 ## Accessibility and performance
 

@@ -294,8 +294,12 @@ footer .brand img{height:26px}
   </div>
 </footer>
 
+<script src="site.js"></script>
 <script src="collections.js"></script>
 <script>
+/* THE HOUSE CARD. index is the one page whose title is already right, so this
+   only adds the canonical and the social card. */
+applyHead({ path: '/', description: document.querySelector('meta[name="description"]').content });
 document.getElementById('yr').textContent = new Date().getFullYear();
 
 /* ---- collections grid, built from the one data file ---- */

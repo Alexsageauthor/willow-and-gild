@@ -104,12 +104,26 @@ footer{border-top:1px solid var(--stone);padding:56px 0 40px;text-align:center;c
 
 <footer>© <span id="yr"></span> Willow &amp; Gild — printable stationery, instant download.</footer>
 
+<script src="site.js"></script>
 <script src="collections.js"></script>
 <script src="bundles.js"></script>
 <script>
 document.getElementById('yr').textContent = new Date().getFullYear();
 
 const id = new URLSearchParams(location.search).get('c') || 'Kyoto';
+/* FIFTEEN COLLECTIONS SHARED ONE TITLE. This page serves them all off ?c=, so
+   in a search result every lane was the same blue link reading "Collection —
+   Willow & Gild". The card image is the lane's own tile. */
+(function () {
+  const c0 = COLLECTIONS.find(x => x.id === id);
+  if (!c0) return;
+  applyHead({
+    title: `${c0.name} — Printable Wedding Stationery — ${SITE.NAME}`,
+    description: `${c0.line} ${c0.story}`.slice(0, 300),
+    image: `/assets/${c0.id}.jpg`,
+    path: `/collection.html?c=${c0.id}`,
+  });
+})();
 const c  = COLLECTIONS.find(x => x.id === id) || COLLECTIONS[0];
 document.title = c.name + ' — Willow & Gild';
 

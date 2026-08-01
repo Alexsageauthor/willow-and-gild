@@ -29,6 +29,51 @@ collections.js    the data. this is the only file you edit regularly
 assets/           one square image per collection, plus hero and mark
 ```
 
+## THE DOMAIN IS NOT LIVE YET — READ THIS FIRST
+
+The site currently runs on **https://willow-and-gild.vercel.app** and that is
+correct until willowandgild.com resolves.
+
+TWO THINGS TOOK THE SITE DOWN, BOTH RECORDED HERE SO THEY ARE NOT REPEATED:
+
+1. **A 301 to a domain that did not exist.** vercel.json redirected the working
+   .vercel.app host to willowandgild.com before the domain was wired up, so
+   every visitor was permanently sent to an address that does not answer.
+   A redirect to a domain that does not resolve is an OUTAGE, and a 301 is
+   CACHED BY THE BROWSER — it keeps failing after the fix until the cache
+   clears. Hard-refresh or use a private window to confirm a fix.
+
+2. **Invalid keys in vercel.json.** The disabled redirects were parked in the
+   same file under "_comment" and "_redirects_when_domain_is_live". Vercel
+   validates vercel.json against a strict schema and REJECTS UNKNOWN KEYS, so
+   the deploy failed validation and nothing shipped at all — a site that does
+   not load even though every HTML file in it is perfect. vercel.json now
+   contains only cleanUrls, trailingSlash and headers. Notes live here, in a
+   file that allows notes.
+
+### When the domain is ready
+
+Bring willowandgild.com up in Vercel FIRST and confirm it loads. Only then:
+
+- `site.js` -> `ORIGIN: 'https://willowandgild.com'`
+- `vercel.json` -> add this `redirects` array back:
+
+```json
+"redirects": [
+  { "source": "/(.*)",
+    "has": [{ "type": "host", "value": "willow-and-gild.vercel.app" }],
+    "destination": "https://willowandgild.com/$1", "permanent": true },
+  { "source": "/(.*)",
+    "has": [{ "type": "host", "value": "www.willowandgild.com" }],
+    "destination": "https://willowandgild.com/$1", "permanent": true }
+]
+```
+
+- then run `python3 build_site_meta.py` to regenerate sitemap.xml and robots.txt
+
+Change site.js and vercel.json TOGETHER, or the canonical tag and the redirect
+point at different addresses.
+
 ## The domain
 
 The site is `https://willowandgild.com`. The **apex, not www** — both will

@@ -51,8 +51,10 @@ const COLLECTIONS = [
     line: 'Ferns, moss and a green canopy.',
     story: 'Deep woodland — bracken, bark and light coming through leaves.' },
 
-  { id: 'Riviera', name: 'Riviera', status: 'soon',
+  { id: 'Riviera', name: 'Riviera', status: 'live',
     band: '#4E7A94', ink: '#24414F', gold: '#BFA678',
+    etsy: '',        // paste the Etsy listing URL
+    gumroad: '',     // paste the Gumroad product URL
     line: 'Deep sea blue and painted shutters.',
     story: 'The southern coast in high summer — lemon trees, tiled terraces and ' +
            'water you can see the bottom of.' },

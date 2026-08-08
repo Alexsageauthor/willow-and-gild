@@ -4,14 +4,14 @@
    year - see the note in that script. Do not hand-edit. */
 const PORTRAITS = {
   "kyoto": {
-    "III_The_Invitation": "bundle-III_The_Invitation-d89a765c86.webp",
-    "II_The_Planning": "bundle-II_The_Planning-1665c63ca4.webp",
-    "IV_The_Ceremony": "bundle-IV_The_Ceremony-40ef44a6fc.webp",
-    "I_The_Announcement": "bundle-I_The_Announcement-4a2e4aece1.webp",
-    "Ia_Your_Wedding_Online": "bundle-Ia_Your_Wedding_Online-9ba3ddd43a.webp",
-    "VI_The_Complete_Collection": "bundle-VI_The_Complete_Collection-c640678204.webp",
-    "VI_With_Thanks": "bundle-VI_With_Thanks-9f48609be6.webp",
-    "V_The_Reception": "bundle-V_The_Reception-363eb8c297.webp"
+    "III_The_Invitation": "bundle-III_The_Invitation-8855c39533.webp",
+    "II_The_Planning": "bundle-II_The_Planning-39a6a3b009.webp",
+    "IV_The_Ceremony": "bundle-IV_The_Ceremony-147d6c9c0e.webp",
+    "I_The_Announcement": "bundle-I_The_Announcement-3a752c76c8.webp",
+    "Ia_Your_Wedding_Online": "bundle-Ia_Your_Wedding_Online-636d45ca19.webp",
+    "VI_The_Complete_Collection": "bundle-VI_The_Complete_Collection-2e05992297.webp",
+    "VI_With_Thanks": "bundle-VI_With_Thanks-ba0a77dce4.webp",
+    "V_The_Reception": "bundle-V_The_Reception-d5525c9e19.webp"
   },
   "riviera": {
     "III_The_Invitation": "bundle-III_The_Invitation-b1a74d3bb9.webp",

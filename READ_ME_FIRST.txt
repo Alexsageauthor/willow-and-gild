@@ -1,39 +1,36 @@
-WEBSITE — INCREMENTAL UPDATE 4, 2026-08-08
+WEBSITE — INCREMENTAL UPDATE 5, 2026-08-08
 
-28 FILES.
+TILES FIRST, contents.js LAST.
+DELETE: nothing.
 
-  assets/kyoto/    27 files   the engagement announcements, re-photographed
-  contents.js       1 file    -> the REPO ROOT
+WHAT CHANGED
 
-TILES FIRST, contents.js LAST. The catalogue must not name a tile before the
-tile is on the server.
+1. FIND YOUR SEAT NO LONGER PHOTOGRAPHS BLANK.  1.8% ink -> 6.97%
+   It had no example. build_examples.py covered menus, place cards and signage
+   and the POSTERS were never in it - the piece with the most to gain from one,
+   being a chart of a hundred and twenty names. It is wired in now, ONE code
+   path for both: the same lines that build empty as the deliverable build
+   filled as the example, so they cannot drift.
 
-DELETE: nothing. The superseded engagement-*.webp are harmless orphans and go
-with the next full assets/kyoto/ replacement.
+2. THE TILE PICKER WAS ASKING ITS TWO QUESTIONS IN THE WRONG ORDER.
+   It scored a page as (has_form_fields, -words), so a page with NO fields
+   always won however empty it was - which is why the poster's hundred and
+   twenty EMPTY RULED LINES beat a filled example carrying a hundred and thirty
+   words. Now words come first.
+   Reversing it alone broke The Invitation: its fillable beat its print page by
+   ONE word and the tile came back wearing pale green field boxes. So words are
+   banded to the nearest ten - near-equal pages tie and the fieldless one wins,
+   a page with 130 words against 6 wins outright.
+   A ONE-WORD DIFFERENCE IS NOISE. A HUNDRED-WORD DIFFERENCE IS THE ANSWER.
+   The invitation suite was re-checked by eye afterwards and is clean print
+   pages throughout.
 
-WHY
-The names and the date sat 6px off the inner gold rule, and 15px off each
-other. Both are now measured rather than set as a fraction of the page:
-
-    content to the bottom rule      6px  ->  49px   (on a 1080 canvas)
-    names to date                  15px  ->  29px
-
-The names-to-date gap was H*0.064 - 69px between the two baselines while the
-script names are 54px tall, so the real gap was fifteen pixels. A fraction of
-the page says where a line STARTS; it says nothing about where the previous
-line ENDED.
-
-WHAT ELSE WENT WRONG, RECORDED SO IT DOES NOT REPEAT
-This had already been fixed once this morning. When the missing
-session_build_scripts were uploaded and copied in, the copy restored the
-ORIGINAL of a file that had already been corrected - so the fix vanished
-silently and the fault came back looking like it had never been fixed.
-It is now written into BIBLE.txt and sits at item 1a of the handover's open
-list: DIFF BEFORE YOU COPY, and re-measure these five things any time that
-directory is refreshed from an upload.
-
-STILL OPEN IN THIS GROUP
-  The Print Shop Guide's footer line sits about 3px off the inner gold rule -
-  the same fault on a different product. Not touched in this update.
+3. THE PRINT SHOP GUIDE IS NOT AT FAULT - I WAS.
+   I reported its footer sitting 3px off the gold rule. Re-measured: that page
+   uses the TIGHT frame (inner rule at 26.2pt, 3.1% of the short side) and I
+   had measured against the standard 7.2% inset, so I was reading the frame
+   rule itself, not the content. The real clearance is 18.3pt. Nothing was
+   changed on it. The 3px at its head is the masthead band, which is
+   full-bleed by design.
 
 GATE: qa_manifest.py Kyoto -> 148 refs, 148 present, 0 MISSING.

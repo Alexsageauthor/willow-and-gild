@@ -1,30 +1,39 @@
-WEBSITE — INCREMENTAL UPDATE 3, 2026-08-08
+WEBSITE — INCREMENTAL UPDATE 4, 2026-08-08
 
-FOUR FILES.
+28 FILES.
 
-  assets/kyoto/menu-611ccafd7f.webp
-  assets/kyoto/menu-8d1da71acb.webp
-  assets/kyoto/menu-d6679ed721.webp
-  contents.js                        -> the REPO ROOT
+  assets/kyoto/    27 files   the engagement announcements, re-photographed
+  contents.js       1 file    -> the REPO ROOT
 
 TILES FIRST, contents.js LAST. The catalogue must not name a tile before the
 tile is on the server.
 
+DELETE: nothing. The superseded engagement-*.webp are harmless orphans and go
+with the next full assets/kyoto/ replacement.
+
 WHY
-The rule under the couple's names on the A5 menu moved down. It sat 4pt below
-the baseline; Chorus at 14pt drops 3.50pt below the baseline on any name with a
-tail — Poppy, Georgia, Jay — so the line was touching the descenders and only
-looked survivable on 'Alexandria & Marcus' because neither of those names
-drops. It now clears by 7pt whatever the couple type in.
+The names and the date sat 6px off the inner gold rule, and 15px off each
+other. Both are now measured rather than set as a fraction of the page:
 
-Three menu tiles are re-photographed and their content hashes changed, so
-contents.js changes with them.
+    content to the bottom rule      6px  ->  49px   (on a 1080 canvas)
+    names to date                  15px  ->  29px
 
-DELETE: nothing. The three old menu-*.webp are superseded but harmless; they
-will go with the next full assets/kyoto/ replacement.
+The names-to-date gap was H*0.064 - 69px between the two baselines while the
+script names are 54px tall, so the real gap was fifteen pixels. A fraction of
+the page says where a line STARTS; it says nothing about where the previous
+line ENDED.
 
-THE SAVE THE DATE BORDER IS NOT IN THIS UPDATE. It was built, measured and
-reverted the same day — "better without the border". The card is byte-for-byte
-what you already have.
+WHAT ELSE WENT WRONG, RECORDED SO IT DOES NOT REPEAT
+This had already been fixed once this morning. When the missing
+session_build_scripts were uploaded and copied in, the copy restored the
+ORIGINAL of a file that had already been corrected - so the fix vanished
+silently and the fault came back looking like it had never been fixed.
+It is now written into BIBLE.txt and sits at item 1a of the handover's open
+list: DIFF BEFORE YOU COPY, and re-measure these five things any time that
+directory is refreshed from an upload.
 
-GATE: qa_manifest.py Kyoto -> 141 refs, 141 present, 0 MISSING.
+STILL OPEN IN THIS GROUP
+  The Print Shop Guide's footer line sits about 3px off the inner gold rule -
+  the same fault on a different product. Not touched in this update.
+
+GATE: qa_manifest.py Kyoto -> 148 refs, 148 present, 0 MISSING.

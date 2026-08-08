@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your wedding day timeline — free — Willow &amp; Gild</title>
+
+<!--
+  THE FREE TIMELINE — v2. THIS IS A MARKETING PIECE, SO IT HAS TO BE BEAUTIFUL.
+
+  Kelly: "make it look as pretty as possible because this is a marketing tool.
+  So think about borders ... they can also maybe choose a colour, and the border
+  can be the colour they pick."
+
+  WHAT THAT MEANS IN PRACTICE
+  · A double rule inset from the trim, the studio's own frame, drawn in the
+    chosen colour. A single line reads as a box; two lines with air between them
+    read as stationery.
+  · Corner ticks at the frame's corners — the same detail the planner uses.
+  · The times set in the chosen colour, the moments in ink. Colour carries the
+    structure so the type does not have to shout.
+  · The colours offered are the CURATED wedding tones, not a colour wheel. The
+    same reason as on the palette page: an unbounded control produces
+    fluorescents and one fluorescent ruins the sheet.
+
+  IT WEARS THE WILLOW & GILD MARK, NEVER A COLLECTION'S MOTIF. A free piece in a
+  lane's signature competes with the thing being sold; in the house mark it makes
+  the fifteen read as the upgrade.
+
+  THE MARK IS PLACEHOLDER AND KNOWN TO BE SO. lockup.png / monogram.png /
+  wordmark.png are referenced by regold.py and exist in NO archive — searched the
+  whole filesystem 2026-08-08. Drawn inline so the page cannot ship a broken
+  image box. REPLACE #mark WITH THE REAL LOCKUP THE DAY IT ARRIVES.
+
+  PRINTING: the sheet is A4-proportioned and the print stylesheet drops
+  everything else, so "Print → Save as PDF" gives a clean single page on any
+  phone. That is the PDF, with no server involved.
+-->
+
+<style>
+  :root{--paper:#FDFBF6;--ink:#2F2E2B;--muted:#7A756C;--gold:#B7995C;--rule:#E4DED2;
+        --accent:#AEB9A0}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font:16px/1.65 Georgia,'Times New Roman',serif;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1060px;margin:0 auto;padding:48px 20px 90px}
+  .kicker{text-align:center;letter-spacing:.26em;text-transform:uppercase;
+          font-size:10px;color:var(--gold);margin:0 0 10px}
+  h1{font-weight:400;font-size:clamp(27px,5.2vw,42px);letter-spacing:.05em;
+     margin:0 0 10px;text-align:center}
+  .lede{text-align:center;color:var(--muted);max-width:44ch;margin:0 auto 40px;font-size:15px}
+
+  .grid{display:grid;grid-template-columns:1fr;gap:34px}
+  @media(min-width:880px){.grid{grid-template-columns:400px 1fr;gap:44px;align-items:start}}
+
+  label{display:block;font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+        color:var(--muted);margin:18px 0 7px}
+  input[type=text],input[type=date],input[type=email]{
+    width:100%;padding:10px 12px;border:1px solid var(--rule);background:#fff;
+    font:15px Georgia,serif;color:var(--ink);border-radius:2px}
+  .row{display:flex;gap:7px;margin-bottom:7px}
+  .row .t{flex:0 0 88px;text-align:center}
+  .row .m{flex:1}
+  .row button{flex:0 0 32px;border:1px solid var(--rule);background:#fff;
+    color:var(--muted);cursor:pointer;border-radius:2px;font-size:15px;line-height:1}
+  .add{margin-top:4px;border:1px dashed var(--rule);background:none;width:100%;
+    padding:10px;color:var(--muted);cursor:pointer;letter-spacing:.16em;
+    text-transform:uppercase;font-size:10px}
+
+  .swatches{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+  .sw{width:28px;height:28px;border-radius:50%;border:1px solid rgba(0,0,0,.12);
+      cursor:pointer;padding:0}
+  .sw.on{box-shadow:0 0 0 2px var(--paper),0 0 0 3.5px var(--gold)}
+
+  /* ---- the sheet ---- */
+  .sheetwrap{background:#fff;border:1px solid var(--rule);padding:0}
+  .sheet{aspect-ratio:1/1.414;padding:34px;position:relative;background:#fff}
+  .frame{position:absolute;inset:22px;border:1px solid var(--accent);opacity:.85}
+  .frame:after{content:'';position:absolute;inset:5px;border:.5px solid var(--accent);
+    opacity:.5}
+  .tick{position:absolute;width:11px;height:11px;border:0}
+  .tick.tl{top:16px;left:16px;border-top:1px solid var(--gold);border-left:1px solid var(--gold)}
+  .tick.tr{top:16px;right:16px;border-top:1px solid var(--gold);border-right:1px solid var(--gold)}
+  .tick.bl{bottom:16px;left:16px;border-bottom:1px solid var(--gold);border-left:1px solid var(--gold)}
+  .tick.br{bottom:16px;right:16px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold)}
+  .inner{position:relative;height:100%;padding:22px 20px;display:flex;flex-direction:column}
+  #mark{display:block;margin:0 auto 14px}
+  .sheet h2{text-align:center;font-weight:400;letter-spacing:.3em;
+    text-transform:uppercase;font-size:9.5px;color:var(--muted);margin:0 0 10px}
+  .names{text-align:center;font-size:clamp(17px,2.4vw,24px);letter-spacing:.07em;margin:0 0 4px}
+  .date{text-align:center;color:var(--muted);font-size:10px;letter-spacing:.2em;
+    text-transform:uppercase;margin:0 0 6px}
+  .divider{display:flex;align-items:center;justify-content:center;gap:9px;margin:0 0 16px}
+  .divider i{height:1px;width:52px;background:var(--accent);opacity:.7}
+  .divider b{width:5px;height:5px;transform:rotate(45deg);background:var(--gold)}
+  .lines{flex:1;overflow:hidden}
+  .line{display:flex;gap:14px;align-items:baseline;padding:4px 0;font-size:13px}
+  .line em{flex:0 0 76px;font-style:normal;color:var(--accent);letter-spacing:.07em;
+    text-align:right;font-variant-numeric:tabular-nums}
+  .line span{flex:1;border-bottom:1px dotted var(--rule);padding-bottom:3px}
+  .sheet footer{text-align:center;color:var(--muted);font-size:8.5px;
+    letter-spacing:.24em;text-transform:uppercase;padding-top:10px}
+
+  .capture{margin-top:24px;padding:24px;border:1px solid var(--rule);background:#fff}
+  .capture p{margin:0 0 10px;color:var(--muted);font-size:14px}
+  .capture button{margin-top:12px;width:100%;padding:13px;border:1px solid var(--gold);
+    background:var(--gold);color:#fff;cursor:pointer;letter-spacing:.18em;
+    text-transform:uppercase;font-size:10.5px}
+  .fine{color:var(--muted);font-size:10.5px;margin-top:11px;text-align:center;line-height:1.5}
+  .sell{margin-top:40px;text-align:center;color:var(--muted);font-size:14px}
+  .sell a{color:var(--ink)}
+
+  @media print{
+    @page{size:A4;margin:0}
+    body{background:#fff}
+    .wrap{padding:0;max-width:none}
+    .wrap>*:not(.grid){display:none!important}
+    .grid{display:block}
+    .pane,.capture{display:none!important}
+    .sheetwrap{border:0}
+    .sheet{aspect-ratio:auto;height:297mm;width:210mm;padding:0}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="kicker">A gift from Willow &amp; Gild</p>
+  <h1>Your wedding day, in order</h1>
+  <p class="lede">Fill it in and take away a timeline you can send to everyone who
+     needs it. No charge, and nothing to print until you want to.</p>
+
+  <div class="grid">
+    <div class="pane">
+      <label for="names">The couple</label>
+      <input type="text" id="names" placeholder="Alexandra &amp; Marcus">
+
+      <label for="date">The date</label>
+      <input type="date" id="date">
+
+      <label>Your colour</label>
+      <div class="swatches" id="swatches"></div>
+
+      <label>The day</label>
+      <div id="rows"></div>
+      <button class="add" id="add">+ add a moment</button>
+
+      <div class="capture">
+        <p>Happy with it? We will send the print-ready PDF to your inbox.</p>
+        <label for="email">Your email</label>
+        <input type="email" id="email" placeholder="you@example.com">
+        <button id="send">Send me the PDF</button>
+        <p class="fine">One email with your timeline. No list and no follow-up
+           unless you ask for one.</p>
+      </div>
+    </div>
+
+    <div class="sheetwrap">
+      <div class="sheet" id="sheet">
+        <div class="frame"></div>
+        <i class="tick tl"></i><i class="tick tr"></i>
+        <i class="tick bl"></i><i class="tick br"></i>
+        <div class="inner">
+          <!-- PLACEHOLDER MARK — see the note at the top of this file. -->
+          <svg id="mark" width="42" height="42" viewBox="0 0 42 42">
+            <circle cx="21" cy="21" r="19" fill="none" stroke="#B7995C" stroke-width=".8"/>
+            <circle cx="21" cy="21" r="15.5" fill="none" stroke="#B7995C" stroke-width=".4" opacity=".55"/>
+            <text x="21" y="26" text-anchor="middle" font-family="Georgia,serif"
+                  font-size="12.5" letter-spacing="1.2" fill="#B7995C">W&amp;G</text>
+          </svg>
+          <h2>The Wedding Day</h2>
+          <p class="names" id="s-names">Your names</p>
+          <p class="date" id="s-date">The date</p>
+          <div class="divider"><i></i><b></b><i></i></div>
+          <div class="lines" id="s-lines"></div>
+          <footer>Willow &amp; Gild</footer>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="sell">This timeline exists as a printed sign in fifteen collections —
+     <a href="find-your-palette.html">find the one in your colours</a>.</p>
+</div>
+
+<script>
+/* Set to your list service (Formspree, ConvertKit, Buttondown…). Left blank the
+   page prints instead — it never pretends to have captured an address. */
+const FORM_ENDPOINT = '';
+
+/* The same curated tones as the palette page. NOT a colour wheel: one
+   fluorescent ruins the sheet, and this is the piece that has to look worth
+   paying for. */
+const TONES = ['#B7995C','#AEB9A0','#8C9A80','#3F4A3C','#C8A5A1','#B08A85',
+               '#A2B5C6','#7B93A8','#2C3B4E','#B3A3B8','#BBAB99','#6E6357'];
+
+const SEED = [
+  ['1:00 pm','Hair and make-up'],
+  ['3:00 pm','Guests arrive'],
+  ['3:30 pm','The ceremony'],
+  ['4:15 pm','Photographs and drinks'],
+  ['6:00 pm','Dinner is served'],
+  ['8:00 pm','Speeches'],
+  ['9:00 pm','The first dance'],
+];
+
+const rows = document.getElementById('rows');
+
+(function swatches(){
+  const el = document.getElementById('swatches');
+  TONES.forEach((hex,i) => {
+    const b = document.createElement('button');
+    b.className = 'sw' + (i===1 ? ' on' : '');
+    b.style.background = hex;
+    b.onclick = () => {
+      document.querySelectorAll('.sw').forEach(s=>s.classList.remove('on'));
+      b.classList.add('on');
+      document.documentElement.style.setProperty('--accent', hex);
+    };
+    el.appendChild(b);
+  });
+})();
+
+function addRow(t='', m=''){
+  const d = document.createElement('div');
+  d.className='row';
+  d.innerHTML='<input class="t" type="text" placeholder="3:30 pm">'+
+              '<input class="m" type="text" placeholder="The ceremony">'+
+              '<button title="remove">×</button>';
+  d.querySelector('.t').value=t; d.querySelector('.m').value=m;
+  d.querySelector('button').onclick=()=>{d.remove();draw();};
+  d.querySelectorAll('input').forEach(i=>i.addEventListener('input',draw));
+  rows.appendChild(d);
+}
+
+const esc = s => s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+function draw(){
+  document.getElementById('s-names').textContent =
+    document.getElementById('names').value.trim() || 'Your names';
+
+  const dv = document.getElementById('date').value;
+  let out = 'The date';
+  if(dv){
+    /* Parsed as parts, never as a date string: new Date('2027-05-08') is UTC and
+       renders a day early for anyone west of Greenwich — and this studio is in
+       New Zealand, where EVERY date would have been wrong. */
+    const [y,m,d] = dv.split('-').map(Number);
+    out = new Date(y,m-1,d).toLocaleDateString('en-NZ',
+          {weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  }
+  document.getElementById('s-date').textContent = out;
+
+  const lines = [...rows.querySelectorAll('.row')].map(r=>[
+    r.querySelector('.t').value.trim(), r.querySelector('.m').value.trim()
+  ]).filter(([t,m])=>t||m);
+
+  document.getElementById('s-lines').innerHTML = lines.length
+    ? lines.map(([t,m])=>`<div class="line"><em>${esc(t)}</em><span>${esc(m)}</span></div>`).join('')
+    : '<p style="color:#7A756C;font-size:12px;text-align:center;padding-top:24px">'+
+      'Add a moment and it will appear here.</p>';
+}
+
+document.getElementById('add').onclick=()=>{addRow();draw();};
+document.getElementById('names').addEventListener('input',draw);
+document.getElementById('date').addEventListener('input',draw);
+
+document.getElementById('send').onclick = async () => {
+  const email = document.getElementById('email').value.trim();
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
+    alert('That email does not look quite right — could you check it?'); return;
+  }
+  if(!FORM_ENDPOINT){ window.print(); return; }
+  try{
+    await fetch(FORM_ENDPOINT,{method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email,
+        names:document.getElementById('names').value,
+        date:document.getElementById('date').value,
+        colour:getComputedStyle(document.documentElement).getPropertyValue('--accent').trim(),
+        lines:[...rows.querySelectorAll('.row')].map(r=>({
+          time:r.querySelector('.t').value, moment:r.querySelector('.m').value}))})});
+    alert('On its way. Check your inbox in a minute or two.');
+  }catch(e){
+    alert('That did not go through — you can print it from here in the meantime.');
+  }
+};
+
+SEED.forEach(([t,m])=>addRow(t,m));
+draw();
+</script>
+</body>
+</html>

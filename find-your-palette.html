@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Find your palette — Willow &amp; Gild</title>
+
+<!--
+  FIND YOUR PALETTE — v2.
+
+  WHY v1 LOOKED CHEAP: IT WAS THE CONTROL, NOT THE STYLING.
+  v1 handed the visitor <input type="color">. A colour wheel produces pure cyan
+  and #00FF00, and once a fluorescent is on the screen no restraint elsewhere
+  survives it. Kelly: "the options that come up look pretty bloody ugly ...
+  fluorescent colours."
+
+  A LUXURY BRAND DOES NOT HAND OVER AN UNBOUNDED CONTROL. The field here is
+  CURATED — thirty-six wedding tones, low chroma, arranged in families so the
+  grid itself reads as a scheme. The visitor cannot make it ugly, which is the
+  whole design. The wheel survives behind a disclosure for the bride who knows
+  her exact hex, and even then her colour is shown as a small disc beside her
+  matches, never as a slab.
+
+  It reads collections.js and assets/<Id>.webp, so results are the real
+  photography rather than two rectangles of hex.
+-->
+
+<style>
+  :root{--paper:#FDFBF6;--ink:#2F2E2B;--muted:#7A756C;--gold:#B7995C;--rule:#E4DED2}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font:16px/1.65 Georgia,'Times New Roman',serif;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:52px 20px 90px}
+  .kicker{text-align:center;letter-spacing:.26em;text-transform:uppercase;
+          font-size:10px;color:var(--gold);margin:0 0 10px}
+  h1{font-weight:400;font-size:clamp(28px,5.4vw,46px);letter-spacing:.05em;
+     margin:0 0 10px;text-align:center}
+  .lede{text-align:center;color:var(--muted);max-width:42ch;margin:0 auto 42px;font-size:15px}
+  .step{text-align:center;font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+        color:var(--muted);margin:0 0 22px}
+
+  .tones{display:grid;grid-template-columns:repeat(auto-fit,minmax(54px,1fr));
+         gap:11px 11px;max-width:620px;margin:0 auto 34px}
+  .tone{position:relative;aspect-ratio:1;border-radius:50%;cursor:pointer;padding:0;
+        border:1px solid rgba(0,0,0,.10);transition:transform .16s ease}
+  .tone:hover{transform:scale(1.08)}
+  .tone.on{box-shadow:0 0 0 2px var(--paper),0 0 0 3.5px var(--gold)}
+  .tone b{position:absolute;left:50%;bottom:-17px;transform:translateX(-50%);
+          font-size:9px;font-weight:400;letter-spacing:.08em;color:var(--muted);
+          white-space:nowrap;opacity:0;transition:opacity .16s}
+  .tone:hover b{opacity:1}
+
+  .chosen{display:flex;gap:9px;justify-content:center;align-items:center;
+          min-height:30px;margin:6px 0}
+  .chosen i{width:24px;height:24px;border-radius:50%;border:1px solid rgba(0,0,0,.12)}
+  .chosen em{color:var(--muted);font-style:normal;font-size:13px}
+
+  details{max-width:620px;margin:16px auto 0;text-align:center}
+  summary{cursor:pointer;color:var(--muted);font-size:10.5px;letter-spacing:.18em;
+          text-transform:uppercase;list-style:none}
+  summary::-webkit-details-marker{display:none}
+  details input{width:42px;height:42px;padding:0;border:1px solid var(--rule);
+    border-radius:50%;background:none;cursor:pointer;margin-top:14px}
+
+  hr.rule{border:0;border-top:1px solid var(--rule);margin:50px 0 40px}
+
+  .cards{display:grid;gap:22px;grid-template-columns:1fr}
+  @media(min-width:760px){.cards{grid-template-columns:repeat(3,1fr)}}
+  .card{display:block;text-decoration:none;color:inherit;background:#fff;
+        border:1px solid var(--rule);overflow:hidden;transition:box-shadow .22s}
+  .card:hover{box-shadow:0 6px 26px rgba(47,46,43,.09)}
+  .thumb{aspect-ratio:1;position:relative;overflow:hidden}
+  .thumb img{width:100%;height:100%;object-fit:cover;display:block;position:relative}
+  .meta{padding:16px 18px 20px;text-align:center}
+  .meta h3{margin:0 0 4px;font-weight:400;font-size:19px;letter-spacing:.04em}
+  .meta p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}
+  .verdict{display:block;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;
+           color:var(--gold);margin-bottom:7px}
+  .soon{display:inline-block;margin-left:7px;font-size:9px;letter-spacing:.16em;
+        text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);padding:1px 6px}
+  .strip{display:flex;height:5px}
+  .strip i{flex:1}
+  .note{color:var(--muted);font-size:12.5px;text-align:center;margin-top:30px}
+  .cta{margin-top:56px;padding:34px 22px;border:1px solid var(--rule);
+       text-align:center;background:#fff}
+  .cta h2{font-weight:400;font-size:23px;margin:0 0 8px;letter-spacing:.04em}
+  .cta p{color:var(--muted);margin:0 0 18px;font-size:14px}
+  .cta a{display:inline-block;text-decoration:none;color:var(--ink);
+         border:1px solid var(--gold);padding:12px 28px;
+         letter-spacing:.18em;text-transform:uppercase;font-size:10.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="kicker">Willow &amp; Gild</p>
+  <h1>Find your palette</h1>
+  <p class="lede">Choose the tones you keep coming back to. We will show you the
+     collections that already live in them.</p>
+
+  <p class="step">Choose one or two</p>
+  <div class="tones" id="tones"></div>
+  <div class="chosen" id="chosen"></div>
+
+  <details>
+    <summary>I know the exact colour</summary>
+    <input type="color" id="custom" value="#AEB9A0">
+  </details>
+
+  <hr class="rule">
+  <div class="cards" id="results"></div>
+  <p class="note" id="note"></p>
+
+  <div class="cta">
+    <h2>A timeline for your day, free</h2>
+    <p>Set in the same hand as the collections. Yours to keep, whether you buy
+       anything or not.</p>
+    <a href="free-timeline.html">Make your timeline</a>
+  </div>
+</div>
+
+<script src="collections.js"></script>
+<script>
+/* THE CURATED FIELD. Every tone is one a wedding could actually be — muted,
+   low chroma, grouped by family. The visitor cannot produce something ugly. */
+const TONES = [
+  ['#F2EDE4','Ivory'],['#E8DCCB','Champagne'],['#DCCBB4','Sand'],
+  ['#C9B08D','Wheat'],['#B7995C','Antique gold'],['#8C7248','Bronze'],
+  ['#EBD9D3','Blush'],['#DDBDB6','Rose'],['#C8A5A1','Dusty rose'],
+  ['#B08A85','Clay'],['#8E625E','Terracotta'],['#6E4A47','Mulberry'],
+  ['#E3E4DA','Oyster'],['#CBD0C0','Willow'],['#AEB9A0','Sage'],
+  ['#8C9A80','Olive'],['#69775C','Fern'],['#3F4A3C','Forest'],
+  ['#DDE3E6','Mist'],['#C3D0D8','Powder'],['#A2B5C6','Dusty blue'],
+  ['#7B93A8','Slate'],['#4F6478','Denim'],['#2C3B4E','Navy'],
+  ['#E6E1E7','Pearl'],['#D2C7D4','Lilac'],['#B3A3B8','Heather'],
+  ['#8E7B96','Wisteria'],['#6B5A73','Plum'],['#443A4B','Aubergine'],
+  ['#EFE7DC','Linen'],['#D8CBBB','Stone'],['#BBAB99','Taupe'],
+  ['#968772','Moss'],['#6E6357','Driftwood'],['#3A3630','Charcoal'],
+];
+
+let picked = [];
+
+const hexToRgb = h => [0,2,4].map(i => parseInt(h.replace('#','').substr(i,2),16));
+function rgbToLab(rgb){
+  let [r,g,b] = rgb.map(v => {v/=255; return v<=.04045 ? v/12.92 : Math.pow((v+.055)/1.055,2.4);});
+  let x=(r*.4124+g*.3576+b*.1805)/.95047, y=(r*.2126+g*.7152+b*.0722), z=(r*.0193+g*.1192+b*.9505)/1.08883;
+  const f=t=>t>.008856?Math.cbrt(t):(7.787*t)+16/116;
+  x=f(x);y=f(y);z=f(z);
+  return [(116*y)-16,500*(x-y),200*(y-z)];
+}
+const dE=(a,b)=>Math.hypot(a[0]-b[0],a[1]-b[1],a[2]-b[2]);
+
+/* The BAND decides — it is what a bride means when she says "sage". Gold may
+   match but at a discount, or a shared gold drags unlike collections together. */
+function score(c){
+  const band=rgbToLab(hexToRgb(c.band)), gold=rgbToLab(hexToRgb(c.gold||c.ink));
+  const d = picked.map(p=>{const l=rgbToLab(hexToRgb(p));
+    return Math.min(dE(l,band), dE(l,gold)*1.6);}).sort((a,b)=>a-b);
+  return d[0] + (d[1]!==undefined ? d[1]*0.35 : 0);
+}
+
+const field=document.getElementById('tones');
+TONES.forEach(([hex,name])=>{
+  const b=document.createElement('button');
+  b.className='tone'; b.style.background=hex; b.dataset.hex=hex; b.title=name;
+  b.innerHTML='<b>'+name+'</b>';
+  b.onclick=()=>{
+    const i=picked.indexOf(hex);
+    if(i>-1) picked.splice(i,1);
+    else { picked.push(hex); if(picked.length>2) picked.shift(); }
+    document.querySelectorAll('.tone').forEach(t=>
+      t.classList.toggle('on', picked.includes(t.dataset.hex)));
+    paint();
+  };
+  field.appendChild(b);
+});
+
+document.getElementById('custom').addEventListener('input',e=>{
+  picked=[e.target.value];
+  document.querySelectorAll('.tone').forEach(t=>t.classList.remove('on'));
+  paint();
+});
+
+function paint(){
+  document.getElementById('chosen').innerHTML = picked.length
+    ? picked.map(p=>'<i style="background:'+p+'"></i>').join('')
+    : '<em>Nothing chosen yet — a few to begin with, below.</em>';
+  render();
+}
+
+function render(){
+  const all=(typeof COLLECTIONS!=='undefined'?COLLECTIONS:[]);
+  const list = picked.length
+    ? all.map(c=>({c,s:score(c)})).sort((a,b)=>a.s-b.s).slice(0,3)
+    : all.slice(0,3).map(c=>({c,s:null}));
+
+  document.getElementById('results').innerHTML = list.map(({c,s})=>{
+    const live=c.status==='live';
+    const href=live?'collection.html?c='+encodeURIComponent(c.id):'#';
+    const word = s===null?'' : s<12?'a close match' : s<25?'a near neighbour':'a warmer cousin';
+    return `<a class="card" href="${href}">
+      <div class="thumb" style="background:${c.band}">
+        <img src="assets/${c.id}.webp" alt="${c.name}" loading="lazy"
+             onerror="this.remove()">
+      </div>
+      <div class="strip"><i style="background:${c.band}"></i>
+        <i style="background:${c.gold||c.ink}"></i><i style="background:${c.ink}"></i></div>
+      <div class="meta">
+        ${word?'<span class="verdict">'+word+'</span>':''}
+        <h3>${c.name}${live?'':'<span class="soon">coming soon</span>'}</h3>
+        <p>${c.line||''}</p>
+      </div></a>`;
+  }).join('');
+
+  document.getElementById('note').textContent = picked.length
+    ? 'Matched on colour alone — each collection has its own character too.' : '';
+}
+
+paint();
+</script>
+</body>
+</html>

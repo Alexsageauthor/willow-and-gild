@@ -55,7 +55,7 @@ const PORTRAITS = {
   },
   "winter": {
     "III_The_Invitation": "bundle-III_The_Invitation-f466f245ce.webp",
-    "II_The_Planning": "bundle-II_The_Planning-a9d22317fa.webp",
+    "II_The_Planning": "bundle-II_The_Planning-34e39bcdda.webp",
     "IV_The_Ceremony": "bundle-IV_The_Ceremony-ec03faadb5.webp",
     "I_The_Announcement": "bundle-I_The_Announcement-c001885c76.webp",
     "Ia_Your_Wedding_Online": "bundle-Ia_Your_Wedding_Online-2d33cb0878.webp",

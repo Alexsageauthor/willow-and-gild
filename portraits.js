@@ -135,13 +135,13 @@ const PORTRAITS = {
   },
   "winter": {
     "III_The_Invitation": "bundle-III_The_Invitation-50d14c9b65.webp",
-    "II_The_Planning": "bundle-II_The_Planning-7f4ad5356d.webp",
-    "IV_The_Ceremony": "bundle-IV_The_Ceremony-a0ce7aee45.webp",
-    "I_The_Announcement": "bundle-I_The_Announcement-4a67d56b32.webp",
+    "II_The_Planning": "bundle-II_The_Planning-87f97b8d32.webp",
+    "IV_The_Ceremony": "bundle-IV_The_Ceremony-333b3a653d.webp",
+    "I_The_Announcement": "bundle-I_The_Announcement-928f658a56.webp",
     "Ia_Your_Wedding_Online": "bundle-Ia_Your_Wedding_Online-2d33cb0878.webp",
-    "VI_The_Complete_Collection": "bundle-VI_The_Complete_Collection-f73ebf0074.webp",
+    "VI_The_Complete_Collection": "bundle-VI_The_Complete_Collection-b4e4ea67b1.webp",
     "VI_With_Thanks": "bundle-VI_With_Thanks-221f5da8aa.webp",
-    "V_The_Reception": "bundle-V_The_Reception-a0ff0a4719.webp"
+    "V_The_Reception": "bundle-V_The_Reception-5082050245.webp"
   },
   "woodlands": {
     "III_The_Invitation": "bundle-III_The_Invitation-e65808b027.webp",

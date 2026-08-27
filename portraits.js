@@ -4,14 +4,14 @@
    year - see the note in that script. Do not hand-edit. */
 const PORTRAITS = {
   "artdeco": {
-    "III_The_Invitation": "bundle-III_The_Invitation-43d9975073.webp",
-    "II_The_Planning": "bundle-II_The_Planning-f2541fc301.webp",
-    "IV_The_Ceremony": "bundle-IV_The_Ceremony-f77e53eed7.webp",
-    "I_The_Announcement": "bundle-I_The_Announcement-8397188213.webp",
-    "Ia_Your_Wedding_Online": "bundle-Ia_Your_Wedding_Online-f569b2ee03.webp",
-    "VI_The_Complete_Collection": "bundle-VI_The_Complete_Collection-bf02dd64e7.webp",
-    "VI_With_Thanks": "bundle-VI_With_Thanks-fbbd4e231c.webp",
-    "V_The_Reception": "bundle-V_The_Reception-204944a62c.webp"
+    "III_The_Invitation": "bundle-III_The_Invitation-a08cd646bc.webp",
+    "II_The_Planning": "bundle-II_The_Planning-6ba71612d6.webp",
+    "IV_The_Ceremony": "bundle-IV_The_Ceremony-10e3500d35.webp",
+    "I_The_Announcement": "bundle-I_The_Announcement-7dd36744ce.webp",
+    "Ia_Your_Wedding_Online": "bundle-Ia_Your_Wedding_Online-3c5a43552c.webp",
+    "VI_The_Complete_Collection": "bundle-VI_The_Complete_Collection-5b91a1f0e9.webp",
+    "VI_With_Thanks": "bundle-VI_With_Thanks-5cf03cee69.webp",
+    "V_The_Reception": "bundle-V_The_Reception-751dc02eed.webp"
   },
   "bluewillow": {
     "III_The_Invitation": "bundle-III_The_Invitation-885352b3cd.webp",
@@ -54,14 +54,14 @@ const PORTRAITS = {
     "V_The_Reception": "bundle-V_The_Reception-c8fd5ecfc6.webp"
   },
   "englishrose": {
-    "III_The_Invitation": "bundle-III_The_Invitation-8682b5fb77.webp",
-    "II_The_Planning": "bundle-II_The_Planning-af9ee152e4.webp",
-    "IV_The_Ceremony": "bundle-IV_The_Ceremony-2fbc5c553f.webp",
-    "I_The_Announcement": "bundle-I_The_Announcement-4e8efb207b.webp",
-    "Ia_Your_Wedding_Online": "bundle-Ia_Your_Wedding_Online-5f4be78915.webp",
-    "VI_The_Complete_Collection": "bundle-VI_The_Complete_Collection-7eccf9fc57.webp",
-    "VI_With_Thanks": "bundle-VI_With_Thanks-7e85c42a98.webp",
-    "V_The_Reception": "bundle-V_The_Reception-a8b9b5a1e8.webp"
+    "III_The_Invitation": "bundle-III_The_Invitation-bbeff38239.webp",
+    "II_The_Planning": "bundle-II_The_Planning-2f71f387c6.webp",
+    "IV_The_Ceremony": "bundle-IV_The_Ceremony-ee21e1b05e.webp",
+    "I_The_Announcement": "bundle-I_The_Announcement-964db5a8d3.webp",
+    "Ia_Your_Wedding_Online": "bundle-Ia_Your_Wedding_Online-3bfa4bbaea.webp",
+    "VI_The_Complete_Collection": "bundle-VI_The_Complete_Collection-b131b90caa.webp",
+    "VI_With_Thanks": "bundle-VI_With_Thanks-b8b7a727ee.webp",
+    "V_The_Reception": "bundle-V_The_Reception-e17b85c7ad.webp"
   },
   "kyoto": {
     "III_The_Invitation": "bundle-III_The_Invitation-ba7347d0af.webp",

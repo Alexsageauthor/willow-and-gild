@@ -303,9 +303,13 @@ document.getElementById('main').innerHTML = `
         ${rows.length} products in this chapter. Every one is pictured as it prints.</p></div>
     ${rows.length ? `<div class="grid">${rows.map(r => `${r.section ? `
       <p class="phase">${r.section}</p>` : ''}
-      <figure class="item${r.all ? ' many' : ''}"${r.all ? ` data-all="${r.all.join(',')}" data-name="${r.name}" data-note="${r.note || ''}" tabindex="0" role="button" aria-label="${r.name}, ${r.all.length} pictures — open"` : ''}>
+      <figure class="item${r.all ? ' many' : ''}"${r.all ? ` data-all="${r.all.join(',')}" data-name="${r.name}" data-note="${r.note || ''}" tabindex="0" role="button" aria-label="${r.name}, ${r.pages || r.all.length} pages — open"` : ''}>
         <img src="assets/${c.id.toLowerCase()}/${r.icon}" alt="${r.name}" loading="lazy">
-        ${r.all ? `<b class="count">${r.all.length}</b>` : ''}
+        <!-- THE BADGE COUNTS PAGES WHERE THE ROW KNOWS ITS PAGE COUNT.
+             A page gallery de-dupes renders that look alike, so a twelve-page
+             seating plan with four deliberate continuation pairs showed 7.
+             r.pages is the real page count and wins where it exists. -->
+        ${r.all ? `<b class="count">${r.pages || r.all.length}</b>` : ''}
         <figcaption><b>${r.name}</b>${r.note ? `<span>${r.note}</span>` : ''}</figcaption>
       </figure>`).join('')}</div>`
       : `<div class="list">${b.includes.map(i => `<div class="row">${i}</div>`).join('')}</div>`}

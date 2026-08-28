@@ -52,7 +52,16 @@ header{position:sticky;top:0;z-index:50;background:rgba(248,246,242,.92);
 .palette i{width:34px;height:34px;border-radius:50%;display:block;border:1px solid rgba(0,0,0,.06)}
 section{padding:clamp(64px,8vw,104px) 0}
 section + section{padding-top:clamp(40px,5vw,64px)}
-.head{text-align:center;margin-bottom:clamp(30px,4vw,52px)}
+.head{text-align:center;margin-top:clamp(56px,7vw,96px);margin-bottom:clamp(30px,4vw,52px)}
+/* SPACE ABOVE A HEADING, NOT ONLY BELOW IT. .wrap carries horizontal padding
+   only (0 32px), so a section began exactly where the one above ended and the
+   eyebrow sat hard against the previous card — 'What's Included' under the
+   bundle boxes, 'Also in the house' under the coming-soon panel. Kelly: "so
+   crammed underneath the box, there should be some breathing space there."
+   The gap belongs on the heading because every section starts with one, so it
+   cannot be forgotten the next time a section is added. First .head on the
+   page keeps its own spacing from the hero below. */
+.head:first-child{margin-top:clamp(40px,5vw,64px)}
 .list{display:grid;gap:1px;background:var(--stone);border:1px solid var(--stone)}
 .row{background:var(--paper);padding:26px 28px;display:grid;gap:6px;
      grid-template-columns:minmax(210px,1fr) 2fr;align-items:baseline}

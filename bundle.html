@@ -35,7 +35,10 @@ header{position:sticky;top:0;z-index:50;background:rgba(248,246,242,.94);backdro
 section{padding:clamp(56px,7vw,88px) 0}
 section + section{padding-top:clamp(34px,4vw,54px)}
 .steps{padding-bottom:clamp(10px,2vw,22px)}
-.head{text-align:center;margin-bottom:clamp(28px,4vw,44px)}
+.head{text-align:center;margin-top:clamp(56px,7vw,96px);margin-bottom:clamp(28px,4vw,44px)}
+/* See collection.html: margin-bottom alone leaves a section heading pressed
+   against the card above it. The same defect was in both files. */
+.head:first-child{margin-top:clamp(40px,5vw,64px)}
 
 /* hero */
 .top{text-align:center;padding:clamp(44px,6vw,84px) 0 clamp(28px,4vw,48px)}
@@ -139,6 +142,18 @@ footer{border-top:1px solid var(--stone);padding:52px 0 38px;text-align:center;c
      the fixed frame — no scrollbar, no warning, just a card sliced through. */
   min-height:0}
 .viewer .vr::-webkit-scrollbar{display:none}
+/* THE FIRST PICTURE MUST BE ABLE TO REACH THE CENTRE.
+   Every image is scroll-snap-align:center, but a flex row starts at scrollLeft
+   0 and the first item's centre sits LEFT of that — an unreachable snap point.
+   With scroll-snap-type:x mandatory the browser must land on some snap point,
+   so it skipped to the first one it could centre and the viewer opened partway
+   through the document. On the Wedding Planner that meant the COVER was never
+   the first thing seen: it opened on an inner vendor page. Kelly: "the planners
+   are missing their front pages".
+   Spacers half the rail wide at each end make the first and last centres
+   reachable, so the rail opens on page one and can still snap to the last. */
+.viewer .vr::before,
+.viewer .vr::after{content:'';flex:0 0 50%}
 /* HEIGHT LEADS, WIDTH CAPS — and it was the other way round. Pinning the width
    means a portrait card at 340px is 437px tall, which overflows a landscape
    phone. Height is the scarce dimension in a viewer. dvh follows the mobile
@@ -365,6 +380,10 @@ document.getElementById('main').innerHTML = `
       ' — swipe, or use the arrow keys';
     rail.innerHTML = all.map(f =>
       '<img src="assets/' + c.id.toLowerCase() + '/' + f + '" alt="">').join('');
+    // OPEN ON PAGE ONE, EVERY TIME. The rail keeps its scroll position from the
+    // previous row it showed, so the second product opened wherever the first
+    // was left. Reset before showing, not after, or the jump is visible.
+    rail.scrollLeft = 0;
     box.classList.add('on');
     document.body.style.overflow = 'hidden';
   }

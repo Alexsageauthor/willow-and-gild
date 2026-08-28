@@ -35,13 +35,13 @@ const PORTRAITS = {
   },
   "classic": {
     "III_The_Invitation": "bundle-III_The_Invitation-7e4502def4.webp",
-    "II_The_Planning": "bundle-II_The_Planning-4b8aed88bf.webp",
-    "IV_The_Ceremony": "bundle-IV_The_Ceremony-818bf9e963.webp",
-    "I_The_Announcement": "bundle-I_The_Announcement-dc0508fb75.webp",
+    "II_The_Planning": "bundle-II_The_Planning-bba6fcb0c3.webp",
+    "IV_The_Ceremony": "bundle-IV_The_Ceremony-c1b0550ec3.webp",
+    "I_The_Announcement": "bundle-I_The_Announcement-c1f32b694f.webp",
     "Ia_Your_Wedding_Online": "bundle-Ia_Your_Wedding_Online-6f5e06961d.webp",
-    "VI_The_Complete_Collection": "bundle-VI_The_Complete_Collection-dcf97fc698.webp",
+    "VI_The_Complete_Collection": "bundle-VI_The_Complete_Collection-3161bd4bcc.webp",
     "VI_With_Thanks": "bundle-VI_With_Thanks-7644f71997.webp",
-    "V_The_Reception": "bundle-V_The_Reception-1d1593788c.webp"
+    "V_The_Reception": "bundle-V_The_Reception-6d63d218b6.webp"
   },
   "conservatory": {
     "III_The_Invitation": "bundle-III_The_Invitation-2ceb412d73.webp",

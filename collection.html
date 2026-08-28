@@ -175,7 +175,7 @@ const VIEWS = [
 const views = VIEWS.map(([suf, label]) => `
   <figure class="view">
     <a href="index.html#collections" aria-label="${c.name} — ${label}, see all collections">
-      <img src="assets/${c.id}${suf}.webp" alt="${c.name} — ${label}" loading="lazy"
+      <img src="assets/${c.id}${suf}.webp?v=${V}" alt="${c.name} — ${label}" loading="lazy"
            onerror="this.closest('figure').remove()">
     </a>
     <figcaption>${label}</figcaption>
@@ -186,6 +186,17 @@ const views = VIEWS.map(([suf, label]) => `
    is where the search traffic is, so it stays - a customer who trusts Etsy
    should not have to leave to buy. A button is only drawn if its link is
    actually filled in: a dead buy button costs more trust than a missing one. */
+/* CACHE-BUST THE STABLE-NAMED VIEWS.
+   The four gallery views are Woodlands_hero.webp and friends — FIXED names, not
+   content hashes. Re-cut art writes new bytes under the same URL, so the browser
+   and the CDN both keep serving what they already hold and an upload changes
+   nothing on screen. Woodlands showed the old stump for hours after the birds
+   were live in the repo. The per-product tiles never have this problem because
+   their name IS their content.
+   V is bumped whenever the views are re-cut. It is the only thing that makes a
+   stable-named asset re-fetch. */
+const V = '20260828';
+
 const buttons = [
   c.gumroad ? `<a class="btn solid" href="${c.gumroad}" data-buy>Buy direct</a>` : '',
   c.etsy    ? `<a class="btn" href="${c.etsy}" data-buy>Buy on Etsy</a>`        : '',
@@ -233,7 +244,7 @@ const products = live ? `
 
 document.getElementById('main').innerHTML = `
   <div class="hero wrap">
-    <img src="assets/${c.id}.webp" alt="${c.name}">
+    <img src="assets/${c.id}.webp?v=${V}" alt="${c.name}">
     <p class="eyebrow">The Collection</p>
     <div class="rule"></div>
     <h1 class="serif">${c.name}</h1>
@@ -272,7 +283,7 @@ document.getElementById('main').innerHTML = `
     <div class="more">
       ${COLLECTIONS.filter(x => x.id !== c.id).slice(0, 4).map(x => `
         <a class="mini ${x.status === 'live' ? 'live' : ''}" href="collection.html?c=${x.id}">
-          <div class="art"><img src="assets/${x.id}.webp" alt="${x.name}" loading="lazy"></div>
+          <div class="art"><img src="assets/${x.id}.webp?v=${V}" alt="${x.name}" loading="lazy"></div>
           <h3 class="serif">${x.name}</h3>
           <span>${x.status === 'live' ? 'Available' : 'Coming soon'}</span>
         </a>`).join('')}

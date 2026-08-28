@@ -314,7 +314,7 @@ const grid = document.getElementById('grid');
 grid.innerHTML = COLLECTIONS.map(c => {
   const live = c.status === 'live';
   const inner = `
-    <div class="art"><img src="assets/${c.id}.webp" alt="${c.name} collection" loading="lazy"></div>
+    <div class="art"><img src="assets/${c.id}.webp?v=20260828" alt="${c.name} collection" loading="lazy"></div>
     <div class="body">
       <h3 class="serif">${c.name}</h3>
       <p>${c.line}</p>

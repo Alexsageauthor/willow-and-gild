@@ -74,14 +74,14 @@ const PORTRAITS = {
     "V_The_Reception": "bundle-V_The_Reception-20a4ca65c9.webp"
   },
   "midcentury": {
-    "III_The_Invitation": "bundle-III_The_Invitation-b88c4f7683.webp",
+    "III_The_Invitation": "bundle-III_The_Invitation-b2f9e78c6d.webp",
     "II_The_Planning": "bundle-II_The_Planning-65b5927d9f.webp",
-    "IV_The_Ceremony": "bundle-IV_The_Ceremony-2a04ff1f97.webp",
-    "I_The_Announcement": "bundle-I_The_Announcement-99aafdea62.webp",
-    "Ia_Your_Wedding_Online": "bundle-Ia_Your_Wedding_Online-a8c7284149.webp",
+    "IV_The_Ceremony": "bundle-IV_The_Ceremony-d09cb94443.webp",
+    "I_The_Announcement": "bundle-I_The_Announcement-d2824f4e8d.webp",
+    "Ia_Your_Wedding_Online": "bundle-Ia_Your_Wedding_Online-c26f6c744c.webp",
     "VI_The_Complete_Collection": "bundle-VI_The_Complete_Collection-a061b51047.webp",
-    "VI_With_Thanks": "bundle-VI_With_Thanks-98c0fa7cbf.webp",
-    "V_The_Reception": "bundle-V_The_Reception-639aca052d.webp"
+    "VI_With_Thanks": "bundle-VI_With_Thanks-f3b3d7f98d.webp",
+    "V_The_Reception": "bundle-V_The_Reception-07cd51049b.webp"
   },
   "minimal": {
     "III_The_Invitation": "bundle-III_The_Invitation-ef0b38e736.webp",

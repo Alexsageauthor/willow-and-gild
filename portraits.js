@@ -64,24 +64,24 @@ const PORTRAITS = {
     "V_The_Reception": "bundle-V_The_Reception-e17b85c7ad.webp"
   },
   "kyoto": {
-    "III_The_Invitation": "bundle-III_The_Invitation-ba7347d0af.webp",
-    "II_The_Planning": "bundle-II_The_Planning-7763fc1114.webp",
-    "IV_The_Ceremony": "bundle-IV_The_Ceremony-3517f2df15.webp",
-    "I_The_Announcement": "bundle-I_The_Announcement-30829dc45c.webp",
-    "Ia_Your_Wedding_Online": "bundle-Ia_Your_Wedding_Online-13d0d2121d.webp",
-    "VI_The_Complete_Collection": "bundle-VI_The_Complete_Collection-16c46a7464.webp",
-    "VI_With_Thanks": "bundle-VI_With_Thanks-243f7a7d60.webp",
-    "V_The_Reception": "bundle-V_The_Reception-20a4ca65c9.webp"
+    "III_The_Invitation": "bundle-III_The_Invitation-2d909668ce.webp",
+    "II_The_Planning": "bundle-II_The_Planning-99ab4f0cd0.webp",
+    "IV_The_Ceremony": "bundle-IV_The_Ceremony-1550380e5a.webp",
+    "I_The_Announcement": "bundle-I_The_Announcement-1e9321aa70.webp",
+    "Ia_Your_Wedding_Online": "bundle-Ia_Your_Wedding_Online-16f4cc476c.webp",
+    "VI_The_Complete_Collection": "bundle-VI_The_Complete_Collection-e7a5566882.webp",
+    "VI_With_Thanks": "bundle-VI_With_Thanks-bef78a1169.webp",
+    "V_The_Reception": "bundle-V_The_Reception-d7a21c3ab2.webp"
   },
   "midcentury": {
     "III_The_Invitation": "bundle-III_The_Invitation-b2f9e78c6d.webp",
-    "II_The_Planning": "bundle-II_The_Planning-65b5927d9f.webp",
+    "II_The_Planning": "bundle-II_The_Planning-778e5c6d3b.webp",
     "IV_The_Ceremony": "bundle-IV_The_Ceremony-d09cb94443.webp",
-    "I_The_Announcement": "bundle-I_The_Announcement-d2824f4e8d.webp",
+    "I_The_Announcement": "bundle-I_The_Announcement-04d5ef81d6.webp",
     "Ia_Your_Wedding_Online": "bundle-Ia_Your_Wedding_Online-c26f6c744c.webp",
-    "VI_The_Complete_Collection": "bundle-VI_The_Complete_Collection-a061b51047.webp",
+    "VI_The_Complete_Collection": "bundle-VI_The_Complete_Collection-0b7f499739.webp",
     "VI_With_Thanks": "bundle-VI_With_Thanks-f3b3d7f98d.webp",
-    "V_The_Reception": "bundle-V_The_Reception-07cd51049b.webp"
+    "V_The_Reception": "bundle-V_The_Reception-ba0a032f8e.webp"
   },
   "minimal": {
     "III_The_Invitation": "bundle-III_The_Invitation-ef0b38e736.webp",

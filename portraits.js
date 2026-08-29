@@ -66,11 +66,11 @@ const PORTRAITS = {
   "kyoto": {
     "III_The_Invitation": "bundle-III_The_Invitation-2d909668ce.webp",
     "II_The_Planning": "bundle-II_The_Planning-99ab4f0cd0.webp",
-    "IV_The_Ceremony": "bundle-IV_The_Ceremony-1550380e5a.webp",
+    "IV_The_Ceremony": "bundle-IV_The_Ceremony-0ac444aa34.webp",
     "I_The_Announcement": "bundle-I_The_Announcement-1e9321aa70.webp",
     "Ia_Your_Wedding_Online": "bundle-Ia_Your_Wedding_Online-16f4cc476c.webp",
     "VI_The_Complete_Collection": "bundle-VI_The_Complete_Collection-e7a5566882.webp",
-    "VI_With_Thanks": "bundle-VI_With_Thanks-bef78a1169.webp",
+    "VI_With_Thanks": "bundle-VI_With_Thanks-a2a84a5890.webp",
     "V_The_Reception": "bundle-V_The_Reception-d7a21c3ab2.webp"
   },
   "midcentury": {

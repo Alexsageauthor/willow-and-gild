@@ -124,14 +124,14 @@ const PORTRAITS = {
     "V_The_Reception": "bundle-V_The_Reception-dd9b5c67ac.webp"
   },
   "riviera": {
-    "III_The_Invitation": "bundle-III_The_Invitation-92fc751b90.webp",
-    "II_The_Planning": "bundle-II_The_Planning-b38ff48313.webp",
-    "IV_The_Ceremony": "bundle-IV_The_Ceremony-d409ff2271.webp",
-    "I_The_Announcement": "bundle-I_The_Announcement-f83d7e26a3.webp",
-    "Ia_Your_Wedding_Online": "bundle-Ia_Your_Wedding_Online-13c3dbb563.webp",
-    "VI_The_Complete_Collection": "bundle-VI_The_Complete_Collection-ee618cb7bb.webp",
-    "VI_With_Thanks": "bundle-VI_With_Thanks-edbd8b162f.webp",
-    "V_The_Reception": "bundle-V_The_Reception-9193b99a35.webp"
+    "III_The_Invitation": "bundle-III_The_Invitation-136769d239.webp",
+    "II_The_Planning": "bundle-II_The_Planning-297713bc4d.webp",
+    "IV_The_Ceremony": "bundle-IV_The_Ceremony-c0a9f04ee0.webp",
+    "I_The_Announcement": "bundle-I_The_Announcement-868fe7210c.webp",
+    "Ia_Your_Wedding_Online": "bundle-Ia_Your_Wedding_Online-e48e83bf28.webp",
+    "VI_The_Complete_Collection": "bundle-VI_The_Complete_Collection-9fff002b3a.webp",
+    "VI_With_Thanks": "bundle-VI_With_Thanks-41fecf04d5.webp",
+    "V_The_Reception": "bundle-V_The_Reception-d2708e05d2.webp"
   },
   "winter": {
     "III_The_Invitation": "bundle-III_The_Invitation-50d14c9b65.webp",

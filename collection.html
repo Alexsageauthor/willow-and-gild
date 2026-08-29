@@ -126,7 +126,14 @@ footer{border-top:1px solid var(--stone);padding:56px 0 40px;text-align:center;c
    their name IS their content.
    V is bumped whenever the views are re-cut. It is the only thing that makes a
    stable-named asset re-fetch. */
-const V = '20260828';
+// THE FOUR GALLERY VIEWS ARE THE ONLY ASSETS ON THIS SITE THAT ARE NOT
+// CONTENT-HASHED: assets/<Lane>.webp, _hero, _chair, _cake are FIXED names
+// served under max-age=31536000, immutable. This stamp is the ONLY thing that
+// makes a browser refetch them. It sat at 20260828 through a full Woodlands
+// rebuild, so the site kept serving the OLD hero for a year-long cache.
+//     BUMP THIS ON EVERY LANE REBUILD until those four are hashed like the
+//     rest, at which point this constant stops mattering and can go.
+const V = '20260830';
 
 document.getElementById('yr').textContent = new Date().getFullYear();
 

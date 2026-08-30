@@ -392,8 +392,11 @@ const CONTENTS_BY_COLLECTION = {
    {
     "name": "The here comes the bride sign",
     "note": "",
-    "icon": "sign_processional-548006184b.webp",
-    "files": 2
+    "icon": "sign_processional-2e2cb5fc00.webp",
+    "files": 2,
+    "all": [
+     "sign_processional-2e2cb5fc00.webp"
+    ]
    },
    {
     "name": "The illustrated order of the day",
@@ -416,8 +419,11 @@ const CONTENTS_BY_COLLECTION = {
    {
     "name": "The they are married sign",
     "note": "",
-    "icon": "sign_recessional-afbc370e90.webp",
-    "files": 2
+    "icon": "sign_recessional-554fd355fd.webp",
+    "files": 2,
+    "all": [
+     "sign_recessional-554fd355fd.webp"
+    ]
    },
    {
     "name": "Vow books",
@@ -947,8 +953,11 @@ const CONTENTS_BY_COLLECTION = {
    {
     "name": "The here comes the bride sign",
     "note": "",
-    "icon": "sign_processional-548006184b.webp",
-    "files": 2
+    "icon": "sign_processional-2e2cb5fc00.webp",
+    "files": 2,
+    "all": [
+     "sign_processional-2e2cb5fc00.webp"
+    ]
    },
    {
     "name": "The illustrated order of the day",
@@ -971,8 +980,11 @@ const CONTENTS_BY_COLLECTION = {
    {
     "name": "The they are married sign",
     "note": "",
-    "icon": "sign_recessional-afbc370e90.webp",
-    "files": 2
+    "icon": "sign_recessional-554fd355fd.webp",
+    "files": 2,
+    "all": [
+     "sign_recessional-554fd355fd.webp"
+    ]
    },
    {
     "name": "Type it once — the working file",
@@ -3255,8 +3267,11 @@ const CONTENTS_BY_COLLECTION = {
    {
     "name": "The here comes the bride sign",
     "note": "",
-    "icon": "sign_processional-876f027291.webp",
-    "files": 2
+    "icon": "sign_processional-47cacb3236.webp",
+    "files": 2,
+    "all": [
+     "sign_processional-47cacb3236.webp"
+    ]
    },
    {
     "name": "The illustrated order of the day",
@@ -3279,8 +3294,11 @@ const CONTENTS_BY_COLLECTION = {
    {
     "name": "The they are married sign",
     "note": "",
-    "icon": "sign_recessional-b6dc4afff7.webp",
-    "files": 2
+    "icon": "sign_recessional-c79df1421b.webp",
+    "files": 2,
+    "all": [
+     "sign_recessional-c79df1421b.webp"
+    ]
    },
    {
     "name": "Vow books",
@@ -3817,8 +3835,11 @@ const CONTENTS_BY_COLLECTION = {
    {
     "name": "The here comes the bride sign",
     "note": "",
-    "icon": "sign_processional-876f027291.webp",
-    "files": 2
+    "icon": "sign_processional-47cacb3236.webp",
+    "files": 2,
+    "all": [
+     "sign_processional-47cacb3236.webp"
+    ]
    },
    {
     "name": "The illustrated order of the day",
@@ -3841,8 +3862,11 @@ const CONTENTS_BY_COLLECTION = {
    {
     "name": "The they are married sign",
     "note": "",
-    "icon": "sign_recessional-b6dc4afff7.webp",
-    "files": 2
+    "icon": "sign_recessional-c79df1421b.webp",
+    "files": 2,
+    "all": [
+     "sign_recessional-c79df1421b.webp"
+    ]
    },
    {
     "name": "Type it once — the working file",
@@ -4688,8 +4712,11 @@ const CONTENTS_BY_COLLECTION = {
    {
     "name": "The here comes the bride sign",
     "note": "",
-    "icon": "sign_processional-272b3df427.webp",
-    "files": 2
+    "icon": "sign_processional-cb4bf6e6e5.webp",
+    "files": 2,
+    "all": [
+     "sign_processional-cb4bf6e6e5.webp"
+    ]
    },
    {
     "name": "The illustrated order of the day",
@@ -4712,8 +4739,11 @@ const CONTENTS_BY_COLLECTION = {
    {
     "name": "The they are married sign",
     "note": "",
-    "icon": "sign_recessional-89d59d03a6.webp",
-    "files": 2
+    "icon": "sign_recessional-b05a22c6b2.webp",
+    "files": 2,
+    "all": [
+     "sign_recessional-b05a22c6b2.webp"
+    ]
    },
    {
     "name": "Vow books",
@@ -5249,8 +5279,11 @@ const CONTENTS_BY_COLLECTION = {
    {
     "name": "The here comes the bride sign",
     "note": "",
-    "icon": "sign_processional-272b3df427.webp",
-    "files": 2
+    "icon": "sign_processional-cb4bf6e6e5.webp",
+    "files": 2,
+    "all": [
+     "sign_processional-cb4bf6e6e5.webp"
+    ]
    },
    {
     "name": "The illustrated order of the day",
@@ -5273,8 +5306,11 @@ const CONTENTS_BY_COLLECTION = {
    {
     "name": "The they are married sign",
     "note": "",
-    "icon": "sign_recessional-89d59d03a6.webp",
-    "files": 2
+    "icon": "sign_recessional-b05a22c6b2.webp",
+    "files": 2,
+    "all": [
+     "sign_recessional-b05a22c6b2.webp"
+    ]
    },
    {
     "name": "Type it once — the working file",
@@ -8973,8 +9009,11 @@ const CONTENTS_BY_COLLECTION = {
    {
     "name": "The here comes the bride sign",
     "note": "",
-    "icon": "sign_processional-185ac41084.webp",
-    "files": 2
+    "icon": "sign_processional-6adc482f88.webp",
+    "files": 2,
+    "all": [
+     "sign_processional-6adc482f88.webp"
+    ]
    },
    {
     "name": "The illustrated order of the day",
@@ -8997,8 +9036,11 @@ const CONTENTS_BY_COLLECTION = {
    {
     "name": "The they are married sign",
     "note": "",
-    "icon": "sign_recessional-90f80cd412.webp",
-    "files": 2
+    "icon": "sign_recessional-21b4620e8e.webp",
+    "files": 2,
+    "all": [
+     "sign_recessional-21b4620e8e.webp"
+    ]
    },
    {
     "name": "Vow books",
@@ -9531,8 +9573,11 @@ const CONTENTS_BY_COLLECTION = {
    {
     "name": "The here comes the bride sign",
     "note": "",
-    "icon": "sign_processional-185ac41084.webp",
-    "files": 2
+    "icon": "sign_processional-6adc482f88.webp",
+    "files": 2,
+    "all": [
+     "sign_processional-6adc482f88.webp"
+    ]
    },
    {
     "name": "The illustrated order of the day",
@@ -9555,8 +9600,11 @@ const CONTENTS_BY_COLLECTION = {
    {
     "name": "The they are married sign",
     "note": "",
-    "icon": "sign_recessional-90f80cd412.webp",
-    "files": 2
+    "icon": "sign_recessional-21b4620e8e.webp",
+    "files": 2,
+    "all": [
+     "sign_recessional-21b4620e8e.webp"
+    ]
    },
    {
     "name": "Type it once — the working file",
@@ -10389,8 +10437,11 @@ const CONTENTS_BY_COLLECTION = {
    {
     "name": "The here comes the bride sign",
     "note": "",
-    "icon": "sign_processional-c72b503ba4.webp",
-    "files": 2
+    "icon": "sign_processional-a6a50f23ff.webp",
+    "files": 2,
+    "all": [
+     "sign_processional-a6a50f23ff.webp"
+    ]
    },
    {
     "name": "The illustrated order of the day",
@@ -10413,8 +10464,11 @@ const CONTENTS_BY_COLLECTION = {
    {
     "name": "The they are married sign",
     "note": "",
-    "icon": "sign_recessional-b53fc281bc.webp",
-    "files": 2
+    "icon": "sign_recessional-e6f188d3a0.webp",
+    "files": 2,
+    "all": [
+     "sign_recessional-e6f188d3a0.webp"
+    ]
    },
    {
     "name": "Vow books",
@@ -10944,8 +10998,11 @@ const CONTENTS_BY_COLLECTION = {
    {
     "name": "The here comes the bride sign",
     "note": "",
-    "icon": "sign_processional-c72b503ba4.webp",
-    "files": 2
+    "icon": "sign_processional-a6a50f23ff.webp",
+    "files": 2,
+    "all": [
+     "sign_processional-a6a50f23ff.webp"
+    ]
    },
    {
     "name": "The illustrated order of the day",
@@ -10968,8 +11025,11 @@ const CONTENTS_BY_COLLECTION = {
    {
     "name": "The they are married sign",
     "note": "",
-    "icon": "sign_recessional-b53fc281bc.webp",
-    "files": 2
+    "icon": "sign_recessional-e6f188d3a0.webp",
+    "files": 2,
+    "all": [
+     "sign_recessional-e6f188d3a0.webp"
+    ]
    },
    {
     "name": "Type it once — the working file",
@@ -13242,8 +13302,11 @@ const CONTENTS_BY_COLLECTION = {
    {
     "name": "The here comes the bride sign",
     "note": "",
-    "icon": "sign_processional-12090cf5ad.webp",
-    "files": 2
+    "icon": "sign_processional-42e1e256a5.webp",
+    "files": 2,
+    "all": [
+     "sign_processional-42e1e256a5.webp"
+    ]
    },
    {
     "name": "The illustrated order of the day",
@@ -13266,8 +13329,11 @@ const CONTENTS_BY_COLLECTION = {
    {
     "name": "The they are married sign",
     "note": "",
-    "icon": "sign_recessional-ce9cc58803.webp",
-    "files": 2
+    "icon": "sign_recessional-95ba32d8a5.webp",
+    "files": 2,
+    "all": [
+     "sign_recessional-95ba32d8a5.webp"
+    ]
    },
    {
     "name": "Vow books",
@@ -13802,8 +13868,11 @@ const CONTENTS_BY_COLLECTION = {
    {
     "name": "The here comes the bride sign",
     "note": "",
-    "icon": "sign_processional-12090cf5ad.webp",
-    "files": 2
+    "icon": "sign_processional-42e1e256a5.webp",
+    "files": 2,
+    "all": [
+     "sign_processional-42e1e256a5.webp"
+    ]
    },
    {
     "name": "The illustrated order of the day",
@@ -13826,8 +13895,11 @@ const CONTENTS_BY_COLLECTION = {
    {
     "name": "The they are married sign",
     "note": "",
-    "icon": "sign_recessional-ce9cc58803.webp",
-    "files": 2
+    "icon": "sign_recessional-95ba32d8a5.webp",
+    "files": 2,
+    "all": [
+     "sign_recessional-95ba32d8a5.webp"
+    ]
    },
    {
     "name": "Type it once — the working file",
@@ -16100,8 +16172,11 @@ const CONTENTS_BY_COLLECTION = {
    {
     "name": "The here comes the bride sign",
     "note": "",
-    "icon": "sign_processional-0faa362adc.webp",
-    "files": 2
+    "icon": "sign_processional-ebf26fe93e.webp",
+    "files": 2,
+    "all": [
+     "sign_processional-ebf26fe93e.webp"
+    ]
    },
    {
     "name": "The illustrated order of the day",
@@ -16124,8 +16199,11 @@ const CONTENTS_BY_COLLECTION = {
    {
     "name": "The they are married sign",
     "note": "",
-    "icon": "sign_recessional-eb61bbd760.webp",
-    "files": 2
+    "icon": "sign_recessional-75791722e4.webp",
+    "files": 2,
+    "all": [
+     "sign_recessional-75791722e4.webp"
+    ]
    },
    {
     "name": "Vow books",
@@ -16656,8 +16734,11 @@ const CONTENTS_BY_COLLECTION = {
    {
     "name": "The here comes the bride sign",
     "note": "",
-    "icon": "sign_processional-0faa362adc.webp",
-    "files": 2
+    "icon": "sign_processional-ebf26fe93e.webp",
+    "files": 2,
+    "all": [
+     "sign_processional-ebf26fe93e.webp"
+    ]
    },
    {
     "name": "The illustrated order of the day",
@@ -16680,8 +16761,11 @@ const CONTENTS_BY_COLLECTION = {
    {
     "name": "The they are married sign",
     "note": "",
-    "icon": "sign_recessional-eb61bbd760.webp",
-    "files": 2
+    "icon": "sign_recessional-75791722e4.webp",
+    "files": 2,
+    "all": [
+     "sign_recessional-75791722e4.webp"
+    ]
    },
    {
     "name": "Type it once — the working file",
@@ -17516,8 +17600,11 @@ const CONTENTS_BY_COLLECTION = {
    {
     "name": "The here comes the bride sign",
     "note": "",
-    "icon": "sign_processional-a43795c4e5.webp",
-    "files": 2
+    "icon": "sign_processional-414b40a8c9.webp",
+    "files": 2,
+    "all": [
+     "sign_processional-414b40a8c9.webp"
+    ]
    },
    {
     "name": "The illustrated order of the day",
@@ -17540,8 +17627,11 @@ const CONTENTS_BY_COLLECTION = {
    {
     "name": "The they are married sign",
     "note": "",
-    "icon": "sign_recessional-11cba2895e.webp",
-    "files": 2
+    "icon": "sign_recessional-a2f67052ae.webp",
+    "files": 2,
+    "all": [
+     "sign_recessional-a2f67052ae.webp"
+    ]
    },
    {
     "name": "Vow books",
@@ -18071,8 +18161,11 @@ const CONTENTS_BY_COLLECTION = {
    {
     "name": "The here comes the bride sign",
     "note": "",
-    "icon": "sign_processional-a43795c4e5.webp",
-    "files": 2
+    "icon": "sign_processional-414b40a8c9.webp",
+    "files": 2,
+    "all": [
+     "sign_processional-414b40a8c9.webp"
+    ]
    },
    {
     "name": "The illustrated order of the day",
@@ -18095,8 +18188,11 @@ const CONTENTS_BY_COLLECTION = {
    {
     "name": "The they are married sign",
     "note": "",
-    "icon": "sign_recessional-11cba2895e.webp",
-    "files": 2
+    "icon": "sign_recessional-a2f67052ae.webp",
+    "files": 2,
+    "all": [
+     "sign_recessional-a2f67052ae.webp"
+    ]
    },
    {
     "name": "Type it once — the working file",
@@ -18933,8 +19029,11 @@ const CONTENTS_BY_COLLECTION = {
    {
     "name": "The here comes the bride sign",
     "note": "",
-    "icon": "sign_processional-f5634f6eaa.webp",
-    "files": 2
+    "icon": "sign_processional-f339e30731.webp",
+    "files": 2,
+    "all": [
+     "sign_processional-f339e30731.webp"
+    ]
    },
    {
     "name": "The illustrated order of the day",
@@ -18957,8 +19056,11 @@ const CONTENTS_BY_COLLECTION = {
    {
     "name": "The they are married sign",
     "note": "",
-    "icon": "sign_recessional-b7a46320a7.webp",
-    "files": 2
+    "icon": "sign_recessional-7322fd1cc6.webp",
+    "files": 2,
+    "all": [
+     "sign_recessional-7322fd1cc6.webp"
+    ]
    },
    {
     "name": "Vow books",
@@ -19488,8 +19590,11 @@ const CONTENTS_BY_COLLECTION = {
    {
     "name": "The here comes the bride sign",
     "note": "",
-    "icon": "sign_processional-f5634f6eaa.webp",
-    "files": 2
+    "icon": "sign_processional-f339e30731.webp",
+    "files": 2,
+    "all": [
+     "sign_processional-f339e30731.webp"
+    ]
    },
    {
     "name": "The illustrated order of the day",
@@ -19512,8 +19617,11 @@ const CONTENTS_BY_COLLECTION = {
    {
     "name": "The they are married sign",
     "note": "",
-    "icon": "sign_recessional-b7a46320a7.webp",
-    "files": 2
+    "icon": "sign_recessional-7322fd1cc6.webp",
+    "files": 2,
+    "all": [
+     "sign_recessional-7322fd1cc6.webp"
+    ]
    },
    {
     "name": "Type it once — the working file",

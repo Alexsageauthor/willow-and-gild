@@ -308,8 +308,15 @@ document.getElementById('main').innerHTML = `
         <!-- THE BADGE COUNTS PAGES WHERE THE ROW KNOWS ITS PAGE COUNT.
              A page gallery de-dupes renders that look alike, so a twelve-page
              seating plan with four deliberate continuation pairs showed 7.
-             r.pages is the real page count and wins where it exists. -->
-        ${r.all ? `<b class="count">${r.pages || r.all.length}</b>` : ''}
+             r.pages is the real page count and wins where it exists.
+             AND A COUNT OF ONE IS NOT A COUNT. The badge is drawn from r.all,
+             which exists as soon as a row has a gallery at all — so a
+             single-page product got a badge reading "1" sitting over its
+             corner, saying nothing. Kelly, on the here-comes-the-bride sign:
+             "why is there a number 1". Every other badge on the page reads 3,
+             4, 6, 12 and means "there is more here than you can see". One
+             means the opposite, so it is not shown. -->
+        ${r.all && (r.pages || r.all.length) > 1 ? `<b class="count">${r.pages || r.all.length}</b>` : ''}
         <figcaption><b>${r.name}</b>${r.note ? `<span>${r.note}</span>` : ''}</figcaption>
       </figure>`).join('')}</div>`
       : `<div class="list">${b.includes.map(i => `<div class="row">${i}</div>`).join('')}</div>`}

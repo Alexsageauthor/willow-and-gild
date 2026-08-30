@@ -64,14 +64,14 @@ const PORTRAITS = {
     "V_The_Reception": "bundle-V_The_Reception-e17b85c7ad.webp"
   },
   "kyoto": {
-    "III_The_Invitation": "bundle-III_The_Invitation-8412f157a5.webp",
-    "II_The_Planning": "bundle-II_The_Planning-86c8ff7be7.webp",
-    "IV_The_Ceremony": "bundle-IV_The_Ceremony-9a6069293d.webp",
-    "I_The_Announcement": "bundle-I_The_Announcement-577b7128c9.webp",
-    "Ia_Your_Wedding_Online": "bundle-Ia_Your_Wedding_Online-634d4cbd17.webp",
-    "VI_The_Complete_Collection": "bundle-VI_The_Complete_Collection-3ca1f691bd.webp",
-    "VI_With_Thanks": "bundle-VI_With_Thanks-90c27e124d.webp",
-    "V_The_Reception": "bundle-V_The_Reception-8fbebd0447.webp"
+    "III_The_Invitation": "bundle-III_The_Invitation-903533dffe.webp",
+    "II_The_Planning": "bundle-II_The_Planning-43679a268e.webp",
+    "IV_The_Ceremony": "bundle-IV_The_Ceremony-7508565e0c.webp",
+    "I_The_Announcement": "bundle-I_The_Announcement-833ef9be63.webp",
+    "Ia_Your_Wedding_Online": "bundle-Ia_Your_Wedding_Online-b34f3aa626.webp",
+    "VI_The_Complete_Collection": "bundle-VI_The_Complete_Collection-e6fdc6eb07.webp",
+    "VI_With_Thanks": "bundle-VI_With_Thanks-b50280f374.webp",
+    "V_The_Reception": "bundle-V_The_Reception-8b54c83fa6.webp"
   },
   "midcentury": {
     "III_The_Invitation": "bundle-III_The_Invitation-b2f9e78c6d.webp",
@@ -126,10 +126,10 @@ const PORTRAITS = {
   "riviera": {
     "III_The_Invitation": "bundle-III_The_Invitation-136769d239.webp",
     "II_The_Planning": "bundle-II_The_Planning-297713bc4d.webp",
-    "IV_The_Ceremony": "bundle-IV_The_Ceremony-c0a9f04ee0.webp",
+    "IV_The_Ceremony": "bundle-IV_The_Ceremony-067a2b7ffa.webp",
     "I_The_Announcement": "bundle-I_The_Announcement-868fe7210c.webp",
-    "Ia_Your_Wedding_Online": "bundle-Ia_Your_Wedding_Online-e48e83bf28.webp",
-    "VI_The_Complete_Collection": "bundle-VI_The_Complete_Collection-9fff002b3a.webp",
+    "Ia_Your_Wedding_Online": "bundle-Ia_Your_Wedding_Online-c3145abaa3.webp",
+    "VI_The_Complete_Collection": "bundle-VI_The_Complete_Collection-6a71b677fa.webp",
     "VI_With_Thanks": "bundle-VI_With_Thanks-41fecf04d5.webp",
     "V_The_Reception": "bundle-V_The_Reception-d2708e05d2.webp"
   },
@@ -146,10 +146,10 @@ const PORTRAITS = {
   "woodlands": {
     "III_The_Invitation": "bundle-III_The_Invitation-7984aab05b.webp",
     "II_The_Planning": "bundle-II_The_Planning-2d5386df3e.webp",
-    "IV_The_Ceremony": "bundle-IV_The_Ceremony-41ea418fc7.webp",
+    "IV_The_Ceremony": "bundle-IV_The_Ceremony-d511e54541.webp",
     "I_The_Announcement": "bundle-I_The_Announcement-04d6313b38.webp",
-    "Ia_Your_Wedding_Online": "bundle-Ia_Your_Wedding_Online-e738c96b09.webp",
-    "VI_The_Complete_Collection": "bundle-VI_The_Complete_Collection-5ae5e2f1b0.webp",
+    "Ia_Your_Wedding_Online": "bundle-Ia_Your_Wedding_Online-1281b640d4.webp",
+    "VI_The_Complete_Collection": "bundle-VI_The_Complete_Collection-81af2ec4b7.webp",
     "VI_With_Thanks": "bundle-VI_With_Thanks-61e8c20ce9.webp",
     "V_The_Reception": "bundle-V_The_Reception-4fefe79111.webp"
   }

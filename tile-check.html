@@ -1,0 +1,122 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Tile check</title>
+<style>
+  body{font:15px/1.5 system-ui,sans-serif;margin:24px;color:#222;background:#FDFBF6}
+  h1{font-size:20px;margin:0 0 4px}
+  p.sub{color:#666;margin:0 0 18px}
+  #sum{padding:12px 14px;border:1px solid #ddd;background:#fff;margin-bottom:18px}
+  .ok{color:#1a7f37} .bad{color:#b03c3c;font-weight:600}
+  table{border-collapse:collapse;width:100%;font-size:13px}
+  td,th{border-bottom:1px solid #eee;padding:5px 8px;text-align:left;vertical-align:top}
+  th{background:#f4f1ea}
+  code{font-family:ui-monospace,Menlo,monospace;font-size:12px}
+  button{font:inherit;padding:7px 14px;margin-right:8px;cursor:pointer}
+</style>
+
+<h1>Tile check</h1>
+<p class="sub">Asks the live site for every tile this page says a collection needs,
+and lists the ones that do not come back.</p>
+
+<p>
+  <button onclick="run('classic')">Check Classic</button>
+  <button onclick="runAll()">Check every collection</button>
+</p>
+
+<div id="sum">Loading contents.js&hellip;</div>
+<div id="out"></div>
+
+<script src="contents.js"></script>
+<script src="portraits.js"></script>
+<script>
+const sum = document.getElementById('sum');
+const out = document.getElementById('out');
+
+function refsFor(laneKey) {
+  const set = new Set();
+  const lane = (typeof CONTENTS_BY_COLLECTION === 'object') && CONTENTS_BY_COLLECTION[laneKey];
+  if (!lane) return set;
+  for (const ch of Object.keys(lane))
+    for (const row of lane[ch]) {
+      if (row.icon) set.add(row.icon);
+      (row.all || []).forEach(f => set.add(f));
+    }
+  return set;
+}
+
+function portraitsFor(folder) {
+  const set = new Set();
+  if (typeof PORTRAITS === 'object' && PORTRAITS && PORTRAITS[folder])
+    Object.values(PORTRAITS[folder]).forEach(f => set.add(f));
+  return set;
+}
+
+// HEAD is enough to know whether the file is there, and does not pull the bytes.
+// cache:'reload' so a 404 remembered by the browser cannot answer for the server.
+async function check(url) {
+  try {
+    const r = await fetch(url, {method:'HEAD', cache:'reload'});
+    return r.status;
+  } catch (e) { return 0; }
+}
+
+async function run(folder) {
+  const laneKey = Object.keys(CONTENTS_BY_COLLECTION || {})
+    .find(k => k.toLowerCase() === folder.toLowerCase()) || folder;
+  const files = [...refsFor(laneKey)];
+  const ports = [...portraitsFor(folder)];
+  const all = [...new Set([...files, ...ports])];
+
+  sum.textContent = `Checking ${all.length} files in assets/${folder}/ …`;
+  out.innerHTML = '';
+
+  const missing = [];
+  let done = 0;
+  // small batches so a phone does not open 190 sockets at once
+  for (let i = 0; i < all.length; i += 8) {
+    const batch = all.slice(i, i + 8);
+    const codes = await Promise.all(batch.map(f => check(`assets/${folder}/${f}`)));
+    batch.forEach((f, j) => { if (codes[j] !== 200) missing.push([f, codes[j]]); });
+    done += batch.length;
+    sum.textContent = `Checked ${done} of ${all.length} …`;
+  }
+
+  const head = missing.length
+    ? `<span class="bad">${missing.length} of ${all.length} missing in assets/${folder}/</span>`
+    : `<span class="ok">All ${all.length} present in assets/${folder}/</span>`;
+  sum.innerHTML = head +
+    `<br><small>${files.length} product tiles + ${ports.length} bundle portraits</small>`;
+
+  if (missing.length) {
+    out.innerHTML = '<table><tr><th>file</th><th>status</th></tr>' +
+      missing.map(([f, c]) => `<tr><td><code>${f}</code></td><td>${c || 'no response'}</td></tr>`).join('') +
+      '</table>';
+  }
+  return missing.length;
+}
+
+async function runAll() {
+  const folders = Object.keys(CONTENTS_BY_COLLECTION || {}).map(k => k.toLowerCase()).sort();
+  out.innerHTML = '';
+  const rows = [];
+  for (const f of folders) {
+    const n = await run(f);
+    rows.push(`<tr><td>${f}</td><td class="${n ? 'bad' : 'ok'}">${n ? n + ' missing' : 'ok'}</td></tr>`);
+    out.innerHTML = '<table><tr><th>collection</th><th>result</th></tr>' + rows.join('') + '</table>';
+  }
+  sum.innerHTML = 'Finished. Any collection marked missing needs its files re-uploaded.';
+}
+
+window.addEventListener('load', () => {
+  if (typeof CONTENTS_BY_COLLECTION === 'undefined') {
+    sum.innerHTML = '<span class="bad">contents.js did not load, or has no CONTENTS_BY_COLLECTION.</span>'
+      + '<br>That alone breaks every tile on every collection page.';
+  } else if (typeof PORTRAITS === 'undefined') {
+    sum.innerHTML = '<span class="bad">portraits.js did not load.</span>'
+      + '<br>Product tiles may still work; bundle portraits will not.';
+  } else {
+    sum.innerHTML = `contents.js loaded — ${Object.keys(CONTENTS_BY_COLLECTION).length} collections. `
+      + `portraits.js loaded — ${Object.keys(PORTRAITS).length} collections. Press a button above.`;
+  }
+});
+</script>

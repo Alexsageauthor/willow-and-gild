@@ -171,6 +171,7 @@ footer{border-top:1px solid var(--stone);padding:52px 0 38px;text-align:center;c
   font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;
   color:var(--gold);text-align:left}
 .phase:first-child{margin-top:0;padding-top:0;border-top:0}
+  figure.item.gone{display:none}
 </style>
 </head>
 <body>
@@ -254,6 +255,11 @@ const buttons = [
    reason. The portraits now are too, and the hash is looked up here. The old
    fixed paths stay on as the tail of the chain so collections that have not
    been rebuilt yet keep working untouched. */
+/* CACHE TOKEN. /assets/ is served immutable for a year, so a 404 fetched
+   before an upload is remembered by the browser and answers for the server.
+   Bump this string whenever tiles are re-uploaded. */
+const V = '20260831b';
+
 const HASHED = (typeof PORTRAITS === 'object' && PORTRAITS)
   ? (PORTRAITS[c.id.toLowerCase()] || {})[b.id]
   : null;
@@ -304,7 +310,8 @@ document.getElementById('main').innerHTML = `
     ${rows.length ? `<div class="grid">${rows.map(r => `${r.section ? `
       <p class="phase">${r.section}</p>` : ''}
       <figure class="item${r.all ? ' many' : ''}"${r.all ? ` data-all="${r.all.join(',')}" data-name="${r.name}" data-note="${r.note || ''}" tabindex="0" role="button" aria-label="${r.name}, ${r.pages || r.all.length} pages — open"` : ''}>
-        <img src="assets/${c.id.toLowerCase()}/${r.icon}" alt="${r.name}" loading="lazy">
+        <img src="assets/${c.id.toLowerCase()}/${r.icon}?v=${V}" alt="${r.name}" loading="lazy"
+             onerror="this.closest('figure').classList.add('gone')">
         <!-- THE BADGE COUNTS PAGES WHERE THE ROW KNOWS ITS PAGE COUNT.
              A page gallery de-dupes renders that look alike, so a twelve-page
              seating plan with four deliberate continuation pairs showed 7.

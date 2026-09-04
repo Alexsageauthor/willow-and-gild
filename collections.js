@@ -82,6 +82,12 @@ const COLLECTIONS = [
     story: 'The willow pattern that has been on English tables for two hundred ' +
            'years, redrawn for a wedding.' },
 
+  { id: 'Nocturne', name: 'Nocturne', status: 'soon',
+    ink: '#18232D', gold: '#B6A070',
+    line: 'Midnight, silver and candlelight.',
+    story: 'A black-tie wedding after dark — midnight velvet, blackened ' +
+           'silver and white moonflowers open in the evening.' },
+
   { id: 'Nordic', name: 'Nordic', status: 'soon',
     ink: '#4A443C', gold: '#A2916F',
     line: 'Pale wood, linen and long light.',
@@ -138,3 +144,32 @@ const KYOTO_PRODUCTS = [
   ['Keepsakes', 'Vows, anniversary letter, open-when letters, Plan B, getting-ready timeline'],
   ['And more', 'Engagement announcements, rehearsal dinner, welcome bags, advice cards, toast cards, envelope etiquette, print shop guide'],
 ];
+
+
+/* THE COUNT IS DERIVED, NEVER TYPED.
+   'fifteen' was written into the sell line on free-timeline.html and into the
+   meta description on palette.html, so the day a sixteenth collection was added
+   the site went on telling customers there were fifteen while showing them
+   sixteen plates. A number that describes a list belongs to the list. */
+const COLLECTION_COUNT = COLLECTIONS.length;
+const COLLECTION_COUNT_WORD = (function (n) {
+  const w = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven',
+             'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen',
+             'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty'];
+  return w[n] || String(n);
+})(COLLECTIONS.length);
+
+/* Rewrites any element carrying data-collection-count, so page copy stays true
+   without each page hard-coding the number. */
+function paintCollectionCount() {
+  document.querySelectorAll('[data-collection-count]').forEach(function (el) {
+    el.textContent = COLLECTION_COUNT_WORD;
+  });
+  const m = document.querySelector('meta[name="description"]');
+  if (m && m.content.indexOf('{{count}}') !== -1) {
+    m.content = m.content.replace('{{count}}', COLLECTION_COUNT_WORD);
+  }
+}
+if (typeof document !== 'undefined') {
+  document.addEventListener('DOMContentLoaded', paintCollectionCount);
+}

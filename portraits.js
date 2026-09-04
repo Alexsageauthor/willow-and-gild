@@ -93,6 +93,16 @@ const PORTRAITS = {
     "VI_With_Thanks": "bundle-VI_With_Thanks-d5414fd231.webp",
     "V_The_Reception": "bundle-V_The_Reception-2b6dd27507.webp"
   },
+  "nocturne": {
+    "III_The_Invitation": "bundle-III_The_Invitation-b2893335d7.webp",
+    "II_The_Planning": "bundle-II_The_Planning-1159cdbfb3.webp",
+    "IV_The_Ceremony": "bundle-IV_The_Ceremony-fb26d01577.webp",
+    "I_The_Announcement": "bundle-I_The_Announcement-7a15dfeebd.webp",
+    "Ia_Your_Wedding_Online": "bundle-Ia_Your_Wedding_Online-1e08493ef0.webp",
+    "VI_The_Complete_Collection": "bundle-VI_The_Complete_Collection-305c186a00.webp",
+    "VI_With_Thanks": "bundle-VI_With_Thanks-39245007f8.webp",
+    "V_The_Reception": "bundle-V_The_Reception-98648f1e40.webp"
+  },
   "nordic": {
     "III_The_Invitation": "bundle-III_The_Invitation-4f47dd3b8d.webp",
     "II_The_Planning": "bundle-II_The_Planning-10093cbeae.webp",

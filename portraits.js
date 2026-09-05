@@ -4,12 +4,12 @@
    year - see the note in that script. Do not hand-edit. */
 const PORTRAITS = {
   "artdeco": {
-    "III_The_Invitation": "bundle-III_The_Invitation-3468ad140d.webp",
-    "II_The_Planning": "bundle-II_The_Planning-2f1d147e98.webp",
-    "IV_The_Ceremony": "bundle-IV_The_Ceremony-bd20c0c73e.webp",
-    "I_The_Announcement": "bundle-I_The_Announcement-6fd3304df0.webp",
+    "III_The_Invitation": "bundle-III_The_Invitation-eaa25cf12f.webp",
+    "II_The_Planning": "bundle-II_The_Planning-174493143c.webp",
+    "IV_The_Ceremony": "bundle-IV_The_Ceremony-b7a2ec5176.webp",
+    "I_The_Announcement": "bundle-I_The_Announcement-bbd8b8cc8b.webp",
     "Ia_Your_Wedding_Online": "bundle-Ia_Your_Wedding_Online-fb45b89513.webp",
-    "VI_The_Complete_Collection": "bundle-VI_The_Complete_Collection-48922e5c03.webp",
+    "VI_The_Complete_Collection": "bundle-VI_The_Complete_Collection-256fec518c.webp",
     "VI_With_Thanks": "bundle-VI_With_Thanks-6e8a765947.webp",
     "V_The_Reception": "bundle-V_The_Reception-ecce5e3bcc.webp"
   },
@@ -104,14 +104,14 @@ const PORTRAITS = {
     "V_The_Reception": "bundle-V_The_Reception-98648f1e40.webp"
   },
   "nordic": {
-    "III_The_Invitation": "bundle-III_The_Invitation-4f47dd3b8d.webp",
-    "II_The_Planning": "bundle-II_The_Planning-10093cbeae.webp",
-    "IV_The_Ceremony": "bundle-IV_The_Ceremony-65142c293c.webp",
-    "I_The_Announcement": "bundle-I_The_Announcement-dcf9962a54.webp",
+    "III_The_Invitation": "bundle-III_The_Invitation-fc20ceb11f.webp",
+    "II_The_Planning": "bundle-II_The_Planning-55fe995936.webp",
+    "IV_The_Ceremony": "bundle-IV_The_Ceremony-b52de4c850.webp",
+    "I_The_Announcement": "bundle-I_The_Announcement-4c65a80e4b.webp",
     "Ia_Your_Wedding_Online": "bundle-Ia_Your_Wedding_Online-a25c6c3c2c.webp",
-    "VI_The_Complete_Collection": "bundle-VI_The_Complete_Collection-186d529f83.webp",
+    "VI_The_Complete_Collection": "bundle-VI_The_Complete_Collection-a1b1de09ce.webp",
     "VI_With_Thanks": "bundle-VI_With_Thanks-ff8eda13fa.webp",
-    "V_The_Reception": "bundle-V_The_Reception-3141b7a253.webp"
+    "V_The_Reception": "bundle-V_The_Reception-e28391e9e1.webp"
   },
   "olivegold": {
     "III_The_Invitation": "bundle-III_The_Invitation-a45c33f57f.webp",
@@ -124,14 +124,14 @@ const PORTRAITS = {
     "V_The_Reception": "bundle-V_The_Reception-f152312085.webp"
   },
   "orchard": {
-    "III_The_Invitation": "bundle-III_The_Invitation-d55c138273.webp",
-    "II_The_Planning": "bundle-II_The_Planning-35e992fd74.webp",
-    "IV_The_Ceremony": "bundle-IV_The_Ceremony-a543d41840.webp",
-    "I_The_Announcement": "bundle-I_The_Announcement-3c12d3eb34.webp",
+    "III_The_Invitation": "bundle-III_The_Invitation-091b353b6a.webp",
+    "II_The_Planning": "bundle-II_The_Planning-bd8b3ab371.webp",
+    "IV_The_Ceremony": "bundle-IV_The_Ceremony-78823bef98.webp",
+    "I_The_Announcement": "bundle-I_The_Announcement-77cfe05080.webp",
     "Ia_Your_Wedding_Online": "bundle-Ia_Your_Wedding_Online-eb6075d463.webp",
-    "VI_The_Complete_Collection": "bundle-VI_The_Complete_Collection-103d01e4f1.webp",
+    "VI_The_Complete_Collection": "bundle-VI_The_Complete_Collection-de239c31a3.webp",
     "VI_With_Thanks": "bundle-VI_With_Thanks-1649f3bf95.webp",
-    "V_The_Reception": "bundle-V_The_Reception-4ca3863601.webp"
+    "V_The_Reception": "bundle-V_The_Reception-f52f1cb52d.webp"
   },
   "riviera": {
     "III_The_Invitation": "bundle-III_The_Invitation-136769d239.webp",

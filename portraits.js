@@ -84,12 +84,12 @@ const PORTRAITS = {
     "V_The_Reception": "bundle-V_The_Reception-8b54c83fa6.webp"
   },
   "midcentury": {
-    "III_The_Invitation": "bundle-III_The_Invitation-c6914578ce.webp",
-    "II_The_Planning": "bundle-II_The_Planning-eb6f6b34ca.webp",
+    "III_The_Invitation": "bundle-III_The_Invitation-f95641537d.webp",
+    "II_The_Planning": "bundle-II_The_Planning-1deac94174.webp",
     "IV_The_Ceremony": "bundle-IV_The_Ceremony-d1a980d1f7.webp",
-    "I_The_Announcement": "bundle-I_The_Announcement-cc23e3622e.webp",
-    "Ia_Your_Wedding_Online": "bundle-Ia_Your_Wedding_Online-a64771c3cd.webp",
-    "VI_The_Complete_Collection": "bundle-VI_The_Complete_Collection-22248a02d7.webp",
+    "I_The_Announcement": "bundle-I_The_Announcement-b667f73c21.webp",
+    "Ia_Your_Wedding_Online": "bundle-Ia_Your_Wedding_Online-b5fdeeca6f.webp",
+    "VI_The_Complete_Collection": "bundle-VI_The_Complete_Collection-e51969b338.webp",
     "VI_With_Thanks": "bundle-VI_With_Thanks-a19465bee1.webp",
     "V_The_Reception": "bundle-V_The_Reception-3809a80381.webp"
   },

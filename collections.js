@@ -167,9 +167,19 @@ const COLLECTION_COUNT_WORD = (function (n) {
 
 /* Rewrites any element carrying data-collection-count, so page copy stays true
    without each page hard-coding the number. */
+/* A HEADLINE STARTS WITH A CAPITAL, AND THAT IS WHY index.html NEVER USED THIS.
+   The painter only ever emitted lowercase, so 'Fifteen worlds, each complete'
+   could not be wired to it without reading wrong, and the number was typed
+   instead — then sat there through two new collections. data-collection-count
+   ="cap" gives the mechanism a sentence-initial form so no page has to opt out
+   of it for the sake of one letter. */
 function paintCollectionCount() {
   document.querySelectorAll('[data-collection-count]').forEach(function (el) {
-    el.textContent = COLLECTION_COUNT_WORD;
+    var w = COLLECTION_COUNT_WORD;
+    if (el.getAttribute('data-collection-count') === 'cap') {
+      w = w.charAt(0).toUpperCase() + w.slice(1);
+    }
+    el.textContent = w;
   });
   const m = document.querySelector('meta[name="description"]');
   if (m && m.content.indexOf('{{count}}') !== -1) {
@@ -179,3 +189,28 @@ function paintCollectionCount() {
 if (typeof document !== 'undefined') {
   document.addEventListener('DOMContentLoaded', paintCollectionCount);
 }
+
+
+/* ---------------------------------------------------------------------------
+   THE ASSET VERSION. ONE TOKEN, ONE PLACE, AND IT LIVES HERE ON PURPOSE.
+
+   Fixed-name assets — Kyoto.webp, EnglishRose_hero.webp, every _cake and
+   _chair — keep the same URL forever, so a browser that has one has it until
+   something tells it otherwise. The lane folders are content-hashed and look
+   after themselves; these do not.
+
+   The token was declared THREE TIMES: bundle.html:261, collection.html:136,
+   and INLINE in index.html's image src. Three copies drift, and they did —
+   the pages sat on different dates for a week, which is why a corrected
+   EnglishRose hero could be uploaded correctly and still not appear. Verified
+   again 0906: site/assets/EnglishRose_hero.webp on disk is byte-identical to
+   what heroes/EnglishRose.png produces. The asset was never wrong. The URL
+   never changed, so nothing ever refetched it.
+
+   Every page loads collections.js, so this is the one file all three share.
+   BUMP THIS WHENEVER A FIXED-NAME ASSET CHANGES. Nothing else to touch.
+
+   This works only because vercel.json makes the HTML and this file
+   revalidate on every load — a stale collections.js would hold a stale token
+   and the bump would never arrive. The two changes are one fix. */
+const ASSET_V = '20260906';

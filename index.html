@@ -194,7 +194,7 @@ footer .brand img{height:26px}
 <section id="collections" class="wrap">
   <div class="head rv">
     <p class="eyebrow">The Collections</p>
-    <h2>Fifteen worlds, each complete</h2>
+    <h2><span data-collection-count="cap">Seventeen</span> worlds, each complete</h2>
     <div class="rule"></div>
     <p>A collection is not a matching set of three cards. It is every piece of
        paper a wedding needs, drawn together — and it is finished before it
@@ -314,13 +314,33 @@ const grid = document.getElementById('grid');
 grid.innerHTML = COLLECTIONS.map(c => {
   const live = c.status === 'live';
   const inner = `
-    <div class="art"><img src="assets/${c.id}.webp?v=20260905" alt="${c.name} collection" loading="lazy"></div>
+    <div class="art"><img src="assets/${c.id}.webp?v=${ASSET_V}" alt="${c.name} collection" loading="lazy"></div>
     <div class="body">
       <h3 class="serif">${c.name}</h3>
       <p>${c.line}</p>
+      <!-- THREE DOTS, THREE DIFFERENT ANSWERS: ink, band, gold.
+           The middle dot moved from gold to band because gold repeats across
+           lanes — average dE 10.3, and two lanes share a hex outright. That
+           fixed lane against lane and broke dot against dot: with paper in the
+           third slot, Classic showed ink #33363B beside band #3C4045 at dE 4.4,
+           Chateau 7.1, MidCentury 10.8. Under about dE 12 at 15px two dots read
+           as one colour, so three lanes were showing what looked like a single
+           black dot and a white one, and MidCentury's walnut #4A3728 — the one
+           colour Kelly names when she names the lane — was invisible.
+           THE THIRD DOT WAS var(--paper) ON ALL SEVENTEEN CARDS. A swatch that
+           is identical for every collection carries no information about any of
+           them; it was the cream of the card it was already sitting on. Gold in
+           that slot is per-lane, always light against the two darks, and puts
+           MidCentury's tan #AE8E5A back on the card its own story line promises
+           mustard and teak.
+           THE ORDER IS PART OF THE FIX. ink, band, gold still stood Classic's
+           two darks side by side at dE 4.4 and Chateau's at 7.1 — the eye reads
+           TOUCHING dots, so a light dot between the two darks does the work.
+           Ordered ink, gold, band the worst adjacent gap on any lane is 11.5.
+           -->
       <div class="swatch">
-        <i style="background:${c.ink}"></i><i style="background:${c.band || c.gold}"></i>
-        <i style="background:var(--paper)"></i>
+        <i style="background:${c.ink}"></i><i style="background:${c.gold}"></i>
+        <i style="background:${c.band || c.gold}"></i>
       </div>
       <span class="tag">${live ? 'Shop the collection' : 'Coming soon'}</span>
     </div>`;

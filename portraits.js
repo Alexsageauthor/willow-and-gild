@@ -63,6 +63,16 @@ const PORTRAITS = {
     "VI_With_Thanks": "bundle-VI_With_Thanks-16958916a5.webp",
     "V_The_Reception": "bundle-V_The_Reception-129dd958be.webp"
   },
+  "gold": {
+    "III_The_Invitation": "bundle-III_The_Invitation-3c500293b8.webp",
+    "II_The_Planning": "bundle-II_The_Planning-1102af2dae.webp",
+    "IV_The_Ceremony": "bundle-IV_The_Ceremony-1fd16b1841.webp",
+    "I_The_Announcement": "bundle-I_The_Announcement-26f4d057d2.webp",
+    "Ia_Your_Wedding_Online": "bundle-Ia_Your_Wedding_Online-5735f517c4.webp",
+    "VI_The_Complete_Collection": "bundle-VI_The_Complete_Collection-6965635b13.webp",
+    "VI_With_Thanks": "bundle-VI_With_Thanks-9e9672c965.webp",
+    "V_The_Reception": "bundle-V_The_Reception-570dd811bc.webp"
+  },
   "kyoto": {
     "III_The_Invitation": "bundle-III_The_Invitation-903533dffe.webp",
     "II_The_Planning": "bundle-II_The_Planning-43679a268e.webp",

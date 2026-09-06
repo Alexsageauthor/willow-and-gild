@@ -314,12 +314,12 @@ const grid = document.getElementById('grid');
 grid.innerHTML = COLLECTIONS.map(c => {
   const live = c.status === 'live';
   const inner = `
-    <div class="art"><img src="assets/${c.id}.webp?v=20260828" alt="${c.name} collection" loading="lazy"></div>
+    <div class="art"><img src="assets/${c.id}.webp?v=20260905" alt="${c.name} collection" loading="lazy"></div>
     <div class="body">
       <h3 class="serif">${c.name}</h3>
       <p>${c.line}</p>
       <div class="swatch">
-        <i style="background:${c.ink}"></i><i style="background:${c.gold}"></i>
+        <i style="background:${c.ink}"></i><i style="background:${c.band || c.gold}"></i>
         <i style="background:var(--paper)"></i>
       </div>
       <span class="tag">${live ? 'Shop the collection' : 'Coming soon'}</span>

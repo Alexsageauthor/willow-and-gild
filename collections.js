@@ -82,6 +82,11 @@ const COLLECTIONS = [
     story: 'The willow pattern that has been on English tables for two hundred ' +
            'years, redrawn for a wedding.' },
 
+  { id: 'Vineyard', name: 'Vineyard', status: 'soon',
+    ink: '#33222A', gold: '#7E6B3E', band: '#542F35',
+    line: 'Old vines, limestone and claret.',
+    story: 'Late summer on a European wine estate — weathered stone, aged ' +
+           'oak, linen and vine. The collection for a wedding in burgundy.' },
   { id: 'Gold', name: 'Gold', status: 'soon',
     ink: '#3E3128', gold: '#9E8449', band: '#B8AEA1',
     line: 'Nothing more than necessary.',

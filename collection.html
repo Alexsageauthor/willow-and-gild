@@ -48,17 +48,16 @@ header{position:sticky;top:0;z-index:50;background:rgba(248,246,242,.92);
 .hero{text-align:center;padding:clamp(56px,8vw,110px) 0 clamp(36px,5vw,66px)}
 .hero img{width:min(360px,62vw);margin:0 auto clamp(20px,3vw,36px)}
 .lede{font-size:1.06rem;color:var(--soft);max-width:56ch;margin:22px auto 0}
-.palette{display:flex;gap:12px;justify-content:center;margin-top:30px}
+.palette{display:flex;gap:16px;justify-content:center;align-items:center;margin-top:30px}
 /* AN <img> IN A FLEX ROW STRETCHES. The rule this replaced carried the
    width and height; dropping it left the dots to be sized by the flex
    container, which pulled three circles into three page-wide ellipses.
    flex:0 0 auto stops the growing, the explicit box stops the guessing,
    and max-width:none stops a global img rule shrinking them. */
 .palette .dot{display:block;flex:0 0 auto;width:44px;height:44px;border-radius:50%;max-width:none}
-/* the ring is an inset+outset box-shadow set inline, not a border: a border
-   colour is rewritten by forced dark mode, a shadow is not. Gap widened so
-   the 1.5px gold ring is not clipped by its neighbour. */
-.palette{gap:14px}
+/* ONE RULE, NOT TWO. A second  lower in the sheet was left
+   behind when the border became a ring, and a duplicate selector is how a
+   spacing change gets made twice and lands once. Gap is set above. */
 section{padding:clamp(64px,8vw,104px) 0}
 section + section{padding-top:clamp(40px,5vw,64px)}
 .head{text-align:center;margin-top:clamp(56px,7vw,96px);margin-bottom:clamp(30px,4vw,52px)}

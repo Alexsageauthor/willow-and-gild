@@ -253,3 +253,28 @@ if (typeof document !== 'undefined') {
    revalidate on every load — a stale collections.js would hold a stale token
    and the bump would never arrive. The two changes are one fix. */
 const ASSET_V = '20260906';
+
+/* ---------------------------------------------------------------------------
+   dotImg() — A DOT IS AN IMAGE, NOT A STYLED BOX, AND THAT IS THE THIRD ATTEMPT.
+   Samsung Browser's forced dark mode rewrites colour on elements and will not
+   be talked out of it. Measured off Kelly's screenshots, Kyoto's blossom pink
+   #E4BDBA rendered as:
+        background-color        -> #AEB8B0   (inverted, on a light card)
+        linear-gradient         -> #30110E   (darkened, on a dark card)
+   Two techniques, two wrong colours, neither of them the value in this file.
+   `color-scheme: light only` is declared on every page and is overridden anyway.
+   AN <img> IS CONTENT, NOT STYLE. Force-dark leaves image pixels alone, so the
+   dot is drawn as an SVG circle in a data URI and arrives exactly as authored —
+   fill, gold ring and all. It also means the ring survives, which a border
+   colour did not.
+   --------------------------------------------------------------------------- */
+function dotImg(hex, size) {
+  size = size || 30;
+  var r = size / 2 - 1.5;
+  var svg = "<svg xmlns='http://www.w3.org/2000/svg' width='" + size +
+            "' height='" + size + "'><circle cx='" + (size / 2) + "' cy='" +
+            (size / 2) + "' r='" + r + "' fill='" + hex +
+            "' stroke='#A9853F' stroke-width='1.5'/></svg>";
+  return "<img class='dot' width='" + size + "' height='" + size +
+         "' alt='' src=\"data:image/svg+xml;utf8," + encodeURIComponent(svg) + "\">";
+}

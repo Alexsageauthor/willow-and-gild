@@ -102,8 +102,7 @@ section{padding:clamp(56px,8vw,104px) 0}
 .card h3{margin-bottom:8px}
 .card p{font-size:.9rem;color:var(--soft);min-height:2.9em}
 .swatch{display:flex;gap:9px;justify-content:center;margin-top:16px}
-.swatch i{width:15px;height:15px;border-radius:50%;display:block;
-          border:1px solid rgba(0,0,0,.06)}
+.swatch .dot{display:block}
 .tag{
   margin-top:18px;display:inline-block;font-size:.6rem;letter-spacing:.24em;
   text-transform:uppercase;color:var(--soft);
@@ -374,7 +373,7 @@ grid.innerHTML = COLLECTIONS.map(c => {
            and gradients alone, so a two-stop linear-gradient of one colour is a flat
            swatch the algorithm will not touch. The ring is drawn with box-shadow for
            the same reason — a border colour is rewritten, an inset shadow is not. -->
-      <div class="swatch"><i style="background-image:linear-gradient(${(c.swatch?c.swatch[0]:c.ink)},${(c.swatch?c.swatch[0]:c.ink)});box-shadow:inset 0 0 0 1px rgba(255,255,255,.28),0 0 0 1.5px var(--gold)"></i><i style="background-image:linear-gradient(${(c.swatch?c.swatch[1]:c.gold)},${(c.swatch?c.swatch[1]:c.gold)});box-shadow:inset 0 0 0 1px rgba(255,255,255,.28),0 0 0 1.5px var(--gold)"></i><i style="background-image:linear-gradient(${(c.swatch?c.swatch[2]:(c.band||c.gold))},${(c.swatch?c.swatch[2]:(c.band||c.gold))});box-shadow:inset 0 0 0 1px rgba(255,255,255,.28),0 0 0 1.5px var(--gold)"></i></div>
+      <div class="swatch">${dotImg(c.swatch?c.swatch[0]:c.ink,30)}${dotImg(c.swatch?c.swatch[1]:c.gold,30)}${dotImg(c.swatch?c.swatch[2]:(c.band||c.gold),30)}</div>
       <span class="tag">${live ? 'Shop the collection' : 'Coming soon'}</span>
     </div>`;
   return `<a class="card ${live ? 'live' : 'soon'} rv" href="collection.html?c=${c.id}">${inner}</a>`;

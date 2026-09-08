@@ -79,7 +79,7 @@
   .soon{display:inline-block;margin-left:7px;font-size:9px;letter-spacing:.16em;
         text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);padding:1px 6px}
   .strip{display:flex;height:5px}
-  .strip i{flex:1}
+  .strip .dot{display:block}
   .note{color:var(--muted);font-size:12.5px;text-align:center;margin-top:30px}
   .cta{margin-top:56px;padding:34px 22px;border:1px solid var(--rule);
        text-align:center;background:#fff}
@@ -182,7 +182,7 @@ document.getElementById('custom').addEventListener('input',e=>{
 
 function paint(){
   document.getElementById('chosen').innerHTML = picked.length
-    ? picked.map(p=>'<i style="background:'+p+'"></i>').join('')
+    ? picked.map(p=>dotImg(p,26)).join('')
     : '<em>Nothing chosen yet — a few to begin with, below.</em>';
   render();
 }
@@ -209,7 +209,7 @@ function render(){
            it, and this one survived both sweeps because it calls the element a
            strip rather than a swatch or a palette — grepping for the NAME finds
            two of three. Grep for the VALUES: background:${c.band}. -->
-      <div class="strip"><i style="background-image:linear-gradient(${(c.swatch?c.swatch[0]:c.ink)},${(c.swatch?c.swatch[0]:c.ink)});box-shadow:inset 0 0 0 1px rgba(255,255,255,.28),0 0 0 1.5px var(--gold)"></i><i style="background-image:linear-gradient(${(c.swatch?c.swatch[1]:c.gold)},${(c.swatch?c.swatch[1]:c.gold)});box-shadow:inset 0 0 0 1px rgba(255,255,255,.28),0 0 0 1.5px var(--gold)"></i><i style="background-image:linear-gradient(${(c.swatch?c.swatch[2]:(c.band||c.gold))},${(c.swatch?c.swatch[2]:(c.band||c.gold))});box-shadow:inset 0 0 0 1px rgba(255,255,255,.28),0 0 0 1.5px var(--gold)"></i></div>
+      <div class="strip">${dotImg(c.swatch?c.swatch[0]:c.ink,26)}${dotImg(c.swatch?c.swatch[1]:c.gold,26)}${dotImg(c.swatch?c.swatch[2]:(c.band||c.gold),26)}</div>
       <div class="meta">
         ${word?'<span class="verdict">'+word+'</span>':''}
         <h3>${c.name}${live?'':'<span class="soon">coming soon</span>'}</h3>

@@ -35,23 +35,23 @@ const COLLECTIONS = [
            'cherry blossom on a bare branch, and the restraint of a room where ' +
            'nothing is there by accident. Sage and antique gold on warm ivory.' },
 
-  { id: 'EnglishRose', name: 'English Rose', status: 'soon',
+  { id: 'EnglishRose', name: 'English Rose', status: 'live',
     ink: '#5A4340', gold: '#9C7D58', band: '#C8A5A1',
     line: 'Climbing roses and a garden in June.',
     story: 'English country gardens, roses over a doorway, and the traditions of ' +
            'a village wedding.' },
 
-  { id: 'MidCentury', name: 'Mid-Century', status: 'soon',
+  { id: 'MidCentury', name: 'Mid-Century', status: 'live',
     ink: '#3C3A34', gold: '#AE8E5A', band: '#4A3728',
     line: 'Warm walnut and confident shape.',
     story: 'Nineteen-fifties optimism — clean silhouettes, mustard and teak.' },
 
-  { id: 'Woodlands', name: 'Woodlands', status: 'soon',
+  { id: 'Woodlands', name: 'Woodlands', status: 'live',
     ink: '#3A4A3E', gold: '#A8905C', band: '#243029',
     line: 'Ferns, moss and a green canopy.',
     story: 'Deep woodland — bracken, bark and light coming through leaves.' },
 
-  { id: 'Riviera', name: 'Riviera', status: 'soon',
+  { id: 'Riviera', name: 'Riviera', status: 'live',
     ink: '#24414F', gold: '#BFA678', band: '#4E7A94',
     line: 'Deep sea blue and painted shutters.',
     story: 'The southern coast in high summer — lemon trees, tiled terraces and ' +
@@ -65,71 +65,71 @@ const COLLECTIONS = [
     story: 'A winter wedding — bare branches, deep green and gold against a ' +
            'cold blue.' },
 
-  { id: 'ArtDeco', name: 'Art Deco', status: 'soon',
+  { id: 'ArtDeco', name: 'Art Deco', status: 'live',
     ink: '#2B2B2B', gold: '#B7995C', band: '#362315',
     line: 'Jade, onyx and the geometry of the twenties.',
     story: 'Peacocks, fans and fluted lines. Confident, symmetrical and cut ' +
            'from a single geometry.' },
 
-  { id: 'Orchard', name: 'Orchard', status: 'soon',
+  { id: 'Orchard', name: 'Orchard', status: 'live',
     ink: '#5A4534', gold: '#BFA678', band: '#C4A188',
     line: 'Blossom, bees and old fruit trees.',
     story: 'An orchard in late spring, all pale blossom and low branches.' },
 
-  { id: 'BlueWillow', name: 'Blue Willow', status: 'soon',
+  { id: 'BlueWillow', name: 'Blue Willow', status: 'live',
     ink: '#0E1531', gold: '#B7995C', band: '#A2B5C6',
     line: 'Porcelain blue and a story in a pattern.',
     story: 'The willow pattern that has been on English tables for two hundred ' +
            'years, redrawn for a wedding.' },
 
-  { id: 'Vineyard', name: 'Vineyard', status: 'soon',
+  { id: 'Vineyard', name: 'Vineyard', status: 'live',
     ink: '#33222A', gold: '#7E6B3E', band: '#542F35',
     line: 'Old vines, limestone and claret.',
     story: 'Late summer on a European wine estate — weathered stone, aged ' +
            'oak, linen and vine. The collection for a wedding in burgundy.' },
-  { id: 'Gold', name: 'Gold', status: 'soon',
+  { id: 'Gold', name: 'Gold', status: 'live',
     ink: '#3E3128', gold: '#9E8449', band: '#B8AEA1',
     line: 'Nothing more than necessary.',
     story: 'Typography, proportion and a single line of antique gold — for a ' +
            'wedding that wants no decoration at all.' },
 
-  { id: 'Nocturne', name: 'Nocturne', status: 'soon',
+  { id: 'Nocturne', name: 'Nocturne', status: 'live',
     ink: '#18232D', gold: '#B6A070', band: '#8A9095',
     line: 'Midnight, silver and candlelight.',
     story: 'A black-tie wedding after dark — midnight velvet, blackened ' +
            'silver and white moonflowers open in the evening.' },
 
-  { id: 'Nordic', name: 'Nordic', status: 'soon',
+  { id: 'Nordic', name: 'Nordic', status: 'live',
     ink: '#4A443C', gold: '#A2916F', band: '#948B80',
     line: 'Pale wood, linen and long light.',
     story: 'Scandinavian restraint. Undyed linen, birch and almost no ' +
            'ornament at all.' },
 
-  { id: 'Chateau', name: 'French Château', status: 'soon',
+  { id: 'Chateau', name: 'French Château', status: 'live',
     ink: '#3A3835', gold: '#A9884F', band: '#4A4845',
     line: 'Stone, shutters and a long table.',
     story: 'The proportions of a French country house — arched openings, aged ' +
            'plaster and gold worn thin by time.' },
 
-  { id: 'Conservatory', name: 'Conservatory', status: 'soon',
+  { id: 'Conservatory', name: 'Conservatory', status: 'live',
     ink: '#51624C', gold: '#B7995C', band: '#7E8E7A',
     line: 'Glasshouse ferns and cast iron.',
     story: 'Victorian glasshouses, palm fronds under a curved roof, and the ' +
            'green light of a room made for plants.' },
 
-  { id: 'Minimal', name: 'Minimal', status: 'soon',
+  { id: 'Minimal', name: 'Minimal', status: 'live',
     ink: '#31302B', gold: '#BFA678', band: '#E0DBD4',
     line: 'Type, space and nothing else.',
     story: 'For couples who want the words to do the work. One rule, one mark, ' +
            'and a great deal of paper left empty.' },
 
-  { id: 'OliveGold', name: 'Olive & Gold', status: 'soon',
+  { id: 'OliveGold', name: 'Olive & Gold', status: 'live',
     ink: '#664519', gold: '#8A6A1E', band: '#AEB9A0',
     line: 'Olive groves and warm Mediterranean light.',
     story: 'Silver-backed olive leaves, sun-warmed stone and gold with earth ' +
            'in it.' },
 
-  { id: 'Classic', name: 'Classic', status: 'soon',
+  { id: 'Classic', name: 'Classic', status: 'live',
     ink: '#33363B', gold: '#BFA46B', band: '#3C4045',
     line: 'Engraved formality, done properly.',
     story: 'The traditional wedding suite — crest, copperplate and a border ' +

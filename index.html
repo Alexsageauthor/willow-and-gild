@@ -109,8 +109,30 @@ section{padding:clamp(56px,8vw,104px) 0}
   text-transform:uppercase;color:var(--soft);
 }
 .card.live .tag{color:var(--gold)}
-.card.soon{opacity:.62;transition:opacity .4s}
-.card.soon:hover{opacity:.85;border-color:var(--stone)}
+/* THE SWATCH IS NOT PART OF THE MOOD. .card.soon fades the WHOLE card to
+   opacity .62 to say "coming soon", and the three dots are inside the card, so
+   Woodlands' ink #3A4A3E rendered as a pale sage and its band #243029 as a
+   pale mint — against the collection page, where the same three dots are drawn
+   at full strength and read as the dark green and dark brown they are. The
+   values were identical the whole time; ONE OF THE TWO WAS BEING FADED.
+   Three passes went looking for a wrong hex because both pages emitted the
+   same hex. A COLOUR SWATCH IS A STATEMENT OF FACT AND MUST NOT BE STYLED BY
+   STATUS — it is the one element on the card that has to be literally true.
+   The fade stays on everything else. */
+   OPACITY CANNOT BE UNDONE BY A CHILD. It composites down the tree and clamps
+   at 1, so `.card.soon .swatch{opacity:1.6}` does nothing at all. The fade has
+   to come OFF the card and go onto the parts that should fade, naming them one
+   by one, with the swatch simply not on the list. */
+.card.soon{transition:opacity .4s}
+.card.soon .art,
+.card.soon h3,
+.card.soon .body p,
+.card.soon .tag{opacity:.62;transition:opacity .4s}
+.card.soon:hover .art,
+.card.soon:hover h3,
+.card.soon:hover .body p,
+.card.soon:hover .tag{opacity:.85}
+.card.soon:hover{border-color:var(--stone)}
 .card.soon .art img{filter:saturate(.55)}
 
 /* ---------- the promise strip ---------- */

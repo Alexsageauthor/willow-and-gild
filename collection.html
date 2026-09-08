@@ -257,9 +257,18 @@ document.getElementById('main').innerHTML = `
     <h1 class="serif">${c.name}</h1>
     <p class="lede">${c.story}</p>
     <div class="palette">
+      <!-- ink, gold, band — THE SAME THREE, IN THE SAME ORDER, AS THE WALL.
+           This block kept var(--paper) as its third dot for a week after
+           index.html moved to the lane's band, so every collection showed one
+           swatch on the card and a different one on its own page. The fix on
+           the wall was swept into one file and not the other: A SWATCH IS
+           DRAWN IN TWO PLACES AND BOTH ARE THE SWATCH. Paper is identical on
+           all eighteen and told the customer nothing; the band is the colour
+           the palette matcher scores against, so it is the one that has to
+           show. -->
       <i style="background:${c.ink}" title="ink"></i>
       <i style="background:${c.gold}" title="gold"></i>
-      <i style="background:var(--paper);border-color:var(--stone)" title="paper"></i>
+      <i style="background:${c.band || c.gold}" title="band"></i>
     </div>
   </div>
 

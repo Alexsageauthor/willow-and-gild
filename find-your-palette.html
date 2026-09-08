@@ -209,8 +209,7 @@ function render(){
            it, and this one survived both sweeps because it calls the element a
            strip rather than a swatch or a palette — grepping for the NAME finds
            two of three. Grep for the VALUES: background:${c.band}. -->
-      <div class="strip"><i style="background:${c.ink}"></i>
-        <i style="background:${c.gold||c.ink}"></i><i style="background:${c.band||c.gold}"></i></div>
+      <div class="strip"><i style="background-image:linear-gradient(${(c.swatch?c.swatch[0]:c.ink)},${(c.swatch?c.swatch[0]:c.ink)});box-shadow:inset 0 0 0 1px rgba(255,255,255,.28),0 0 0 1.5px var(--gold)"></i><i style="background-image:linear-gradient(${(c.swatch?c.swatch[1]:c.gold)},${(c.swatch?c.swatch[1]:c.gold)});box-shadow:inset 0 0 0 1px rgba(255,255,255,.28),0 0 0 1.5px var(--gold)"></i><i style="background-image:linear-gradient(${(c.swatch?c.swatch[2]:(c.band||c.gold))},${(c.swatch?c.swatch[2]:(c.band||c.gold))});box-shadow:inset 0 0 0 1px rgba(255,255,255,.28),0 0 0 1.5px var(--gold)"></i></div>
       <div class="meta">
         ${word?'<span class="verdict">'+word+'</span>':''}
         <h3>${c.name}${live?'':'<span class="soon">coming soon</span>'}</h3>

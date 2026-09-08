@@ -101,7 +101,7 @@ section{padding:clamp(56px,8vw,104px) 0}
 .card .body{padding:26px 26px 30px;text-align:center}
 .card h3{margin-bottom:8px}
 .card p{font-size:.9rem;color:var(--soft);min-height:2.9em}
-.swatch{display:flex;gap:6px;justify-content:center;margin-top:16px}
+.swatch{display:flex;gap:9px;justify-content:center;margin-top:16px}
 .swatch i{width:15px;height:15px;border-radius:50%;display:block;
           border:1px solid rgba(0,0,0,.06)}
 .tag{
@@ -210,6 +210,7 @@ footer .brand img{height:26px}
          it answers a question the grid cannot. -->
     <a class="btn" href="find-your-palette.html">Start With Your Colours</a>
     <a class="btn" href="collection.html?c=Kyoto">See a Collection in Full</a>
+    <a class="btn" href="the-house.html">See Every Collection Side by Side</a>
   </div>
 </div>
 
@@ -360,10 +361,20 @@ grid.innerHTML = COLLECTIONS.map(c => {
            TOUCHING dots, so a light dot between the two darks does the work.
            Ordered ink, gold, band the worst adjacent gap on any lane is 11.5.
            -->
-      <div class="swatch">
-        <i style="background:${c.ink}"></i><i style="background:${c.gold}"></i>
-        <i style="background:${c.band || c.gold}"></i>
-      </div>
+      <!-- THE DOTS ARE DRAWN AS GRADIENTS, NOT AS A FLAT background-color, AND
+           THAT IS THE WHOLE FIX. Sampled off Kelly's two screenshots, Woodlands'
+           ink #3A4A3E rendered #AEB8B0 on the wall and #030F05 on this page — the
+           same hex, two different colours, neither of them the real one. Samsung
+           Browser's forced dark mode rewrites flat background-color: on the wall the
+           dots sit inside .card, which is cream, so the card and its contents are
+           INVERTED and the dots come out pale; here they sit on the dark page and
+           are DARKENED instead. Three passes went hunting a wrong value in the CSS
+           when both pages had always emitted the same correct one.
+           A FORCED-DARK BROWSER REWRITES COLOURS AND WILL NOT ASK. It leaves images
+           and gradients alone, so a two-stop linear-gradient of one colour is a flat
+           swatch the algorithm will not touch. The ring is drawn with box-shadow for
+           the same reason — a border colour is rewritten, an inset shadow is not. -->
+      <div class="swatch"><i style="background-image:linear-gradient(${(c.swatch?c.swatch[0]:c.ink)},${(c.swatch?c.swatch[0]:c.ink)});box-shadow:inset 0 0 0 1px rgba(255,255,255,.28),0 0 0 1.5px var(--gold)"></i><i style="background-image:linear-gradient(${(c.swatch?c.swatch[1]:c.gold)},${(c.swatch?c.swatch[1]:c.gold)});box-shadow:inset 0 0 0 1px rgba(255,255,255,.28),0 0 0 1.5px var(--gold)"></i><i style="background-image:linear-gradient(${(c.swatch?c.swatch[2]:(c.band||c.gold))},${(c.swatch?c.swatch[2]:(c.band||c.gold))});box-shadow:inset 0 0 0 1px rgba(255,255,255,.28),0 0 0 1.5px var(--gold)"></i></div>
       <span class="tag">${live ? 'Shop the collection' : 'Coming soon'}</span>
     </div>`;
   return `<a class="card ${live ? 'live' : 'soon'} rv" href="collection.html?c=${c.id}">${inner}</a>`;

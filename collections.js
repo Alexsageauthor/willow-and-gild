@@ -24,9 +24,26 @@
    one glance that the house does flowers. The sequence below alternates
    texture, colour and temperature so no two neighbours are the same KIND of
    thing: botanical, floral, graphic, woodland, coastal, cold, and so on. */
+/* ---------------------------------------------------------------------------
+   `swatch` — THE THREE DOTS A CUSTOMER SEES, AND THEY ARE NOT ink/gold/band.
+   The dots showed ink, gold and band for months and every collection came out
+   brown, brass and grey, because THOSE THREE ARE A TYPOGRAPHIC PALETTE: ink is
+   what type is set in, gold is what rules are drawn in, band is the masthead.
+   Muted is their job. Kelly: "we are looking very, very same across pretty much
+   all collections."
+   Sampling the artwork automatically did not fix it either — a plate is mostly
+   cream porcelain, so frequency returns three creams, and weighting for chroma
+   returns the darkest object rather than the signature colour. It gave Kyoto
+   three browns and no blossom at all, and dropped Vineyard's claret, which is
+   the one colour that lane exists for.
+   So these are CHOSEN, per collection, from its own art: the three a bride
+   would put on her bridesmaids, her flowers and her table. ink/gold/band are
+   untouched and keep doing their typographic jobs.
+   --------------------------------------------------------------------------- */
 const COLLECTIONS = [
 
-  { id: 'Kyoto', name: 'Kyoto', status: 'live',
+  { id: 'Kyoto',
+    swatch: ['#E4BDBA', '#8C9B86', '#2F2C29'], name: 'Kyoto', status: 'live',
     ink: '#3F4A3C', gold: '#B7995C', band: '#CFC9B3',
     etsy: '',        // paste the Etsy listing URL
     gumroad: '',     // paste the Gumroad product URL
@@ -35,29 +52,34 @@ const COLLECTIONS = [
            'cherry blossom on a bare branch, and the restraint of a room where ' +
            'nothing is there by accident. Sage and antique gold on warm ivory.' },
 
-  { id: 'EnglishRose', name: 'English Rose', status: 'live',
+  { id: 'EnglishRose',
+    swatch: ['#C9807E', '#9E4750', '#7C8B6A'], name: 'English Rose', status: 'live',
     ink: '#5A4340', gold: '#9C7D58', band: '#C8A5A1',
     line: 'Climbing roses and a garden in June.',
     story: 'English country gardens, roses over a doorway, and the traditions of ' +
            'a village wedding.' },
 
-  { id: 'MidCentury', name: 'Mid-Century', status: 'live',
+  { id: 'MidCentury',
+    swatch: ['#6B4A2F', '#B08D4F', '#E3D9C6'], name: 'Mid-Century', status: 'live',
     ink: '#3C3A34', gold: '#AE8E5A', band: '#4A3728',
     line: 'Warm walnut and confident shape.',
     story: 'Nineteen-fifties optimism — clean silhouettes, mustard and teak.' },
 
-  { id: 'Woodlands', name: 'Woodlands', status: 'live',
+  { id: 'Woodlands',
+    swatch: ['#2F4A32', '#7C8B5E', '#B8AE93'], name: 'Woodlands', status: 'live',
     ink: '#3A4A3E', gold: '#A8905C', band: '#243029',
     line: 'Ferns, moss and a green canopy.',
     story: 'Deep woodland — bracken, bark and light coming through leaves.' },
 
-  { id: 'Riviera', name: 'Riviera', status: 'live',
+  { id: 'Riviera',
+    swatch: ['#F0C22B', '#1F4E6B', '#EFE8DA'], name: 'Riviera', status: 'live',
     ink: '#24414F', gold: '#BFA678', band: '#4E7A94',
     line: 'Deep sea blue and painted shutters.',
     story: 'The southern coast in high summer — lemon trees, tiled terraces and ' +
            'water you can see the bottom of.' },
 
-  { id: 'Winter', name: 'Winter', status: 'live',
+  { id: 'Winter',
+    swatch: ['#A6B6BE', '#7E4A4A', '#C9CBBF'], name: 'Winter', status: 'live',
     ink: '#4C5A66', gold: '#B7995C', band: '#6E7B87',
     etsy: '',        // paste the Etsy listing URL
     gumroad: '',     // paste the Gumroad product URL
@@ -65,71 +87,83 @@ const COLLECTIONS = [
     story: 'A winter wedding — bare branches, deep green and gold against a ' +
            'cold blue.' },
 
-  { id: 'ArtDeco', name: 'Art Deco', status: 'live',
+  { id: 'ArtDeco',
+    swatch: ['#1F6B5C', '#C9A227', '#16181A'], name: 'Art Deco', status: 'live',
     ink: '#2B2B2B', gold: '#B7995C', band: '#362315',
     line: 'Jade, onyx and the geometry of the twenties.',
     story: 'Peacocks, fans and fluted lines. Confident, symmetrical and cut ' +
            'from a single geometry.' },
 
-  { id: 'Orchard', name: 'Orchard', status: 'live',
+  { id: 'Orchard',
+    swatch: ['#C2603F', '#8A9B5B', '#C9AE84'], name: 'Orchard', status: 'live',
     ink: '#5A4534', gold: '#BFA678', band: '#C4A188',
     line: 'Blossom, bees and old fruit trees.',
     story: 'An orchard in late spring, all pale blossom and low branches.' },
 
-  { id: 'BlueWillow', name: 'Blue Willow', status: 'live',
+  { id: 'BlueWillow',
+    swatch: ['#2E4A8C', '#7C9BC4', '#F2EDE3'], name: 'Blue Willow', status: 'live',
     ink: '#0E1531', gold: '#B7995C', band: '#A2B5C6',
     line: 'Porcelain blue and a story in a pattern.',
     story: 'The willow pattern that has been on English tables for two hundred ' +
            'years, redrawn for a wedding.' },
 
-  { id: 'Vineyard', name: 'Vineyard', status: 'live',
+  { id: 'Vineyard',
+    swatch: ['#542F35', '#6E7A56', '#C8BBA1'], name: 'Vineyard', status: 'live',
     ink: '#33222A', gold: '#7E6B3E', band: '#542F35',
     line: 'Old vines, limestone and claret.',
     story: 'Late summer on a European wine estate — weathered stone, aged ' +
            'oak, linen and vine. The collection for a wedding in burgundy.' },
-  { id: 'Gold', name: 'Gold', status: 'live',
+  { id: 'Gold',
+    swatch: ['#A9853F', '#6A5836', '#E6DCC8'], name: 'Gold', status: 'live',
     ink: '#3E3128', gold: '#9E8449', band: '#B8AEA1',
     line: 'Nothing more than necessary.',
     story: 'Typography, proportion and a single line of antique gold — for a ' +
            'wedding that wants no decoration at all.' },
 
-  { id: 'Nocturne', name: 'Nocturne', status: 'live',
+  { id: 'Nocturne',
+    swatch: ['#16202B', '#9AA3AA', '#D8C79A'], name: 'Nocturne', status: 'live',
     ink: '#18232D', gold: '#B6A070', band: '#8A9095',
     line: 'Midnight, silver and candlelight.',
     story: 'A black-tie wedding after dark — midnight velvet, blackened ' +
            'silver and white moonflowers open in the evening.' },
 
-  { id: 'Nordic', name: 'Nordic', status: 'live',
+  { id: 'Nordic',
+    swatch: ['#D9CDB8', '#A8977C', '#6E6A5F'], name: 'Nordic', status: 'live',
     ink: '#4A443C', gold: '#A2916F', band: '#948B80',
     line: 'Pale wood, linen and long light.',
     story: 'Scandinavian restraint. Undyed linen, birch and almost no ' +
            'ornament at all.' },
 
-  { id: 'Chateau', name: 'French Château', status: 'live',
+  { id: 'Chateau',
+    swatch: ['#C3BCA9', '#E3DCCB', '#6E7A5C'], name: 'French Château', status: 'live',
     ink: '#3A3835', gold: '#A9884F', band: '#4A4845',
     line: 'Stone, shutters and a long table.',
     story: 'The proportions of a French country house — arched openings, aged ' +
            'plaster and gold worn thin by time.' },
 
-  { id: 'Conservatory', name: 'Conservatory', status: 'live',
+  { id: 'Conservatory',
+    swatch: ['#4E7A3A', '#9BA79B', '#D8D4C6'], name: 'Conservatory', status: 'live',
     ink: '#51624C', gold: '#B7995C', band: '#7E8E7A',
     line: 'Glasshouse ferns and cast iron.',
     story: 'Victorian glasshouses, palm fronds under a curved roof, and the ' +
            'green light of a room made for plants.' },
 
-  { id: 'Minimal', name: 'Minimal', status: 'live',
+  { id: 'Minimal',
+    swatch: ['#EDE7DC', '#C9C0B0', '#6F6A60'], name: 'Minimal', status: 'live',
     ink: '#31302B', gold: '#BFA678', band: '#E0DBD4',
     line: 'Type, space and nothing else.',
     story: 'For couples who want the words to do the work. One rule, one mark, ' +
            'and a great deal of paper left empty.' },
 
-  { id: 'OliveGold', name: 'Olive & Gold', status: 'live',
+  { id: 'OliveGold',
+    swatch: ['#7E8B62', '#A98A3C', '#B9A98C'], name: 'Olive & Gold', status: 'live',
     ink: '#664519', gold: '#8A6A1E', band: '#AEB9A0',
     line: 'Olive groves and warm Mediterranean light.',
     story: 'Silver-backed olive leaves, sun-warmed stone and gold with earth ' +
            'in it.' },
 
-  { id: 'Classic', name: 'Classic', status: 'live',
+  { id: 'Classic',
+    swatch: ['#E8DFC9', '#B79447', '#3A3B3E'], name: 'Classic', status: 'live',
     ink: '#33363B', gold: '#BFA46B', band: '#3C4045',
     line: 'Engraved formality, done properly.',
     story: 'The traditional wedding suite — crest, copperplate and a border ' +

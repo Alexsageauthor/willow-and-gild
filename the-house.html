@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light only">
+<title>The House — Willow &amp; Gild</title>
+<meta name="description" content="Every collection, seen family by family: eighteen plates, eighteen heroes, eighteen cakes, eighteen chairs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+html{color-scheme:light only}
+:root{
+  --paper:#F8F6F2; --ink:#2E2A26; --soft:#8A8078; --stone:#E2DCD3;
+  --gold:#A9853F;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+     font-family:'Inter',system-ui,sans-serif;font-weight:300;-webkit-font-smoothing:antialiased}
+.serif{font-family:'Cormorant Garamond',Georgia,serif}
+a{color:inherit;text-decoration:none}
+
+header{position:sticky;top:0;z-index:20;background:rgba(248,246,242,.92);
+       backdrop-filter:saturate(150%) blur(8px);border-bottom:1px solid var(--stone)}
+.bar{max-width:1200px;margin:0 auto;padding:14px 22px;display:flex;
+     align-items:center;justify-content:space-between}
+.mark{font-family:'Cormorant Garamond',serif;font-size:1.15rem;letter-spacing:.22em;
+      text-transform:uppercase;color:var(--gold)}
+.back{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--soft)}
+
+.wrap{max-width:1200px;margin:0 auto;padding:0 22px}
+.intro{padding:64px 0 26px;text-align:center}
+.eyebrow{font-size:.62rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin:0}
+.intro h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:300;margin:.35em 0 .2em}
+.intro p{max-width:620px;margin:0 auto;color:var(--soft);line-height:1.75;font-size:.95rem}
+.rule{width:56px;height:1px;background:var(--gold);margin:18px auto;opacity:.6}
+
+section{padding:34px 0 10px}
+.head{display:flex;align-items:baseline;gap:14px;margin-bottom:18px}
+.head h2{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1.8rem;margin:0}
+.head span{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--soft)}
+.note{color:var(--soft);font-size:.86rem;margin:0 0 20px;line-height:1.7;max-width:640px}
+
+/* THE GRID IS THE POINT. Eighteen of one thing, same size, same spacing, so the
+   family reads as a family and the differences between collections are the only
+   thing moving. Six across on a desktop, three on a phone. */
+.family{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+@media(max-width:1000px){.family{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:640px){.family{grid-template-columns:repeat(3,1fr);gap:10px}}
+
+.item{position:relative;display:block;border:1px solid var(--stone);background:#fff;
+      overflow:hidden;transition:border-color .3s,transform .3s}
+.item img{width:100%;height:auto;display:block;transition:transform .5s ease}
+.item:hover{border-color:var(--gold);transform:translateY(-2px)}
+.item:hover img{transform:scale(1.04)}
+
+/* THE NAME IS ALWAYS THERE ON TOUCH, AND ONLY ON HOVER ON A POINTER.
+   A caption that only exists on hover is invisible on a phone, and most of the
+   traffic here is a phone. So the label sits under the image by default and the
+   overlay is an enhancement for mice, never the only way to read it. */
+.cap{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);
+     text-align:center;padding:7px 4px 9px;line-height:1.4}
+@media(hover:hover){
+  .cap{display:none}
+  .item .over{position:absolute;inset:auto 0 0 0;padding:9px 6px;
+       background:linear-gradient(to top,rgba(46,42,38,.86),rgba(46,42,38,0));
+       color:#F4F0E9;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;
+       text-align:center;opacity:0;transition:opacity .3s}
+  .item:hover .over{opacity:1}
+}
+@media(hover:none){.item .over{display:none}}
+
+footer{margin-top:70px;border-top:1px solid var(--stone);padding:30px 0 60px;text-align:center}
+footer p{color:var(--soft);font-size:.72rem;letter-spacing:.1em;margin:0}
+</style>
+</head>
+<body>
+
+<header><div class="bar">
+  <a class="mark" href="index.html">Willow &amp; Gild</a>
+  <a class="back" href="index.html">&larr; All collections</a>
+</div></header>
+
+<div class="wrap">
+  <div class="intro">
+    <p class="eyebrow">The House</p>
+    <h1 class="serif">One object, eighteen ways</h1>
+    <div class="rule"></div>
+    <p>Every collection is drawn from the same set of pieces. Seeing them side by
+       side is the quickest way to find the one that is yours.</p>
+  </div>
+
+  <div id="families"></div>
+
+  <footer><p>Willow &amp; Gild</p></footer>
+</div>
+
+<script src="collections.js"></script>
+<script>
+const V = ASSET_V;
+
+/* THE FAMILIES, IN THE ORDER THEY EARN ATTENTION. The plate first because it is
+   the card image and therefore the thing already recognised; the hero second
+   because it is the collection's signature object. */
+const FAMILIES = [
+  ['',       'The plates',        'The charger, painted for each collection.'],
+  ['_hero',  'The signature',     'One object that says what the collection is.'],
+  ['_cake',  'The cakes',         'The same cake, dressed eighteen ways.'],
+  ['_chair', 'The chairs',        'A seat at eighteen different weddings.'],
+  ['_hero2', 'The second mark',   'What the save the date carries.'],
+  ['_car',   'Going away',        'The car, ribboned, in each collection.'],
+];
+
+document.getElementById('families').innerHTML = FAMILIES.map(([suf,title,note]) => `
+  <section>
+    <div class="head"><h2 class="serif">${title}</h2><span>${COLLECTIONS.length} collections</span></div>
+    <p class="note">${note}</p>
+    <div class="family">
+      ${COLLECTIONS.map(c => `
+        <a class="item" href="collection.html?c=${c.id}" title="${c.name}">
+          <img src="assets/${c.id}${suf}.webp?v=${V}" alt="${c.name} — ${title}" loading="lazy">
+          <div class="over">${c.name}</div>
+          <div class="cap">${c.name}</div>
+        </a>`).join('')}
+    </div>
+  </section>`).join('');
+</script>
+</body>
+</html>

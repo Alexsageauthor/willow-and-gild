@@ -102,7 +102,12 @@ section{padding:clamp(56px,8vw,104px) 0}
 .card h3{margin-bottom:8px}
 .card p{font-size:.9rem;color:var(--soft);min-height:2.9em}
 .swatch{display:flex;gap:9px;justify-content:center;margin-top:16px}
-.swatch .dot{display:block}
+/* AN <img> IN A FLEX ROW STRETCHES. The rule this replaced carried the
+   width and height; dropping it left the dots to be sized by the flex
+   container, which pulled three circles into three page-wide ellipses.
+   flex:0 0 auto stops the growing, the explicit box stops the guessing,
+   and max-width:none stops a global img rule shrinking them. */
+.swatch .dot{display:block;flex:0 0 auto;width:30px;height:30px;border-radius:50%;max-width:none}
 .tag{
   margin-top:18px;display:inline-block;font-size:.6rem;letter-spacing:.24em;
   text-transform:uppercase;color:var(--soft);

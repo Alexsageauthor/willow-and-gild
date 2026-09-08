@@ -202,8 +202,15 @@ function render(){
         <img src="assets/${c.id}.webp" alt="${c.name}" loading="lazy"
              onerror="this.remove()">
       </div>
-      <div class="strip"><i style="background:${c.band}"></i>
-        <i style="background:${c.gold||c.ink}"></i><i style="background:${c.ink}"></i></div>
+      <!-- ink, gold, band — THE SAME THREE, IN THE SAME ORDER, AS THE WALL
+           AND THE COLLECTION PAGE. This drew them BACKWARDS: band, gold, ink.
+           THE SWATCH IS DRAWN IN THREE PLACES AND ALL THREE ARE THE SWATCH.
+           index.html was fixed first, collection.html second after Kelly found
+           it, and this one survived both sweeps because it calls the element a
+           strip rather than a swatch or a palette — grepping for the NAME finds
+           two of three. Grep for the VALUES: background:${c.band}. -->
+      <div class="strip"><i style="background:${c.ink}"></i>
+        <i style="background:${c.gold||c.ink}"></i><i style="background:${c.band||c.gold}"></i></div>
       <div class="meta">
         ${word?'<span class="verdict">'+word+'</span>':''}
         <h3>${c.name}${live?'':'<span class="soon">coming soon</span>'}</h3>

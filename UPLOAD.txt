@@ -1,41 +1,39 @@
-WILLOW & GILD - THE SEATING CHART BUILDER COULD NOT EXPORT
+WILLOW & GILD - TYPE THE GUESTS ONCE
 
-WHAT WAS WRONG
-  seating-planner.html fetches six files from assets/ and embeds them into the
-  PDF: Chorus.ttf, Pagella.ttf, Pagella-Italic.ttf, branch.png,
-  divider_fan.png, paper.jpg.
+ONE FILE: seating-planner.html, repo root, over the existing one.
+(The six assets from the previous zip must already be in assets/.)
 
-  NONE OF THE SIX WAS IN THE REPO. assets/ held 168 files and not one of them.
-  A 404 returns Vercel's HTML error page as bytes, embedFont throws on it, and
-  the catch in downloadPDF() shows "Something went wrong building the PDF" -
-  to a customer who had paid, entered their access code and designed their
-  whole chart. The preview worked, so nothing looked broken until the last
-  click.
+WHAT IS NEW
+  Two more buttons beside "Download seating chart":
+      Download Find Your Seat
+      Download place cards
+  Both are drawn from the SAME guest list already typed into the planner.
+  Enter your guests once and every product that names them comes out filled.
 
-WHAT IS IN HERE
-  assets/Chorus.ttf            from fonts/ - exact
-  assets/Pagella.ttf           from fonts/ - exact
-  assets/Pagella-Italic.ttf    from fonts/ - exact
-  assets/paper.jpg             850 x 1100, the exact size the code expects
-  assets/branch.png            Kyoto's cascading blossom branch, portrait
-  assets/divider_fan.png       Kyoto's floral rule, 1833 x 158
-  seating-planner.html         aspect ratios no longer hardcoded
+  NOTHING IS LOCKED TO A TABLE SIZE. A table of six yields six place cards,
+  not six and four blanks, and its Find Your Seat block is six rows tall.
+  Blank guest boxes are skipped entirely.
 
-  The planner's palette is ink #3F4A3C and gold #B7995C, which is Kyoto's
-  exactly, so Kyoto art is the right choice. branch.png and divider_fan.png
-  are my substitutions - the originals are in neither the repo nor the
-  archive and appear never to have existed. PLEASE LOOK AT AN EXPORTED PDF
-  AND TELL ME IF THEY ARE RIGHT.
+WHY IT IS HERE AND NOT IN THE PDFs
+  A PDF form can copy a value into every field sharing its name - that is how
+  the place-card master list already fills all eighty cards. What it cannot do
+  is COMPACT a list, because that needs computation, and PDF JavaScript is
+  ignored by Preview, by Chrome and by every phone. Sharing field names across
+  products would only have worked by fixing the seats per table.
+  This page can compact. So this is where it belongs.
 
-  The code also hardcoded three aspect ratios (708/1048, 9.536, 850x1100), so
-  any replacement art would have been silently stretched. It now reads the
-  real size off each embedded image.
+  The fillable PDFs are UNCHANGED. Anyone who would rather type into the
+  document still can.
 
-HOW TO UPLOAD
-  Repo-root relative. 6 files into assets/, and seating-planner.html at the
-  root over the existing one. 7 files.
+TESTED
+  Run in node against tables of 6, 12 and 3 (one box left blank):
+      20 guests found, the blank skipped
+      5 place-card sheets, 20 cards, 0 blanks
+      Find Your Seat: 3 headings, 20 guest lines, 1 page
+  What I could NOT test is how it looks. Please export both and check.
 
-THEN TEST
-  Open the planner, enter the access code, add a table or two with names,
-  and press Download print-ready PDF. It should produce a poster instead of
-  an error.
+PLACE CARDS
+  A4, four to a sheet at 252 x 288pt - the same card size as the printed
+  product (place_cards.py:42). Fold line dashed across the top, trim marks at
+  the corners, name in Chorus, table beneath in tracked caps, and the floral
+  rule as the divider between them.

@@ -156,7 +156,9 @@ html{color-scheme:only light;background:#F8F6F2}
         <h2>Your Chart — live preview</h2>
         <div id="svgbox"></div>
         <div class="toolbar">
-          <button class="btn" onclick="downloadPDF()">Download print-ready PDF</button>
+          <button class="btn" onclick="downloadPDF()">Download seating chart</button>
+          <button class="btn ghost" onclick="downloadFindYourSeat()">Download Find Your Seat</button>
+          <button class="btn ghost" onclick="downloadPlaceCards()">Download place cards</button>
         </div>
         <div class="status" id="status">Changes save automatically in this browser.</div>
       </div>
@@ -486,6 +488,227 @@ async function downloadPDF() {
     st.textContent = "Something went wrong building the PDF — refresh and try again, or message us on Etsy.";
     console.error(e);
   }
+}
+
+
+/* ===================================================================
+   TYPE THE GUESTS ONCE — PLACE CARDS AND FIND YOUR SEAT
+   ===================================================================
+   WHY THIS LIVES HERE AND NOT IN THE PDFs.
+   The fillable PDFs sync a value into every widget sharing its name, which is
+   how the place-card master list already fills all eighty cards. What a PDF
+   form CANNOT do is COMPACT: it cannot take a table of six and a table of
+   twelve and lay out eighteen cards with no gaps, because that needs
+   computation and the JavaScript that would do it is ignored by Preview, by
+   Chrome and by every phone — the same reason the fields needed /Kids.
+
+   Sharing a field name across products would have worked only by fixing the
+   seats per table, and Kelly: "we don't wanna lock ten per table because quite
+   often it's not ten per table."
+
+   This page already holds the answer: state.tables is [{name, shape, seats,
+   guests[]}] with ANY number of guests per table. JavaScript can compact. So
+   the guests are typed once, here, and every product that names them is drawn
+   from that one list.
+
+   THE DELIVERABLE PDFs ARE UNCHANGED. Anyone who would rather type into the
+   document still can.
+   =================================================================== */
+
+const A4 = { w: 595.28, h: 841.89 };
+const CARD = { w: 252.0, h: 288.0, gx: 14.0, gy: 16.0 };   // place_cards.py:42
+
+function guestsInOrder() {
+  /* Table by table, in the order they were added, skipping blanks. A guest
+     carries their own table name, so a short table simply yields fewer cards
+     instead of blank ones. */
+  const out = [];
+  for (const t of state.tables) {
+    const nm = (t.name || "").trim();
+    for (const g of (t.guests || [])) {
+      const s = (g || "").trim();
+      if (s) out.push({ name: s, table: nm });
+    }
+  }
+  return out;
+}
+
+function layoutPlaceCards() {
+  const g = guestsInOrder();
+  const pages = [];
+  const perPage = 4;
+  const x0 = (A4.w - (CARD.w * 2 + CARD.gx)) / 2;
+  const y0 = (A4.h - (CARD.h * 2 + CARD.gy)) / 2;
+  for (let i = 0; i < g.length; i += perPage) {
+    const P = [{ t: "paper" }];
+    for (let k = 0; k < perPage && i + k < g.length; k++) {
+      const col = k % 2, row = Math.floor(k / 2);
+      const x = x0 + col * (CARD.w + CARD.gx);
+      const y = y0 + row * (CARD.h + CARD.gy);
+      const cx = x + CARD.w / 2;
+      // the fold, dashed, across the top of the tent
+      P.push({ t: "dash", x1: x, x2: x + CARD.w, y: y });
+      P.push({ t: "text", s: g[i + k].name, x: cx, y: y + CARD.h * 0.58,
+               size: 20, font: "chorus", fill: C.ink, align: "c" });
+      P.push({ t: "fanimg", x: cx, y: y + CARD.h * 0.645, w: 74 });
+      P.push({ t: "text", s: "table " + g[i + k].table, x: cx,
+               y: y + CARD.h * 0.735, size: 7, font: "caps", track: 2.6,
+               fill: C.faint, align: "c" });
+      // trim marks, so a home printer can be cut square
+      P.push({ t: "trim", x: x, y: y, w: CARD.w, h: CARD.h });
+    }
+    pages.push({ W: A4.w, H: A4.h, P });
+  }
+  return pages;
+}
+
+function layoutFindYourSeat() {
+  /* EVERY BLOCK IS SIZED TO ITS OWN TABLE. The printed poster draws twelve
+     blocks of ten whatever the wedding is; here a six and a twelve both look
+     deliberate, because the row count comes from the guest list. */
+  const { w: W, h: H } = SIZES[document.getElementById("psize").value];
+  const tables = state.tables
+    .map(t => ({ name: (t.name || "").trim(),
+                 guests: (t.guests || []).map(s => (s || "").trim()).filter(Boolean) }))
+    .filter(t => t.guests.length);
+  const P = [{ t: "paper" }, { t: "frame" }];
+  const couple = (document.getElementById("couple").value || "").trim();
+  const wdate = (document.getElementById("wdate").value || "").trim();
+
+  P.push({ t: "text", s: "Find Your Seat", x: W / 2, y: 190, size: 74,
+           font: "chorus", fill: C.ink, align: "c" });
+  if (couple) P.push({ t: "text", s: couple, x: W / 2, y: 246, size: 26,
+                       font: "italic", fill: C.sage, align: "c" });
+  if (wdate) P.push({ t: "text", s: wdate, x: W / 2, y: 286, size: 20,
+                      font: "italic", fill: C.faint, align: "c" });
+
+  const top = 350, bot = 130;
+  const cols = tables.length <= 2 ? tables.length : (tables.length <= 6 ? 2 : 3);
+  const rows = Math.ceil(tables.length / cols);
+  const cw = (W - 220) / cols;
+  const bh = (H - top - bot) / rows;
+  const tallest = Math.max(...tables.map(t => t.guests.length), 1);
+  const pitch = Math.min(34, (bh - 96) / tallest);
+
+  tables.forEach((t, i) => {
+    const cx = 110 + (i % cols) * cw + cw / 2;
+    const by = top + Math.floor(i / cols) * bh;
+    P.push({ t: "text", s: t.name, x: cx, y: by, size: 22, font: "caps",
+             track: 4, fill: C.gold, align: "c" });
+    P.push({ t: "rule", x1: cx - 90, x2: cx + 90, y: by + 16 });
+    t.guests.forEach((g, s) => {
+      P.push({ t: "text", s: g, x: cx, y: by + 58 + s * pitch, size: 22,
+               font: "italic", fill: C.ink, align: "c" });
+    });
+  });
+  P.push({ t: "text", s: "with love  ·  please take your seat", x: W / 2,
+           y: H - 70, size: 15, font: "caps", track: 6, fill: C.gold, align: "c" });
+  return [{ W, H, P }];
+}
+
+async function renderPages(pages, filename, doneMsg) {
+  const st = document.getElementById("status");
+  st.textContent = "Building…";
+  try {
+    if (!pages.length) {
+      st.textContent = "Add a table and some guest names first.";
+      return;
+    }
+    const A = await loadAssets();
+    const doc = await PDFLib.PDFDocument.create();
+    doc.registerFontkit(fontkit);
+    const fonts = {
+      chorus: await doc.embedFont(A.chorus),
+      pagella: await doc.embedFont(A.pagella),
+      italic: await doc.embedFont(A.italic),
+      caps: await doc.embedFont(A.pagella),
+    };
+    const fan = await doc.embedPng(A.fan);
+    const paper = await doc.embedJpg(A.paper);
+
+    for (const pg of pages) {
+      const page = doc.addPage([pg.W, pg.H]);
+      const Y = (y) => pg.H - y;
+      for (const p of pg.P) {
+        if (p.t === "paper") {
+          page.drawRectangle({ x: 0, y: 0, width: pg.W, height: pg.H, color: hex("#FDFBF6") });
+          const sc = Math.max(pg.W / paper.width, pg.H / paper.height);
+          page.drawImage(paper, { x: 0, y: pg.H - paper.height * sc,
+                                  width: paper.width * sc, height: paper.height * sc });
+        }
+        if (p.t === "frame") {
+          page.drawRectangle({ x: 36, y: 36, width: pg.W - 72, height: pg.H - 72,
+                               borderColor: hex(C.gold), borderWidth: 2 });
+          page.drawRectangle({ x: 50, y: 50, width: pg.W - 100, height: pg.H - 100,
+                               borderColor: hex(C.gold), borderWidth: 1 });
+        }
+        if (p.t === "dash") {
+          for (let x = p.x1; x < p.x2; x += 8) {
+            page.drawLine({ start: { x, y: Y(p.y) }, end: { x: Math.min(x + 4, p.x2), y: Y(p.y) },
+                            color: hex(C.rule), thickness: 0.6 });
+          }
+        }
+        if (p.t === "trim") {
+          const m = 9;
+          for (const [ax, ay, dx, dy] of [[p.x, p.y, -1, -1], [p.x + p.w, p.y, 1, -1],
+                                          [p.x, p.y + p.h, -1, 1], [p.x + p.w, p.y + p.h, 1, 1]]) {
+            page.drawLine({ start: { x: ax, y: Y(ay) }, end: { x: ax + dx * m, y: Y(ay) },
+                            color: hex(C.rule), thickness: 0.5 });
+            page.drawLine({ start: { x: ax, y: Y(ay) }, end: { x: ax, y: Y(ay + dy * m) },
+                            color: hex(C.rule), thickness: 0.5 });
+          }
+        }
+        if (p.t === "rule") {
+          page.drawLine({ start: { x: p.x1, y: Y(p.y) }, end: { x: p.x2, y: Y(p.y) },
+                          color: hex(C.gold), thickness: 0.9 });
+        }
+        if (p.t === "fanimg") {
+          const fh = p.w * (fan.height / fan.width);
+          page.drawImage(fan, { x: p.x - p.w / 2, y: Y(p.y) - fh / 2, width: p.w, height: fh });
+        }
+        if (p.t === "text" && p.s && p.s.trim()) {
+          const f = fonts[p.font] || fonts.pagella;
+          let s = p.s;
+          if (p.font === "caps") s = s.toUpperCase();
+          const wpx = f.widthOfTextAtSize(s, p.size) + (p.track ? p.track * (s.length - 1) : 0);
+          let x = p.x;
+          if (p.align === "c") x = p.x - wpx / 2;
+          if (p.align === "r") x = p.x - wpx;
+          if (p.track) {
+            let cx2 = x;
+            for (const ch of s) {
+              page.drawText(ch, { x: cx2, y: Y(p.y), size: p.size, font: f, color: hex(p.fill) });
+              cx2 += f.widthOfTextAtSize(ch, p.size) + p.track;
+            }
+          } else {
+            page.drawText(s, { x, y: Y(p.y), size: p.size, font: f, color: hex(p.fill) });
+          }
+        }
+      }
+    }
+    const bytes = await doc.save();
+    const blob = new Blob([bytes], { type: "application/pdf" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = filename;
+    a.click();
+    st.textContent = doneMsg;
+  } catch (e) {
+    st.textContent = "Something went wrong building the PDF — refresh and try again, or message us on Etsy.";
+    console.error(e);
+  }
+}
+
+function downloadPlaceCards() {
+  const pages = layoutPlaceCards();
+  const n = guestsInOrder().length;
+  renderPages(pages, "WillowAndGild-PlaceCards.pdf",
+              n + " place cards downloaded, " + pages.length + " sheets — print, cut and fold. ✦");
+}
+
+function downloadFindYourSeat() {
+  renderPages(layoutFindYourSeat(), "WillowAndGild-FindYourSeat.pdf",
+              "Find Your Seat downloaded — print it at any copy shop. ✦");
 }
 
 /* ================= BOOT ================= */

@@ -3,6 +3,14 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- FORCED DARK MODE MUST NOT REWRITE THE PALETTE.
+     A collection's three dots ARE the product: Art Deco's jade #1F6B5C
+     measured #70A699 on Kelly's phone and the onyx #16181A measured #848587,
+     because the browser lightens dark colours. The page background measured
+     #171611 against the declared #F8F6F2 — the whole page, images included.
+     The documented opt-out is `only light`, not `light only`, and Chromium
+     ignores TRANSPARENT backgrounds, so html carries an explicit one. -->
+<meta name="color-scheme" content="only light">
 <title>Willow &amp; Gild · Seating Chart Builder</title>
 <!--
   WILLOW & GILD — SEATING CHART BUILDER (MVP)
@@ -21,6 +29,7 @@
 <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@pdf-lib/fontkit@1.1.1/dist/fontkit.umd.min.js"></script>
 <style>
+html{color-scheme:only light;background:#F8F6F2}
   @font-face { font-family: "Chorus"; src: url("assets/Chorus.ttf"); }
   @font-face { font-family: "Pagella"; src: url("assets/Pagella.ttf"); }
   @font-face { font-family: "PagellaI"; src: url("assets/Pagella-Italic.ttf"); font-style: italic; }

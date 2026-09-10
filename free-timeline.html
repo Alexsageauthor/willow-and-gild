@@ -3,6 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- FORCED DARK MODE MUST NOT REWRITE THE PALETTE.
+     A collection's three dots ARE the product: Art Deco's jade #1F6B5C
+     measured #70A699 on Kelly's phone and the onyx #16181A measured #848587,
+     because the browser lightens dark colours. The page background measured
+     #171611 against the declared #F8F6F2 — the whole page, images included.
+     The documented opt-out is `only light`, not `light only`, and Chromium
+     ignores TRANSPARENT backgrounds, so html carries an explicit one. -->
+<meta name="color-scheme" content="only light">
 <title>Your wedding day timeline — free — Willow &amp; Gild</title>
 
 <!--
@@ -38,6 +46,7 @@
 -->
 
 <style>
+html{color-scheme:only light;background:#F8F6F2}
   :root{--paper:#FDFBF6;--ink:#2F2E2B;--muted:#7A756C;--gold:#B7995C;--rule:#E4DED2;
         --accent:#AEB9A0}
   *{box-sizing:border-box}

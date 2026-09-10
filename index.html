@@ -3,7 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light only">
+<!-- FORCED DARK MODE MUST NOT REWRITE THE PALETTE.
+     A collection's three dots ARE the product: Art Deco's jade #1F6B5C
+     measured #70A699 on Kelly's phone and the onyx #16181A measured #848587,
+     because the browser lightens dark colours. The page background measured
+     #171611 against the declared #F8F6F2 — the whole page, images included.
+     The documented opt-out is `only light`, not `light only`, and Chromium
+     ignores TRANSPARENT backgrounds, so html carries an explicit one. -->
+<meta name="color-scheme" content="only light">
 <meta name="theme-color" content="#F8F6F2">
 <title>Willow &amp; Gild — Printable Wedding Stationery Collections</title>
 <meta name="description" content="Complete printable wedding stationery collections. Every piece in a collection is designed together — invitations, menus, place cards, signage and planners.">
@@ -11,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-html{color-scheme:light only}
+html{color-scheme:only light;background:#F8F6F2}
 :root{
   --paper:#F8F6F2;      /* the brief's warm ivory, and the studio's own paper */
   --linen:#F1EDE5;

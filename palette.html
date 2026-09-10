@@ -3,12 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<!-- FORCED DARK MODE MUST NOT REWRITE THE PALETTE.
+     A collection's three dots ARE the product: Art Deco's jade #1F6B5C
+     measured #70A699 on Kelly's phone and the onyx #16181A measured #848587,
+     because the browser lightens dark colours. The page background measured
+     #171611 against the declared #F8F6F2 — the whole page, images included.
+     The documented opt-out is `only light`, not `light only`, and Chromium
+     ignores TRANSPARENT backgrounds, so html carries an explicit one. -->
+<meta name="color-scheme" content="only light">
 <title>Find your collection by colour — Willow &amp; Gild</title>
 <meta name="description" content="Tell us the colours you have in mind for your wedding, and we will show you which of the {{count}} collections sit closest to them.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
+html{color-scheme:only light;background:#F8F6F2}
 :root{
   --paper:#F8F6F2;--linen:#F1EDE5;--stone:#E3DDD1;
   --ink:#33342F;--soft:#6B6659;--gold:#A8865B;--measure:1180px;

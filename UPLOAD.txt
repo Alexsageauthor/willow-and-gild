@@ -1,27 +1,41 @@
-WILLOW & GILD - THE COLLECTION PAGE DOTS, ACTUALLY FIXED THIS TIME
+WILLOW & GILD - THE SEATING CHART BUILDER COULD NOT EXPORT
 
-ONE FILE: collection.html, repo root, over the existing one.
+WHAT WAS WRONG
+  seating-planner.html fetches six files from assets/ and embeds them into the
+  PDF: Chorus.ttf, Pagella.ttf, Pagella-Italic.ttf, branch.png,
+  divider_fan.png, paper.jpg.
 
-WHAT WAS ACTUALLY WRONG
-  Not the gap. The dots are <img> elements inside .hero, so they were picking
-  up this rule:
-      .hero img{width:min(360px,62vw);margin:0 auto clamp(20px,3vw,36px)}
-  `width` was already beaten on specificity by .palette .dot. MARGIN WAS NOT.
-  An auto margin on a flex item absorbs every pixel of free space in the line,
-  which overrides justify-content:center and makes `gap` almost meaningless.
+  NONE OF THE SIX WAS IN THE REPO. assets/ held 168 files and not one of them.
+  A 404 returns Vercel's HTML error page as bytes, embedFont throws on it, and
+  the catch in downloadPDF() shows "Something went wrong building the PDF" -
+  to a customer who had paid, entered their access code and designed their
+  whole chart. The preview worked, so nothing looked broken until the last
+  click.
 
-  Measured off the Woodlands screenshot: 44px dots sitting 96px apart, while
-  the CSS said gap:13px. That is why changing 16 to 13 did nothing - the gap
-  was never what was spacing them. The same rule's bottom margin was also
-  pushing the dots down the page.
+WHAT IS IN HERE
+  assets/Chorus.ttf            from fonts/ - exact
+  assets/Pagella.ttf           from fonts/ - exact
+  assets/Pagella-Italic.ttf    from fonts/ - exact
+  assets/paper.jpg             850 x 1100, the exact size the code expects
+  assets/branch.png            Kyoto's cascading blossom branch, portrait
+  assets/divider_fan.png       Kyoto's floral rule, 1833 x 158
+  seating-planner.html         aspect ratios no longer hardcoded
 
-  The fix is `margin:0` on .palette .dot. The three dots will now sit 13px
-  apart, centred, 158px wide in total.
+  The planner's palette is ink #3F4A3C and gold #B7995C, which is Kyoto's
+  exactly, so Kyoto art is the right choice. branch.png and divider_fan.png
+  are my substitutions - the originals are in neither the repo nor the
+  archive and appear never to have existed. PLEASE LOOK AT AN EXPORTED PDF
+  AND TELL ME IF THEY ARE RIGHT.
 
-STILL NOT FIXED: FORCED DARK MODE
-  The repo already carries <meta name="color-scheme" content="only light">
-  and html{color-scheme:only light;background:#F8F6F2}, and your screenshot
-  still measured the page background at #1E1D19 against the declared #F8F6F2.
-  So the documented opt-out does not hold in Samsung Internet. That is now
-  three attempts. The remaining route is to build a real dark theme so the
-  browser stops auto-darkening and we control the colours ourselves.
+  The code also hardcoded three aspect ratios (708/1048, 9.536, 850x1100), so
+  any replacement art would have been silently stretched. It now reads the
+  real size off each embedded image.
+
+HOW TO UPLOAD
+  Repo-root relative. 6 files into assets/, and seating-planner.html at the
+  root over the existing one. 7 files.
+
+THEN TEST
+  Open the planner, enter the access code, add a table or two with names,
+  and press Download print-ready PDF. It should produce a poster instead of
+  an error.

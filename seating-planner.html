@@ -377,6 +377,15 @@ function render() {
 /* ================= PDF EXPORT ================= */
 async function fetchBytes(url) { return new Uint8Array(await (await fetch(url)).arrayBuffer()); }
 let assetCache = null;
+/* THESE SIX FILES WERE NOT IN THE REPO, AND THE EXPORT COULD NOT WORK WITHOUT
+   THEM. A 404 here returns Vercel's HTML error page as bytes, embedFont throws,
+   and the catch at the bottom of downloadPDF shows the customer "Something went
+   wrong building the PDF" — after they had paid, entered an access code and
+   designed their chart. Checked 0910: assets/ held 168 files and not one of
+   these. They now ship alongside.
+   Nothing here may be assumed about their SIZE either: the drawing code used to
+   hardcode 708/1048, 9.536 and 850x1100, so replacing any of this art would
+   silently stretch it. Every aspect is now read off the embedded image. */
 async function loadAssets() {
   if (assetCache) return assetCache;
   const [chorus, pagella, italic, branch, fan, paper] = await Promise.all([
@@ -414,20 +423,25 @@ async function downloadPDF() {
     for (const p of P) {
       if (p.t === "paper") {
         page.drawRectangle({ x: 0, y: 0, width: W, height: H, color: hex("#FDFBF6") });
-        const sc = Math.max(W / 850, H / 1100);
-        page.drawImage(paper, { x: 0, y: H - 1100 * sc, width: 850 * sc, height: 1100 * sc });
+        const sc = Math.max(W / paper.width, H / paper.height);
+        page.drawImage(paper, { x: 0, y: H - paper.height * sc,
+                                width: paper.width * sc, height: paper.height * sc });
       }
       if (p.t === "frame") {
         page.drawRectangle({ x: 36, y: 36, width: W - 72, height: H - 72, borderColor: hex(C.gold), borderWidth: 2 });
         page.drawRectangle({ x: 50, y: 50, width: W - 100, height: H - 100, borderColor: hex(C.gold), borderWidth: 1 });
       }
       if (p.t === "branch") {
-        const bw = p.h * 708 / 1048;
+        // ASPECT COMES FROM THE EMBEDDED IMAGE, NOT A CONSTANT.
+        // 708/1048 was the aspect of an asset that is not in the repo — see the
+        // note on loadAssets. Any art dropped in here would have been stretched
+        // to that ratio. pdf-lib exposes the real size, so use it.
+        const bw = p.h * (branch.width / branch.height);
         if (!p.rot) page.drawImage(branch, { x: p.x, y: Y(p.y) - p.h, width: bw, height: p.h });
         else page.drawImage(branch, { x: p.x, y: Y(p.y) + p.h, width: bw, height: p.h, rotate: PDFLib.degrees(180) });
       }
       if (p.t === "fan") {
-        const fh = p.w / 9.536;
+        const fh = p.w * (fan.height / fan.width);   // measured, not assumed
         page.drawImage(fan, { x: p.x - p.w / 2, y: Y(p.y) - fh * 0.14, width: p.w, height: fh });
       }
       if (p.t === "circle") {

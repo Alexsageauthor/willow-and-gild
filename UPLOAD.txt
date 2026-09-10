@@ -1,29 +1,27 @@
-WILLOW & GILD - FORCED DARK MODE OPT-OUT, ALL 9 PAGES
-(also includes the collection-page dot spacing fix)
+WILLOW & GILD - THE COLLECTION PAGE DOTS, ACTUALLY FIXED THIS TIME
 
-WHAT CHANGED
-  Every page now declares  <meta name="color-scheme" content="only light">
-  and                      html{color-scheme:only light;background:#F8F6F2}
+ONE FILE: collection.html, repo root, over the existing one.
 
-  Two differences from before:
-   1. The keyword order. The documented opt-out is "only light". The site said
-      "light only" on the four pages that declared anything at all.
-   2. Five pages declared NOTHING: find-your-palette, free-timeline, palette,
-      seating-planner, tile-check. They do now.
-   3. html carries an explicit opaque background. Chromium ignores TRANSPARENT
-      backgrounds when deciding whether to auto-darken, and only bundle.html
-      had one.
+WHAT WAS ACTUALLY WRONG
+  Not the gap. The dots are <img> elements inside .hero, so they were picking
+  up this rule:
+      .hero img{width:min(360px,62vw);margin:0 auto clamp(20px,3vw,36px)}
+  `width` was already beaten on specificity by .palette .dot. MARGIN WAS NOT.
+  An auto margin on a flex item absorbs every pixel of free space in the line,
+  which overrides justify-content:center and makes `gap` almost meaningless.
 
-  collection.html also has the palette dot gap at 13px instead of 16px, which
-  is the same 30% of the dot width the home page uses.
+  Measured off the Woodlands screenshot: 44px dots sitting 96px apart, while
+  the CSS said gap:13px. That is why changing 16 to 13 did nothing - the gap
+  was never what was spacing them. The same rule's bottom margin was also
+  pushing the dots down the page.
 
-THIS IS THE THIRD ATTEMPT AT FORCED DARK AND IT NEEDS TESTING
-  collections.js records two earlier ones that were shipped on reasoning and
-  did not hold. Please check on YOUR phone, dark mode still on, after these
-  are live and hard-refreshed:
-      does the collection page come up CREAM, or still near-black?
-  If still near-black, this has not worked either and the answer is a real
-  dark theme rather than an opt-out - tell me and I will build that instead.
+  The fix is `margin:0` on .palette .dot. The three dots will now sit 13px
+  apart, centred, 158px wide in total.
 
-HOW TO UPLOAD
-  9 HTML files, repo root, alongside index.html. Not in a folder.
+STILL NOT FIXED: FORCED DARK MODE
+  The repo already carries <meta name="color-scheme" content="only light">
+  and html{color-scheme:only light;background:#F8F6F2}, and your screenshot
+  still measured the page background at #1E1D19 against the declared #F8F6F2.
+  So the documented opt-out does not hold in Samsung Internet. That is now
+  three attempts. The remaining route is to build a real dark theme so the
+  browser stops auto-darkening and we control the colours ourselves.

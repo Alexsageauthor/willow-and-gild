@@ -66,7 +66,17 @@ header{position:sticky;top:0;z-index:50;background:rgba(248,246,242,.92);
    container, which pulled three circles into three page-wide ellipses.
    flex:0 0 auto stops the growing, the explicit box stops the guessing,
    and max-width:none stops a global img rule shrinking them. */
-.palette .dot{display:block;flex:0 0 auto;width:44px;height:44px;border-radius:50%;max-width:none}
+/* margin:0 IS THE WHOLE FIX, AND THE GAP NEVER WAS.
+   These dots are <img> elements sitting inside .hero, so they were picking up
+   `.hero img{width:min(360px,62vw);margin:0 auto clamp(20px,3vw,36px)}`.
+   width was already beaten on specificity by this rule; MARGIN WAS NOT. An
+   auto margin on a flex item absorbs all the free space in the line, which
+   overrides justify-content:center and leaves `gap` almost meaningless — the
+   three dots spread the full width of the wrap. Measured off Kelly's phone:
+   44px dots 96px apart, when gap said 13. Changing 16 to 13 did nothing at
+   all, because the gap was never what was spacing them.
+   The bottom margin came from the same rule and was pushing the dots down. */
+.palette .dot{display:block;flex:0 0 auto;width:44px;height:44px;border-radius:50%;max-width:none;margin:0}
 /* ONE RULE, NOT TWO. A second  lower in the sheet was left
    behind when the border became a ring, and a duplicate selector is how a
    spacing change gets made twice and lands once. Gap is set above. */

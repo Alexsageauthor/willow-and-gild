@@ -48,7 +48,12 @@ header{position:sticky;top:0;z-index:50;background:rgba(248,246,242,.92);
 .hero{text-align:center;padding:clamp(56px,8vw,110px) 0 clamp(36px,5vw,66px)}
 .hero img{width:min(360px,62vw);margin:0 auto clamp(20px,3vw,36px)}
 .lede{font-size:1.06rem;color:var(--soft);max-width:56ch;margin:22px auto 0}
-.palette{display:flex;gap:16px;justify-content:center;align-items:center;margin-top:30px}
+/* THE GAP IS PROPORTIONAL TO THE DOT, AND THIS PAGE WAS THE ODD ONE OUT.
+   index.html sets 9px on a 30px dot and find-your-palette 7px on 26px — 30%
+   and 27% of the dot's width. This page had 16px on a 44px dot, 36%, so the
+   three dots read as three separate marks rather than one palette. 13px is the
+   same 30% the home page uses. */
+.palette{display:flex;gap:13px;justify-content:center;align-items:center;margin-top:30px}
 /* AN <img> IN A FLEX ROW STRETCHES. The rule this replaced carried the
    width and height; dropping it left the dots to be sized by the flex
    container, which pulled three circles into three page-wide ellipses.

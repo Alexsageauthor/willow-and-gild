@@ -1,39 +1,35 @@
-WILLOW & GILD - TYPE THE GUESTS ONCE
+WILLOW & GILD — EVERYTHING THE SITE IS MISSING
 
-ONE FILE: seating-planner.html, repo root, over the existing one.
-(The six assets from the previous zip must already be in assets/.)
+276 files: 275 tiles + contents.js.
 
-WHAT IS NEW
-  Two more buttons beside "Download seating chart":
-      Download Find Your Seat
-      Download place cards
-  Both are drawn from the SAME guest list already typed into the planner.
-  Enter your guests once and every product that names them comes out filled.
+WHY SO FEW. This is not a full reload. Your repo already has the engagement
+and photo card tiles; I diffed the new contents.js against your uploaded
+repo and these 275 are the only tiles it names that are not there yet.
+A wipe-and-reload would mean re-uploading 3,351 files to change 275.
 
-  NOTHING IS LOCKED TO A TABLE SIZE. A table of six yields six place cards,
-  not six and four blanks, and its Find Your Seat block is six rows tall.
-  Blank guest boxes are skipped entirely.
+WHAT IS IN EACH FOLDER
+  assets/gold/          145 — the whole lane. Its banner changed from a pale
+                        grey-green #B8AEA1 to antique gold #AD9C68, so every
+                        tile carrying the banner was rebuilt.
+  assets/kyoto/          50 — place cards, and the pilot lane's rebuild.
+  every other lane        5 — the five place card designs, now showing filled
+                        sample names and the new painted sprigs.
+  contents.js             the manifest. UPLOAD IT LAST.
 
-WHY IT IS HERE AND NOT IN THE PDFs
-  A PDF form can copy a value into every field sharing its name - that is how
-  the place-card master list already fills all eighty cards. What it cannot do
-  is COMPACT a list, because that needs computation, and PDF JavaScript is
-  ignored by Preview, by Chrome and by every phone. Sharing field names across
-  products would only have worked by fixing the seats per table.
-  This page can compact. So this is where it belongs.
+ORDER
+  1. Folder by folder, tiles first. Every folder is 5 files except Kyoto (50)
+     and Gold (145).
+     GOLD NEEDS TWO PASSES — 145 files is over the 99 limit. Select about 75,
+     upload, then the rest.
+  2. contents.js LAST, after every folder is in.
 
-  The fillable PDFs are UNCHANGED. Anyone who would rather type into the
-  document still can.
+  Until contents.js is up the site keeps using the old tile names, so nothing
+  breaks while you work. Once it is up it names the new ones, so all the
+  folders must be in first.
 
-TESTED
-  Run in node against tables of 6, 12 and 3 (one box left blank):
-      20 guests found, the blank skipped
-      5 place-card sheets, 20 cards, 0 blanks
-      Find Your Seat: 3 headings, 20 guest lines, 1 page
-  What I could NOT test is how it looks. Please export both and check.
+  You do NOT need to delete anything. Old tiles simply stop being referenced.
 
-PLACE CARDS
-  A4, four to a sheet at 252 x 288pt - the same card size as the printed
-  product (place_cards.py:42). Fold line dashed across the top, trim marks at
-  the corners, name in Chorus, table beneath in tracked caps, and the floral
-  rule as the divider between them.
+AFTER
+  Hard-refresh, then check a collection page: the place cards should show four
+  filled names with proper sprigs, and Gold's banner should read as gold rather
+  than grey-green.

@@ -1,31 +1,40 @@
-WILLOW & GILD — ART DECO
+WILLOW & GILD — ART DECO, COMPLETE FOLDER
 
-Two uploads, both under the 99-file limit:
+You said you would DELETE assets/artdeco first, so this is the WHOLE folder —
+all 168 tiles the manifest names, not a diff. Nothing is missing.
 
-  WG_A1_artdeco.zip   70 files -> assets/artdeco/ (69) and assets/ root (1)
-  WG_A2_contents_LAST.zip  contents.js at the repo root
+  WG_AD1.zip   84 files -> assets/artdeco/
+  WG_AD2.zip   84 files -> assets/artdeco/   (second pass, same folder)
+  WG_AD3.zip    7 files -> assets/ root      (the collection-page tiles)
+  WG_AD4_contents_LAST.zip   contents.js at the repo root
 
-CONTENTS.JS LAST. Until it is up the site uses the old tile names, so nothing
-breaks while you work.
+ORDER
+  1. Delete assets/artdeco/ entirely.
+  2. WG_AD1, then WG_AD2 — together they rebuild the folder to 168 files.
+  3. WG_AD3 into assets/ at the root (these overwrite; do NOT delete the root).
+  4. contents.js LAST.
 
-DO NOT EMPTY THE FOLDER FIRST. Art Deco needs 168 tiles; these are the 70 your
-repo is missing. The other 98 are already there and are not in this zip.
-Upload on top — same-named files overwrite, everything else stays.
+  Deleting the folder is safe ONLY because these two zips contain all 168.
+  Do not delete anything at the root — other lanes live there.
 
-WHAT CHANGED
-  Favour tags     the ground is now the lane's own Deco arch, filling the tag,
-                  instead of a small fan drawing 52pt in a 132pt slot.
-  Place cards     five designs, filled with the sample wedding's guests, with a
-                  closed sprig — the old one was a sliced third of the bough and
-                  read as a gold smudge with a blob on the end.
-  Proposal cards  the ribbon-and-botanical mark was 3px below the border and
-                  28px above the text. Now centred.
-  Food labels     the tiles were whole sheets shrunk to thumbnails and unreadable.
-  Find your seat  Both now crop to a readable detail. Deliverables unchanged.
+WHAT CHANGED SINCE THE LAST BUILD
+  Proposal cards  the ribbon-and-botanical mark sat 17.3pt below the border and
+                  23.5pt above the text, and the whole block rode 5pt high on
+                  the card. Measured off the render this time, not off the frame
+                  formula — the card carries TWO rules, not one, which is what
+                  my earlier arithmetic missed. Now 22.6pt above the mark,
+                  22.6pt below it, and the card's top and bottom margins match
+                  at 22.6pt.
+  Favour tags     the ground is the lane's own Deco arch, filling the tag.
+  Place cards     five designs, filled, with a closed sprig.
+  Food labels     tiles cropped to a readable detail instead of a whole sheet
+  Find your seat  shrunk to a thumbnail.
+  Start Here      a new sheet at the front of the download, now set to the full
+                  measure (it was using 60% of it).
 
-ALSO IN THE DOWNLOAD, not visible on the site
-  00_Start_Here   a new sheet at the front of the 35 folders
-  Budget planner  no currency symbol anywhere, and a Letter edition
-
-VERIFIED: canon 340 PDFs across 37 folders, no empty folders, 269 PDFs pass
-verify, no sample text, Letter parity 52 pairs, manifest 168 of 168 resolving.
+VERIFIED
+  canon 340 PDFs across 37 folders, no empty folders
+  verify: no failures
+  no sample text anywhere
+  Letter parity 52 pairs
+  manifest 168 of 168 tiles resolving

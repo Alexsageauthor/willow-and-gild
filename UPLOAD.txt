@@ -1,35 +1,31 @@
-WILLOW & GILD — EVERYTHING THE SITE IS MISSING
+WILLOW & GILD — ART DECO
 
-276 files: 275 tiles + contents.js.
+Two uploads, both under the 99-file limit:
 
-WHY SO FEW. This is not a full reload. Your repo already has the engagement
-and photo card tiles; I diffed the new contents.js against your uploaded
-repo and these 275 are the only tiles it names that are not there yet.
-A wipe-and-reload would mean re-uploading 3,351 files to change 275.
+  WG_A1_artdeco.zip   70 files -> assets/artdeco/ (69) and assets/ root (1)
+  WG_A2_contents_LAST.zip  contents.js at the repo root
 
-WHAT IS IN EACH FOLDER
-  assets/gold/          145 — the whole lane. Its banner changed from a pale
-                        grey-green #B8AEA1 to antique gold #AD9C68, so every
-                        tile carrying the banner was rebuilt.
-  assets/kyoto/          50 — place cards, and the pilot lane's rebuild.
-  every other lane        5 — the five place card designs, now showing filled
-                        sample names and the new painted sprigs.
-  contents.js             the manifest. UPLOAD IT LAST.
+CONTENTS.JS LAST. Until it is up the site uses the old tile names, so nothing
+breaks while you work.
 
-ORDER
-  1. Folder by folder, tiles first. Every folder is 5 files except Kyoto (50)
-     and Gold (145).
-     GOLD NEEDS TWO PASSES — 145 files is over the 99 limit. Select about 75,
-     upload, then the rest.
-  2. contents.js LAST, after every folder is in.
+DO NOT EMPTY THE FOLDER FIRST. Art Deco needs 168 tiles; these are the 70 your
+repo is missing. The other 98 are already there and are not in this zip.
+Upload on top — same-named files overwrite, everything else stays.
 
-  Until contents.js is up the site keeps using the old tile names, so nothing
-  breaks while you work. Once it is up it names the new ones, so all the
-  folders must be in first.
+WHAT CHANGED
+  Favour tags     the ground is now the lane's own Deco arch, filling the tag,
+                  instead of a small fan drawing 52pt in a 132pt slot.
+  Place cards     five designs, filled with the sample wedding's guests, with a
+                  closed sprig — the old one was a sliced third of the bough and
+                  read as a gold smudge with a blob on the end.
+  Proposal cards  the ribbon-and-botanical mark was 3px below the border and
+                  28px above the text. Now centred.
+  Food labels     the tiles were whole sheets shrunk to thumbnails and unreadable.
+  Find your seat  Both now crop to a readable detail. Deliverables unchanged.
 
-  You do NOT need to delete anything. Old tiles simply stop being referenced.
+ALSO IN THE DOWNLOAD, not visible on the site
+  00_Start_Here   a new sheet at the front of the 35 folders
+  Budget planner  no currency symbol anywhere, and a Letter edition
 
-AFTER
-  Hard-refresh, then check a collection page: the place cards should show four
-  filled names with proper sprigs, and Gold's banner should read as gold rather
-  than grey-green.
+VERIFIED: canon 340 PDFs across 37 folders, no empty folders, 269 PDFs pass
+verify, no sample text, Letter parity 52 pairs, manifest 168 of 168 resolving.

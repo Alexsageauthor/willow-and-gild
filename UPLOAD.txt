@@ -1,40 +1,39 @@
-WILLOW & GILD — ART DECO, COMPLETE FOLDER
+WILLOW & GILD - TYPE THE GUESTS ONCE
 
-You said you would DELETE assets/artdeco first, so this is the WHOLE folder —
-all 168 tiles the manifest names, not a diff. Nothing is missing.
+ONE FILE: seating-planner.html, repo root, over the existing one.
+(The six assets from the previous zip must already be in assets/.)
 
-  WG_AD1.zip   84 files -> assets/artdeco/
-  WG_AD2.zip   84 files -> assets/artdeco/   (second pass, same folder)
-  WG_AD3.zip    7 files -> assets/ root      (the collection-page tiles)
-  WG_AD4_contents_LAST.zip   contents.js at the repo root
+WHAT IS NEW
+  Two more buttons beside "Download seating chart":
+      Download Find Your Seat
+      Download place cards
+  Both are drawn from the SAME guest list already typed into the planner.
+  Enter your guests once and every product that names them comes out filled.
 
-ORDER
-  1. Delete assets/artdeco/ entirely.
-  2. WG_AD1, then WG_AD2 — together they rebuild the folder to 168 files.
-  3. WG_AD3 into assets/ at the root (these overwrite; do NOT delete the root).
-  4. contents.js LAST.
+  NOTHING IS LOCKED TO A TABLE SIZE. A table of six yields six place cards,
+  not six and four blanks, and its Find Your Seat block is six rows tall.
+  Blank guest boxes are skipped entirely.
 
-  Deleting the folder is safe ONLY because these two zips contain all 168.
-  Do not delete anything at the root — other lanes live there.
+WHY IT IS HERE AND NOT IN THE PDFs
+  A PDF form can copy a value into every field sharing its name - that is how
+  the place-card master list already fills all eighty cards. What it cannot do
+  is COMPACT a list, because that needs computation, and PDF JavaScript is
+  ignored by Preview, by Chrome and by every phone. Sharing field names across
+  products would only have worked by fixing the seats per table.
+  This page can compact. So this is where it belongs.
 
-WHAT CHANGED SINCE THE LAST BUILD
-  Proposal cards  the ribbon-and-botanical mark sat 17.3pt below the border and
-                  23.5pt above the text, and the whole block rode 5pt high on
-                  the card. Measured off the render this time, not off the frame
-                  formula — the card carries TWO rules, not one, which is what
-                  my earlier arithmetic missed. Now 22.6pt above the mark,
-                  22.6pt below it, and the card's top and bottom margins match
-                  at 22.6pt.
-  Favour tags     the ground is the lane's own Deco arch, filling the tag.
-  Place cards     five designs, filled, with a closed sprig.
-  Food labels     tiles cropped to a readable detail instead of a whole sheet
-  Find your seat  shrunk to a thumbnail.
-  Start Here      a new sheet at the front of the download, now set to the full
-                  measure (it was using 60% of it).
+  The fillable PDFs are UNCHANGED. Anyone who would rather type into the
+  document still can.
 
-VERIFIED
-  canon 340 PDFs across 37 folders, no empty folders
-  verify: no failures
-  no sample text anywhere
-  Letter parity 52 pairs
-  manifest 168 of 168 tiles resolving
+TESTED
+  Run in node against tables of 6, 12 and 3 (one box left blank):
+      20 guests found, the blank skipped
+      5 place-card sheets, 20 cards, 0 blanks
+      Find Your Seat: 3 headings, 20 guest lines, 1 page
+  What I could NOT test is how it looks. Please export both and check.
+
+PLACE CARDS
+  A4, four to a sheet at 252 x 288pt - the same card size as the printed
+  product (place_cards.py:42). Fold line dashed across the top, trim marks at
+  the corners, name in Chorus, table beneath in tracked caps, and the floral
+  rule as the divider between them.

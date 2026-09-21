@@ -1,39 +1,34 @@
-WILLOW & GILD - TYPE THE GUESTS ONCE
+WILLOW & GILD — ENGLISH ROSE, COMPLETE FOLDER
 
-ONE FILE: seating-planner.html, repo root, over the existing one.
-(The six assets from the previous zip must already be in assets/.)
+The WHOLE folder — all 175 tiles the manifest names, not a diff. Nothing missing.
 
-WHAT IS NEW
-  Two more buttons beside "Download seating chart":
-      Download Find Your Seat
-      Download place cards
-  Both are drawn from the SAME guest list already typed into the planner.
-  Enter your guests once and every product that names them comes out filled.
+  WG_ER1.zip   88 files -> assets/englishrose/
+  WG_ER2.zip   87 files -> assets/englishrose/   (second pass, same folder)
+  WG_ER3.zip    7 files -> assets/ root          (the collection-page tiles)
+  WG_ER4_contents_LAST.zip   contents.js at the repo root
 
-  NOTHING IS LOCKED TO A TABLE SIZE. A table of six yields six place cards,
-  not six and four blanks, and its Find Your Seat block is six rows tall.
-  Blank guest boxes are skipped entirely.
+ORDER
+  1. Delete assets/englishrose/ entirely.
+  2. WG_ER1, then WG_ER2 — together they rebuild it to 175 files.
+  3. WG_ER3 into assets/ at the root. Overwrites; do NOT delete the root.
+  4. contents.js LAST.
 
-WHY IT IS HERE AND NOT IN THE PDFs
-  A PDF form can copy a value into every field sharing its name - that is how
-  the place-card master list already fills all eighty cards. What it cannot do
-  is COMPACT a list, because that needs computation, and PDF JavaScript is
-  ignored by Preview, by Chrome and by every phone. Sharing field names across
-  products would only have worked by fixing the seats per table.
-  This page can compact. So this is where it belongs.
+  Deleting the folder is safe ONLY because ER1 and ER2 contain all 175.
 
-  The fillable PDFs are UNCHANGED. Anyone who would rather type into the
-  document still can.
+WHAT CHANGED
+  Favour tags    the ground is now a rose-and-foliage oval FRAME that fills the
+                 tag and holds the words — it was a small corner swag drawing
+                 41pt tall in a 132pt slot, floating above empty pink.
+  The chair      the grey shadow under it is gone.
+  Place cards    five designs, filled, with a closed painted sprig.
+  Proposal cards the mark centred between border and text, and the whole block
+                 set evenly top to bottom.
+  Food labels,   readable detail tiles instead of whole sheets shrunk to
+  Find your seat thumbnails.
 
-TESTED
-  Run in node against tables of 6, 12 and 3 (one box left blank):
-      20 guests found, the blank skipped
-      5 place-card sheets, 20 cards, 0 blanks
-      Find Your Seat: 3 headings, 20 guest lines, 1 page
-  What I could NOT test is how it looks. Please export both and check.
-
-PLACE CARDS
-  A4, four to a sheet at 252 x 288pt - the same card size as the printed
-  product (place_cards.py:42). Fold line dashed across the top, trim marks at
-  the corners, name in Chorus, table beneath in tracked caps, and the floral
-  rule as the divider between them.
+VERIFIED
+  canon 261 PDFs, verify passing
+  standard download 130 MB, under the 400 MB ceiling (was 1,243 MB)
+  bundles: 553 PDFs matched against the canon, 0 mismatched
+  all seven chapters fit Etsy's 100 MB listing limit
+  manifest 175 of 175 tiles resolving

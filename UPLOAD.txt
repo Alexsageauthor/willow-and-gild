@@ -1,34 +1,20 @@
-WILLOW & GILD — ENGLISH ROSE, COMPLETE FOLDER
+WILLOW & GILD — OLIVE GOLD, COMPLETE FOLDER
 
-The WHOLE folder — all 175 tiles the manifest names, not a diff. Nothing missing.
+All 180 tiles the manifest names. Nothing missing.
 
-  WG_ER1.zip   88 files -> assets/englishrose/
-  WG_ER2.zip   87 files -> assets/englishrose/   (second pass, same folder)
-  WG_ER3.zip    7 files -> assets/ root          (the collection-page tiles)
-  WG_ER4_contents_LAST.zip   contents.js at the repo root
+  WG_OG1.zip   90 files -> assets/olivegold/
+  WG_OG2.zip   90 files -> assets/olivegold/   (second pass, same folder)
+  WG_OG3.zip    7 files -> assets/ root
+  WG_OG4_contents_LAST.zip   contents.js at the repo root
 
-ORDER
-  1. Delete assets/englishrose/ entirely.
-  2. WG_ER1, then WG_ER2 — together they rebuild it to 175 files.
-  3. WG_ER3 into assets/ at the root. Overwrites; do NOT delete the root.
-  4. contents.js LAST.
+ORDER: delete assets/olivegold/ (or add on top — both work), OG1, OG2, OG3 at
+the root, then contents.js LAST. Never delete the root.
 
-  Deleting the folder is safe ONLY because ER1 and ER2 contain all 175.
-
-WHAT CHANGED
-  Favour tags    the ground is now a rose-and-foliage oval FRAME that fills the
-                 tag and holds the words — it was a small corner swag drawing
-                 41pt tall in a 132pt slot, floating above empty pink.
-  The chair      the grey shadow under it is gone.
-  Place cards    five designs, filled, with a closed painted sprig.
-  Proposal cards the mark centred between border and text, and the whole block
-                 set evenly top to bottom.
-  Food labels,   readable detail tiles instead of whole sheets shrunk to
-  Find your seat thumbnails.
+contents.js IS CUMULATIVE — this copy supersedes every earlier one and names
+Kyoto, Art Deco, English Rose and Olive Gold's current tiles.
 
 VERIFIED
-  canon 261 PDFs, verify passing
-  standard download 130 MB, under the 400 MB ceiling (was 1,243 MB)
-  bundles: 553 PDFs matched against the canon, 0 mismatched
-  all seven chapters fit Etsy's 100 MB listing limit
-  manifest 175 of 175 tiles resolving
+  standard download 105 MB, under the 400 MB ceiling (was 721 MB)
+  bundles: 559 PDFs matched against the canon, 0 mismatched
+  every chapter fits Etsy's 100 MB listing limit
+  manifest 180 of 180 tiles resolving

@@ -1,20 +1,41 @@
-WILLOW & GILD — OLIVE GOLD, COMPLETE FOLDER
+WILLOW & GILD — BLUE WILLOW, COMPLETE FOLDER
 
-All 180 tiles the manifest names. Nothing missing.
+All 181 tiles the manifest names. Nothing missing.
 
-  WG_OG1.zip   90 files -> assets/olivegold/
-  WG_OG2.zip   90 files -> assets/olivegold/   (second pass, same folder)
-  WG_OG3.zip    7 files -> assets/ root
-  WG_OG4_contents_LAST.zip   contents.js at the repo root
+  WG_BW1.zip   91 files -> assets/bluewillow/
+  WG_BW2.zip   90 files -> assets/bluewillow/   (second pass, same folder)
+  WG_BW3.zip    7 files -> assets/ root
+  WG_BW4_contents_LAST.zip   contents.js at the repo root
 
-ORDER: delete assets/olivegold/ (or add on top — both work), OG1, OG2, OG3 at
+ORDER: delete assets/bluewillow/ (or add on top — both work), BW1, BW2, BW3 at
 the root, then contents.js LAST. Never delete the root.
 
 contents.js IS CUMULATIVE — this copy supersedes every earlier one and names
-Kyoto, Art Deco, English Rose and Olive Gold's current tiles.
+Kyoto, Art Deco, English Rose, Olive Gold and Blue Willow's current tiles.
+If you are holding contents.js until the end, upload the folders only and keep
+this copy for last.
+
+WHAT CHANGED
+  The chair       the grey pool beside its legs is gone. Its legs are a separate
+                  pale component from the seat, so removing "pale islands" once
+                  deleted them entirely — the shadow is told apart by SHAPE,
+                  aspect 6.0 against the legs' 1.68.
+  Place cards     five designs, filled, with a closed painted willow sprig. The
+                  old one was a sliced third of the bough with ink running to
+                  its own edge on 73% of one side.
+  Proposal cards  the mark centred between border and text, the whole block set
+                  evenly top to bottom.
+  Favour tags     the ground fills the tag instead of floating above empty space.
+  Food labels,    readable detail tiles instead of whole sheets shrunk to
+  Find your seat  thumbnails.
+
+ALSO IN THE DOWNLOAD, not visible on the site
+  00_Start_Here   a new sheet at the front of the 36 folders
+  Budget planner  no currency symbol anywhere, and a Letter edition
+  Table numbers   the fillable tent now carries a field on BOTH faces
 
 VERIFIED
-  standard download 105 MB, under the 400 MB ceiling (was 721 MB)
-  bundles: 559 PDFs matched against the canon, 0 mismatched
-  every chapter fits Etsy's 100 MB listing limit
-  manifest 180 of 180 tiles resolving
+  canon 340 PDFs across 37 chapters, no empty folders
+  verify passing; standard download 117 MB, under the 400 MB ceiling
+  no sample text; no pound signs
+  manifest 181 of 181 tiles resolving

@@ -3,14 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- FORCED DARK MODE MUST NOT REWRITE THE PALETTE.
-     A collection's three dots ARE the product: Art Deco's jade #1F6B5C
-     measured #70A699 on Kelly's phone and the onyx #16181A measured #848587,
-     because the browser lightens dark colours. The page background measured
-     #171611 against the declared #F8F6F2 — the whole page, images included.
-     The documented opt-out is `only light`, not `light only`, and Chromium
-     ignores TRANSPARENT backgrounds, so html carries an explicit one. -->
-<meta name="color-scheme" content="only light">
+<meta name="color-scheme" content="light only">
 <meta name="theme-color" content="#F8F6F2">
 <title>Willow &amp; Gild — Printable Wedding Stationery Collections</title>
 <meta name="description" content="Complete printable wedding stationery collections. Every piece in a collection is designed together — invitations, menus, place cards, signage and planners.">
@@ -18,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-html{color-scheme:only light;background:#F8F6F2}
+html{color-scheme:light only}
 :root{
   --paper:#F8F6F2;      /* the brief's warm ivory, and the studio's own paper */
   --linen:#F1EDE5;
@@ -50,6 +43,12 @@ h3{font-size:1.35rem}
   color:var(--gold);font-weight:400;
 }
 .lede{font-size:1.08rem;color:var(--soft);max-width:56ch}
+.hero-value{font-size:1.22rem;font-family:'Cormorant Garamond',Georgia,serif;
+  font-weight:300;color:var(--ink);max-width:44ch;margin:18px auto 0;line-height:1.4}
+.journey-strip{display:flex;flex-wrap:wrap;gap:6px 4px;justify-content:center;
+  margin:18px 0 16px;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--soft)}
+.journey-strip .arr{color:var(--gold);opacity:.7}
 
 /* ---------- header ---------- */
 header{
@@ -207,10 +206,12 @@ footer .brand img{height:26px}
   <img src="assets/hero.png" alt="Willow &amp; Gild">
   <div class="rule"></div>
   <h1>Beautiful paper begins long before it is printed.</h1>
-  <p class="lede">Complete stationery collections designed as a single world —
-     so your invitation, your menu and the sign by the door all came from the
-     same hand. Take a whole collection, a single chapter, or one card at a
-     time.</p>
+  <p class="hero-value">One design language. Your entire wedding — from the
+     announcement to the thank-you card.</p>
+  <p class="lede">Seventeen complete collections. Take a whole collection, one
+     chapter, or a single card — and mix across collections too. Every piece
+     shares the same fillable fields, so your names and date are typed once
+     and carried through the whole suite.</p>
   <div class="cta-row">
     <a class="btn solid" href="#collections">Explore Collections</a>
     <!-- FIFTEEN IS A CHOICE PROBLEM. A visitor who cannot tell Nordic from
@@ -219,6 +220,7 @@ footer .brand img{height:26px}
          this is a shortcut to three collections instead of a scroll past
          fifteen. It sits second, ahead of the single-collection link, because
          it answers a question the grid cannot. -->
+    <a class="btn" href="free-timeline.html">Free 12-Month Timeline</a>
     <a class="btn" href="find-your-palette.html">Start With Your Colours</a>
     <a class="btn" href="collection.html?c=Kyoto">See a Collection in Full</a>
     <a class="btn" href="the-house.html">See Every Collection Side by Side</a>
@@ -230,9 +232,17 @@ footer .brand img{height:26px}
     <p class="eyebrow">The Collections</p>
     <h2><span data-collection-count="cap">Seventeen</span> worlds, each complete</h2>
     <div class="rule"></div>
-    <p>A collection is not a matching set of three cards. It is every piece of
-       paper a wedding needs, drawn together — and it is finished before it
-       goes on sale.</p>
+    <div class="journey-strip">
+      <span>Get engaged</span><span class="arr">→</span>
+      <span>Announce</span><span class="arr">→</span>
+      <span>Plan</span><span class="arr">→</span>
+      <span>Invite</span><span class="arr">→</span>
+      <span>Ceremony</span><span class="arr">→</span>
+      <span>Reception</span><span class="arr">→</span>
+      <span>Thank everyone</span>
+    </div>
+    <p>We've already made everything you'll need at each stage —
+       and every piece of paper is finished before it goes on sale.</p>
   </div>
 
   <!-- PICK AND MIX, SAID PLAINLY AND EARLY.

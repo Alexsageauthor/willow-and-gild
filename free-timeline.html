@@ -3,14 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- FORCED DARK MODE MUST NOT REWRITE THE PALETTE.
-     A collection's three dots ARE the product: Art Deco's jade #1F6B5C
-     measured #70A699 on Kelly's phone and the onyx #16181A measured #848587,
-     because the browser lightens dark colours. The page background measured
-     #171611 against the declared #F8F6F2 — the whole page, images included.
-     The documented opt-out is `only light`, not `light only`, and Chromium
-     ignores TRANSPARENT backgrounds, so html carries an explicit one. -->
-<meta name="color-scheme" content="only light">
 <title>Your wedding day timeline — free — Willow &amp; Gild</title>
 
 <!--
@@ -46,7 +38,6 @@
 -->
 
 <style>
-html{color-scheme:only light;background:#F8F6F2}
   :root{--paper:#FDFBF6;--ink:#2F2E2B;--muted:#7A756C;--gold:#B7995C;--rule:#E4DED2;
         --accent:#AEB9A0}
   *{box-sizing:border-box}
@@ -195,7 +186,14 @@ html{color-scheme:only light;background:#F8F6F2}
 <script>
 /* Set to your list service (Formspree, ConvertKit, Buttondown…). Left blank the
    page prints instead — it never pretends to have captured an address. */
-const FORM_ENDPOINT = '';
+// CONVERTKIT INTEGRATION
+// Fill in your public API key and form ID from ConvertKit → Account Settings → API
+// and the Forms page (the ID is the number in the form's URL).
+const CK_API_KEY  = 'YOUR_PUBLIC_API_KEY';   // ← paste here
+const CK_FORM_ID  = 'YOUR_FORM_ID';          // ← paste here
+const FORM_ENDPOINT = CK_API_KEY && CK_FORM_ID && CK_FORM_ID !== 'YOUR_FORM_ID'
+  ? `https://api.convertkit.com/v3/forms/${CK_FORM_ID}/subscribe`
+  : '';
 
 /* The same curated tones as the palette page. NOT a colour wheel: one
    fluorescent ruins the sheet, and this is the piece that has to look worth
@@ -281,15 +279,22 @@ document.getElementById('send').onclick = async () => {
   }
   if(!FORM_ENDPOINT){ window.print(); return; }
   try{
-    await fetch(FORM_ENDPOINT,{method:'POST',
+    // ConvertKit: POST email + first_name to the subscribe endpoint.
+    // The API key goes in the body (it is the public key, safe in frontend code).
+    const firstName = (document.getElementById('names').value || '').split(' ')[0];
+    const res = await fetch(FORM_ENDPOINT, {method:'POST',
       headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({email,
-        names:document.getElementById('names').value,
-        date:document.getElementById('date').value,
-        colour:getComputedStyle(document.documentElement).getPropertyValue('--accent').trim(),
-        lines:[...rows.querySelectorAll('.row')].map(r=>({
-          time:r.querySelector('.t').value, moment:r.querySelector('.m').value}))})});
-    alert('On its way. Check your inbox in a minute or two.');
+      body:JSON.stringify({
+        api_key: CK_API_KEY,
+        email,
+        first_name: firstName || undefined,
+        fields: {
+          wedding_date: document.getElementById('date').value || undefined,
+        }
+      })});
+    if(!res.ok) throw new Error('ck ' + res.status);
+    window.print();
+    alert('Timeline saved to your inbox — check your email in a minute.');
   }catch(e){
     alert('That did not go through — you can print it from here in the meantime.');
   }

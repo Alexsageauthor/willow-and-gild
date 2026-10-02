@@ -11,12 +11,12 @@ button{margin-top:14px;width:100%;padding:13px;background:var(--ink);color:var(-
 #msg{margin-top:12px;color:#9a4b3b;font-size:.9rem;min-height:1.2em}ul{list-style:none;padding:0;margin-top:8px}li{margin:10px 0}
 a.dl{display:block;padding:12px 14px;border:1px solid var(--gold);border-radius:4px;color:var(--ink);text-decoration:none}.note{color:var(--soft);font-size:.85rem;margin-top:18px;line-height:1.5}</style></head>
 <body><p class="brand">WILLOW &amp; GILD</p><h1>Your Downloads</h1>
-<div class="card"><label for="code" style="font-size:.75rem;letter-spacing:.15em;color:var(--soft)">ORDER ACCESS CODE</label>
+<div class="card"><label for="code" style="font-size:.75rem;letter-spacing:.15em;color:var(--soft)">DOWNLOAD CODE</label>
 <input id="code" placeholder="WG-XXXX-XXXX-XXXX" autocomplete="off"><button id="go">Show my files</button><div id="msg"></div><div id="out"></div>
-<p class="note">Download each file, then open the ZIP on your computer. Questions? Email hello@willowandgild.com with your Etsy order number.</p></div>
+<p class="note">Download each file, then open the ZIP on your computer. Questions? Email hello@willowandgild.com with your order number or Gumroad receipt.</p></div>
 <script src="downloads.js"></script><script src="downloads-data.js"></script>
 <script>document.getElementById('go').onclick=async()=>{const m=document.getElementById('msg'),o=document.getElementById('out');m.textContent='';o.innerHTML='';
 try{const r=await WG_DL.unlock(document.getElementById('code').value,WG_DL_DATA);
-if(!r){m.textContent='That code wasn’t recognised. Check it against your Etsy order, or email hello@willowandgild.com.';return}
+if(!r){m.textContent='That code wasn’t recognised. Check it against your download PDF or Gumroad receipt, or email hello@willowandgild.com.';return}
 o.innerHTML='<p style="margin-top:16px"><strong>'+r.collection.replace(/([a-z])([A-Z])/g,'$1 $2')+' — '+r.product.replace(/([a-z])([A-Z])/g,'$1 $2')+'</strong></p><ul>'+r.files.map(f=>'<li><a class="dl" href="'+f.url+'" download>'+f.name+'</a></li>').join('')+'</ul>'}
 catch(e){m.textContent='Something went wrong. Please email hello@willowandgild.com with your order number.'}};</script></body></html>

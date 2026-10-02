@@ -67,7 +67,7 @@ const BUNDLES = [
     price: 22, pages: 5, files: 10, digital: true,
     when: 'alongside the announcement',
     line: 'No printer required.',
-    sell: 'A wedding website in your collection\u2019s own colours, live in ten minutes with no code \u2014 and a working RSVP form, so replies land in your inbox instead of your letterbox.',
+    sell: 'A wedding website in your collection\u2019s own colours, with a step-by-step guide to go live in twenty minutes \u2014 you\'ll need a free Formspree account for the RSVP form, and Netlify to host it.',
     who: 'For couples collecting RSVPs online.',
     shots: ['details','rsvp'],
     includes: [

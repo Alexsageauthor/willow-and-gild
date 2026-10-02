@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Calendar File Generator — Willow &amp; Gild</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='16' font-size='16'>📅</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#F8F6F2;--ink:#33342F;--soft:#6B6659;--gold:#A8865B;--radius:4px;--max:600px}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,sans-serif;
+    font-size:.9rem;line-height:1.6;min-height:100vh;
+    display:flex;flex-direction:column;align-items:center;padding:40px 20px 80px}
+  h1,h2,.serif{font-family:'Cormorant Garamond',Georgia,serif;font-weight:300}
+  header{text-align:center;margin-bottom:40px}
+  .brand{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--soft);margin-bottom:12px}
+  h1{font-size:clamp(1.8rem,5vw,2.8rem)}
+  .lede{color:var(--soft);margin-top:12px;max-width:46ch;text-align:center}
+  .rule{width:60px;height:1px;background:var(--gold);opacity:.5;margin:20px auto}
+  .card{background:#fff;border:1px solid rgba(168,134,91,.2);border-radius:var(--radius);
+    padding:32px;width:100%;max-width:var(--max)}
+  .field{margin-bottom:20px}
+  label{display:block;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--soft);margin-bottom:8px}
+  input,select{width:100%;border:1px solid rgba(168,134,91,.35);border-radius:var(--radius);
+    padding:12px 14px;font-size:.9rem;font-family:inherit;color:var(--ink);
+    background:var(--paper);outline:none;transition:border .2s}
+  input:focus,select:focus{border-color:var(--gold)}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .hint{font-size:.75rem;color:var(--soft);margin-top:6px}
+  .generate{margin-top:24px;width:100%;padding:14px;background:var(--ink);
+    color:var(--paper);border:none;border-radius:var(--radius);font-family:inherit;
+    font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:background .2s}
+  .generate:hover{background:var(--gold)}
+  .note{margin-top:24px;padding:16px;border-left:2px solid var(--gold);
+    background:rgba(168,134,91,.06);border-radius:0 var(--radius) var(--radius) 0;
+    font-size:.82rem;color:var(--soft)}
+  @media(prefers-color-scheme:dark){:root{--paper:#1a1916;--ink:#F0EDE7;--soft:#8A8070}
+    input,select{background:rgba(255,255,255,.05)}.card{background:rgba(255,255,255,.04)}}
+</style>
+</head>
+<body>
+<header>
+  <p class="brand">Willow &amp; Gild</p>
+  <h1>Calendar File Generator</h1>
+  <div class="rule"></div>
+  <p class="lede">Guests tap this file to save your wedding date to their phone calendar automatically.</p>
+</header>
+<div class="card">
+  <div class="field">
+    <label for="names">Your names</label>
+    <input type="text" id="names" placeholder="Emma &amp; Oliver">
+  </div>
+  <div class="row2">
+    <div class="field">
+      <label for="date">Wedding date</label>
+      <input type="date" id="date">
+    </div>
+    <div class="field">
+      <label for="tz">Timezone</label>
+      <select id="tz"></select>
+    </div>
+  </div>
+  <div class="row2">
+    <div class="field">
+      <label for="start">Ceremony starts</label>
+      <input type="time" id="start" value="14:00">
+    </div>
+    <div class="field">
+      <label for="end">Celebration ends</label>
+      <input type="time" id="end" value="23:00">
+    </div>
+  </div>
+  <div class="field">
+    <label for="venue">Venue name</label>
+    <input type="text" id="venue" placeholder="The Garden Estate, Auckland">
+  </div>
+  <div class="field">
+    <label for="note">A note for guests (optional)</label>
+    <input type="text" id="note" placeholder="Black tie. RSVP by 1 May.">
+  </div>
+  <button class="generate" id="dl">Download Calendar File (.ics)</button>
+  <div class="note">
+    <strong>Once downloaded:</strong> link this file from your wedding website so guests can tap it to save the date. Works with Apple Calendar, Google Calendar and Outlook.
+  </div>
+</div>
+<script>
+// Populate timezone list
+const tz=document.getElementById('tz');
+const common=['Pacific/Auckland','Australia/Sydney','Australia/Melbourne','Australia/Brisbane',
+  'Asia/Singapore','Europe/London','Europe/Paris','America/New_York','America/Chicago',
+  'America/Denver','America/Los_Angeles','America/Vancouver'];
+const local=Intl.DateTimeFormat().resolvedOptions().timeZone;
+const all=[...new Set([local,...common,...Intl.supportedValuesOf('timeZone').slice(0,80)])];
+all.forEach(z=>{const o=document.createElement('option');o.value=z;o.text=z;if(z===local)o.selected=true;tz.appendChild(o);});
+
+document.getElementById('dl').addEventListener('click',()=>{
+  const names=document.getElementById('names').value.trim()||'Your Names';
+  const date=document.getElementById('date').value;
+  const start=document.getElementById('start').value||'14:00';
+  const end=document.getElementById('end').value||'23:00';
+  const venue=document.getElementById('venue').value.trim();
+  const note=document.getElementById('note').value.trim();
+  const zone=document.getElementById('tz').value;
+  if(!date){alert('Please enter your wedding date.');return;}
+  const d=date.replace(/-/g,'');
+  const s=start.replace(':','')+'00';
+  const e=end.replace(':','')+'00';
+  const uid=Math.random().toString(36).slice(2)+'@willowandgild.com';
+  const now=new Date().toISOString().replace(/[-:]/g,'').split('.')[0]+'Z';
+  const lines=[
+    'BEGIN:VCALENDAR','VERSION:2.0',
+    'PRODID:-//Willow & Gild//Wedding Calendar//EN',
+    'CALSCALE:GREGORIAN','METHOD:PUBLISH','BEGIN:VEVENT',
+    'UID:'+uid,'DTSTAMP:'+now,
+    'DTSTART;TZID='+zone+':'+d+'T'+s,
+    'DTEND;TZID='+zone+':'+d+'T'+e,
+    "SUMMARY:"+names+"'s Wedding",
+    venue?'LOCATION:'+venue.replace(/,/g,'\\,'):'',
+    note?'DESCRIPTION:'+note.replace(/,/g,'\\,'):'',
+    'END:VEVENT','END:VCALENDAR'
+  ].filter(Boolean);
+  const blob=new Blob([lines.join('\r\n')+'\r\n'],{type:'text/calendar'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='save-the-date.ics';a.click();
+});
+</script>
+</body>
+</html>

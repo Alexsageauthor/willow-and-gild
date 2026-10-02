@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>QR Code Generator — Willow &amp; Gild</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='16' font-size='16'>🌿</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F8F6F2;--ink:#33342F;--soft:#6B6659;--gold:#A8865B;
+    --radius:4px;--max:600px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,sans-serif;
+    font-size:.9rem;line-height:1.6;min-height:100vh;
+    display:flex;flex-direction:column;align-items:center;padding:40px 20px 80px}
+  h1,h2,.serif{font-family:'Cormorant Garamond',Georgia,serif;font-weight:300}
+  header{text-align:center;margin-bottom:40px}
+  .brand{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--soft);margin-bottom:12px}
+  h1{font-size:clamp(1.8rem,5vw,2.8rem);color:var(--ink)}
+  .lede{color:var(--soft);margin-top:12px;max-width:46ch;text-align:center}
+  .rule{width:60px;height:1px;background:var(--gold);opacity:.5;margin:20px auto}
+  .card{background:#fff;border:1px solid rgba(168,134,91,.2);border-radius:var(--radius);
+    padding:32px;width:100%;max-width:var(--max)}
+  label{display:block;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--soft);margin-bottom:8px}
+  input[type=url],input[type=text]{
+    width:100%;border:1px solid rgba(168,134,91,.35);border-radius:var(--radius);
+    padding:12px 14px;font-size:.9rem;font-family:inherit;color:var(--ink);
+    background:var(--paper);outline:none;transition:border .2s}
+  input:focus{border-color:var(--gold)}
+  .hint{font-size:.75rem;color:var(--soft);margin-top:6px}
+  .row{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
+  .size-btn{flex:1;min-width:80px;padding:10px;border:1px solid rgba(168,134,91,.35);
+    border-radius:var(--radius);background:var(--paper);color:var(--soft);
+    font-family:inherit;font-size:.8rem;cursor:pointer;transition:all .2s;text-align:center}
+  .size-btn.active,.size-btn:hover{border-color:var(--gold);color:var(--ink);
+    background:#fff}
+  .generate{margin-top:24px;width:100%;padding:14px;background:var(--ink);
+    color:var(--paper);border:none;border-radius:var(--radius);font-family:inherit;
+    font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;
+    transition:background .2s}
+  .generate:hover{background:var(--gold)}
+  .preview-wrap{margin-top:32px;text-align:center;display:none}
+  .preview-wrap h2{font-size:1.3rem;margin-bottom:16px;color:var(--soft)}
+  #qr-canvas{border:1px solid rgba(168,134,91,.2);border-radius:var(--radius);
+    max-width:100%}
+  .dl-row{display:flex;gap:12px;justify-content:center;margin-top:20px;flex-wrap:wrap}
+  .dl-btn{padding:12px 24px;border:1px solid var(--gold);border-radius:var(--radius);
+    color:var(--gold);font-family:inherit;font-size:.75rem;letter-spacing:.14em;
+    text-transform:uppercase;text-decoration:none;cursor:pointer;background:transparent;
+    transition:all .2s}
+  .dl-btn:hover{background:var(--gold);color:#fff}
+  .instructions{margin-top:40px;width:100%;max-width:var(--max)}
+  .instructions h2{font-size:1.4rem;margin-bottom:16px}
+  .steps{counter-reset:step}
+  .step{display:flex;gap:16px;margin-bottom:20px}
+  .step-n{flex-shrink:0;width:28px;height:28px;border-radius:50%;
+    background:var(--gold);color:#fff;display:flex;align-items:center;
+    justify-content:center;font-size:.8rem;font-weight:500;margin-top:2px}
+  .step-body h3{font-size:.85rem;font-weight:500;margin-bottom:4px}
+  .step-body p{color:var(--soft);font-size:.85rem}
+  code{background:rgba(168,134,91,.1);padding:2px 6px;border-radius:2px;
+    font-size:.8rem}
+  .note{margin-top:24px;padding:16px;border-left:2px solid var(--gold);
+    background:rgba(168,134,91,.06);border-radius:0 var(--radius) var(--radius) 0;
+    font-size:.82rem;color:var(--soft)}
+  @media(prefers-color-scheme:dark){
+    :root{--paper:#1a1916;--ink:#F0EDE7;--soft:#8A8070}
+    input,select{background:rgba(255,255,255,.05)}
+    .card,.size-btn{background:rgba(255,255,255,.04)}
+  }
+</style>
+</head>
+<body>
+<header>
+  <p class="brand">Willow &amp; Gild</p>
+  <h1>QR Code Generator</h1>
+  <div class="rule"></div>
+  <p class="lede">Enter your RSVP link, wedding website URL, or any address guests should tap to — then download the QR and place it on your card.</p>
+</header>
+
+<div class="card">
+  <label for="url">Your URL</label>
+  <input type="url" id="url" placeholder="https://your-wedding-site.netlify.app" autocomplete="off">
+  <p class="hint">Paste the full web address, including https://</p>
+
+  <div style="margin-top:24px">
+    <label>Size (pixels)</label>
+    <div class="row">
+      <button class="size-btn" data-size="256">256 px<br><span style="font-size:.7rem;opacity:.7">Small card</span></button>
+      <button class="size-btn active" data-size="400">400 px<br><span style="font-size:.7rem;opacity:.7">Invite / menu</span></button>
+      <button class="size-btn" data-size="600">600 px<br><span style="font-size:.7rem;opacity:.7">Signage</span></button>
+      <button class="size-btn" data-size="800">800 px<br><span style="font-size:.7rem;opacity:.7">A4 sign</span></button>
+    </div>
+  </div>
+
+  <button class="generate" id="gen-btn">Generate QR Code</button>
+
+  <div class="preview-wrap" id="preview">
+    <h2 class="serif">Your QR Code</h2>
+    <canvas id="qr-canvas"></canvas>
+    <div class="dl-row">
+      <button class="dl-btn" id="dl-png">Download PNG</button>
+      <button class="dl-btn" id="dl-svg">Download SVG</button>
+    </div>
+  </div>
+</div>
+
+<div class="instructions">
+  <h2 class="serif">How to use this on your QR card</h2>
+  <div class="rule" style="margin-left:0"></div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-n">1</div>
+      <div class="step-body">
+        <h3>Enter your link above and download the PNG</h3>
+        <p>For a printed card, 400 px is plenty — it will be sharp at any size a card would reasonably be. For a sign that guests read from across a room, use 600 or 800 px.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n">2</div>
+      <div class="step-body">
+        <h3>Open your fillable PDF in Adobe Acrobat Reader</h3>
+        <p>Open the <code>*_Fillable.pdf</code> version of your QR card. You will see a box marked <em>your QR here</em>. Click it and choose <strong>Place Image</strong>, then select the PNG you just downloaded.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n">3</div>
+      <div class="step-body">
+        <h3>Test it before you print</h3>
+        <p>Save the PDF, open your phone's camera and point it at the screen. The link should open. If it does not, check that the URL you entered is correct and try again. Only print once the QR scans reliably.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-n">4</div>
+      <div class="step-body">
+        <h3>Print at actual size</h3>
+        <p>In Acrobat, choose <strong>Print → Actual Size</strong> (not Fit to Page). Your print test sheet in folder <code>28_Print_Shop_Guide</code> will confirm the sizing is right before you commit to a full run.</p>
+      </div>
+    </div>
+  </div>
+  <div class="note">
+    <strong>QR codes work best when the destination URL is short and stable.</strong> If your wedding website address is very long, consider a free redirect service like bit.ly to shorten it first — shorter URLs produce less dense, easier-to-scan QR codes.
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+let selectedSize = 400;
+
+// Size buttons
+document.querySelectorAll('.size-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    selectedSize = parseInt(btn.dataset.size);
+  });
+});
+
+document.getElementById('gen-btn').addEventListener('click', generate);
+document.getElementById('url').addEventListener('keydown', e => {
+  if (e.key === 'Enter') generate();
+});
+
+function generate() {
+  const url = document.getElementById('url').value.trim();
+  if (!url) { alert('Please enter a URL first.'); return; }
+  if (!url.startsWith('http')) { alert('Please include https:// at the start.'); return; }
+
+  const canvas = document.getElementById('qr-canvas');
+  canvas.width = selectedSize;
+  canvas.height = selectedSize;
+
+  // Use QRCode library on a temp div, then draw to canvas
+  const tmp = document.createElement('div');
+  tmp.style.display = 'none';
+  document.body.appendChild(tmp);
+
+  new QRCode(tmp, {
+    text: url,
+    width: selectedSize,
+    height: selectedSize,
+    colorDark: '#33342F',
+    colorLight: '#F8F6F2',
+    correctLevel: QRCode.CorrectLevel.H
+  });
+
+  // Give it a moment to render
+  setTimeout(() => {
+    const img = tmp.querySelector('img') || tmp.querySelector('canvas');
+    const ctx = canvas.getContext('2d');
+    if (img.tagName === 'IMG') {
+      const i = new Image();
+      i.onload = () => { ctx.drawImage(i, 0, 0); };
+      i.src = img.src;
+    } else {
+      ctx.drawImage(img, 0, 0);
+    }
+    document.body.removeChild(tmp);
+    document.getElementById('preview').style.display = 'block';
+    document.getElementById('preview').scrollIntoView({behavior:'smooth',block:'nearest'});
+  }, 200);
+}
+
+document.getElementById('dl-png').addEventListener('click', () => {
+  const canvas = document.getElementById('qr-canvas');
+  const a = document.createElement('a');
+  a.download = 'willow-gild-qr.png';
+  a.href = canvas.toDataURL('image/png');
+  a.click();
+});
+
+document.getElementById('dl-svg').addEventListener('click', () => {
+  const canvas = document.getElementById('qr-canvas');
+  const size = selectedSize;
+  const ctx = canvas.getContext('2d');
+  const img = ctx.getImageData(0, 0, size, size);
+  const cell = 1;
+  let rects = '';
+  const bg = '#F8F6F2', fg = '#33342F';
+  for (let y = 0; y < size; y++) {
+    for (let x = 0; x < size; x++) {
+      const i = (y * size + x) * 4;
+      if (img.data[i] < 128) {
+        rects += `<rect x="${x}" y="${y}" width="1" height="1" fill="${fg}"/>`;
+      }
+    }
+  }
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}" width="${size}" height="${size}"><rect width="${size}" height="${size}" fill="${bg}"/>${rects}</svg>`;
+  const a = document.createElement('a');
+  a.download = 'willow-gild-qr.svg';
+  a.href = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+  a.click();
+});
+</script>
+</body>
+</html>

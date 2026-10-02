@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Your Downloads — Willow &amp; Gild</title><meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>:root{--paper:#F8F6F2;--ink:#33342F;--soft:#6B6659;--gold:#A8865B}*{box-sizing:border-box;margin:0}
+body{background:var(--paper);color:var(--ink);font-family:Inter,system-ui,sans-serif;padding:48px 20px;display:flex;flex-direction:column;align-items:center}
+h1{font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:2.4rem;margin:8px 0 6px}.brand{font-size:.7rem;letter-spacing:.22em;color:var(--soft)}
+.card{background:#fff;border:1px solid rgba(168,134,91,.25);border-radius:4px;padding:28px;max-width:520px;width:100%;margin-top:24px}
+input{width:100%;padding:13px;border:1px solid rgba(168,134,91,.4);border-radius:4px;font:inherit;text-transform:uppercase;letter-spacing:.08em}
+button{margin-top:14px;width:100%;padding:13px;background:var(--ink);color:var(--paper);border:0;border-radius:4px;font:inherit;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+#msg{margin-top:12px;color:#9a4b3b;font-size:.9rem;min-height:1.2em}ul{list-style:none;padding:0;margin-top:8px}li{margin:10px 0}
+a.dl{display:block;padding:12px 14px;border:1px solid var(--gold);border-radius:4px;color:var(--ink);text-decoration:none}.note{color:var(--soft);font-size:.85rem;margin-top:18px;line-height:1.5}</style></head>
+<body><p class="brand">WILLOW &amp; GILD</p><h1>Your Downloads</h1>
+<div class="card"><label for="code" style="font-size:.75rem;letter-spacing:.15em;color:var(--soft)">ORDER ACCESS CODE</label>
+<input id="code" placeholder="WG-XXXX-XXXX-XXXX" autocomplete="off"><button id="go">Show my files</button><div id="msg"></div><div id="out"></div>
+<p class="note">Download each file, then open the ZIP on your computer. Questions? Email hello@willowandgild.com with your Etsy order number.</p></div>
+<script src="downloads.js"></script><script src="downloads-data.js"></script>
+<script>document.getElementById('go').onclick=async()=>{const m=document.getElementById('msg'),o=document.getElementById('out');m.textContent='';o.innerHTML='';
+try{const r=await WG_DL.unlock(document.getElementById('code').value,WG_DL_DATA);
+if(!r){m.textContent='That code wasn’t recognised. Check it against your Etsy order, or email hello@willowandgild.com.';return}
+o.innerHTML='<p style="margin-top:16px"><strong>'+r.collection.replace(/([a-z])([A-Z])/g,'$1 $2')+' — '+r.product.replace(/([a-z])([A-Z])/g,'$1 $2')+'</strong></p><ul>'+r.files.map(f=>'<li><a class="dl" href="'+f.url+'" download>'+f.name+'</a></li>').join('')+'</ul>'}
+catch(e){m.textContent='Something went wrong. Please email hello@willowandgild.com with your order number.'}};</script></body></html>

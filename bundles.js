@@ -29,7 +29,7 @@
 
 const BUNDLES = [
   { id: 'VI_The_Complete_Collection', chapter: '—', name: 'The Complete Collection',
-    price: 145, wasPrice: 254, pages: 585, files: 178, hero: true,
+    price: 119, wasPrice: 246, pages: 1349, files: 376, hero: true,
     when: 'whenever you like',
     line: 'Every chapter, in one download.',
     sell: 'Buy it once and never think about paper again. Every piece already matches, so nothing has to be chosen twice — and it costs far less than the chapters bought separately.',
@@ -46,15 +46,16 @@ const BUNDLES = [
     ] },
 
   { id: 'I_The_Announcement', chapter: 'I', name: 'The Announcement',
-    price: 14, pages: 4, files: 9,
+    price: 15, pages: 26, files: 60,
     when: 'the week you get engaged',
     line: 'Tell everyone.',
     sell: 'The first thing you will need, and the only thing you need yet \u2014 announcement graphics for the moment itself, and your Save the Date.',
     who: 'For couples who just said yes.',
     shots: ['savethedate'],
     includes: [
-      'Six engagement announcement graphics \u2014 square and story',
+      'Five engagement announcement designs \u2014 feed and story',
       'The Save the Date \u2014 print and fillable',
+      'Six proposal cards \u2014 Maid of Honour, Bridesmaid, Best Man, Groomsman, Parents and a blank',
       'A calendar file guests can tap to save the date',
     ] },
 
@@ -64,7 +65,7 @@ const BUNDLES = [
      highest-converting thing on the shelf. Buried inside a printable chapter it
      was invisible to the person actually looking for it. */
   { id: 'Ia_Your_Wedding_Online', chapter: 'I\u2009a', name: 'Your Wedding, Online',
-    price: 22, pages: 5, files: 10, digital: true,
+    price: 25, pages: 28, files: 28, digital: true,
     when: 'alongside the announcement',
     line: 'No printer required.',
     sell: 'A wedding website in your collection\u2019s own colours, with a step-by-step guide to go live in twenty minutes \u2014 you\'ll need a free Formspree account for the RSVP form, and Netlify to host it.',
@@ -79,7 +80,7 @@ const BUNDLES = [
     ] },
 
   { id: 'II_The_Planning', chapter: 'II', name: 'The Planning',
-    price: 42, pages: 67, files: 14,
+    price: 35, pages: 218, files: 27,
     when: 'the first few months',
     line: 'Everything in one place, before it gets away from you.',
     sell: 'The planner and the budget in the collection\u2019s own hand — the vendor directory, the run sheet, the gift tracker, and a budget that adds itself up.',
@@ -93,7 +94,7 @@ const BUNDLES = [
     ] },
 
   { id: 'III_The_Invitation', chapter: 'III', name: 'The Invitation',
-    price: 48, pages: 42, files: 26,
+    price: 39, pages: 56, files: 28,
     when: 'about six months before',
     line: 'The first thing anyone sees.',
     sell: 'Type your names once and every card in the suite fills itself — invitation, details, RSVP, order of service. The envelope liners and both label sheets are in here too.',
@@ -108,7 +109,7 @@ const BUNDLES = [
     ] },
 
   { id: 'IV_The_Ceremony', chapter: 'IV', name: 'The Ceremony',
-    price: 34, pages: 26, files: 26,
+    price: 29, pages: 56, files: 33,
     when: 'the day before, and the aisle',
     line: 'The part everyone is quiet for.',
     sell: 'Reserved seats for the people who should be in the front row, an order of service your guests can follow, and petal cones for the walk back down.',
@@ -118,16 +119,16 @@ const BUNDLES = [
       'The Order of Service',
       'Reserved seat cards — tent and flat',
       'Petal cones for the confetti moment',
-      'In Loving Memory, Unplugged, Guest Book and Timeline signs',
       'The rehearsal dinner invitation and menu',
-      'The welcome bag card',
+      'The Guest Welcome Guide',
+      'The Getting Ready timeline, a Plan B card and a vows keepsake',
     ] },
 
   { id: 'V_The_Reception', chapter: 'V', name: 'The Reception',
-    price: 68, pages: 427, files: 85,
+    price: 49, pages: 921, files: 127,
     when: 'the last six weeks',
     line: 'The room, and everything on the tables.',
-    sell: 'The whole reception in one download. The seating plan is cut out and moved around, so nobody rubs anything out — and the guest list fills the place cards for you.',
+    sell: 'The whole reception in one download. The seating plan is cut out and moved around, so nobody rubs anything out.',
     who: 'For the couple six weeks out with a table plan to solve.',
     shots: ['seating','placecards','tablenumber','menu_hero','menu_plate','tags'],
     includes: [
@@ -135,16 +136,16 @@ const BUNDLES = [
       'The Find Your Seat poster',
       'Five place card options, six table number designs',
       'Six menu designs — mix and match with the table numbers',
-      'Four favour tag designs, and drink tags for the glasses',
-      'Bar, Cards & Gifts and Welcome signs',
+      'Three favour tag designs, and drink tags for the glasses',
+      'Food labels \u2014 four designs, flat or folded',
       'Toast and reading cards, and the advice card',
     ] },
 
   { id: 'VI_With_Thanks', chapter: 'VI', name: 'With Thanks',
-    price: 30, pages: 31, files: 25,
+    price: 25, pages: 41, files: 27,
     when: 'afterwards',
     line: 'The last thing, and the one people keep.',
-    sell: 'Thank-you cards that fill from the gift tracker, so nobody is forgotten — plus the keepsakes worth writing while it is still fresh.',
+    sell: 'Thank-you cards and a gift tracker, so nobody is forgotten — plus the keepsakes worth writing while it is still fresh.',
     who: 'For the couple at the kitchen table with a pile of cards.',
     shots: ['thankyou'],
     includes: [

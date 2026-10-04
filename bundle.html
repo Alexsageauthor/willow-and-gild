@@ -212,6 +212,7 @@ const q = new URLSearchParams(location.search);
 })();
 const b = BUNDLES.find(x => x.id === q.get('b')) || BUNDLES[0];
 const c = COLLECTIONS.find(x => x.id === q.get('c')) || COLLECTIONS[0];
+const buyDirect = (typeof GUMROAD_LINKS === 'object' && GUMROAD_LINKS[c.id] && GUMROAD_LINKS[c.id][b.id]) || b.gumroad;
 document.title = b.name.replace('&amp;','&') + ' — ' + c.name + ' — Willow & Gild';
 document.getElementById('back').href = 'collection.html?c=' + c.id;
 document.getElementById('back').textContent = '← ' + c.name;
@@ -227,7 +228,7 @@ const rows = (typeof CONTENTS_BY_COLLECTION !== 'undefined'
              || (typeof CONTENTS !== 'undefined' && CONTENTS[b.id]) || [];
 
 const buttons = [
-  b.gumroad ? `<a class="btn solid" href="${b.gumroad}" data-buy>Buy direct</a>` : '',
+  buyDirect ? `<a class="btn solid" href="${buyDirect}" data-buy>Buy direct</a>` : '',
   b.etsy    ? `<a class="btn" href="${b.etsy}" data-buy>Buy on Etsy</a>` : '',
 ].filter(Boolean).join('');
 
@@ -347,7 +348,7 @@ document.getElementById('main').innerHTML = `
       <p class="chapter">${b.chapter && b.chapter !== "\u2014" ? `Chapter ${b.chapter} · ${b.when}` : b.when}</p>
       <p class="price">NZ$${b.price}${b.wasPrice ? ` <s class="was">NZ$${b.wasPrice}</s>` : ''}<small>${b.wasPrice ? `every chapter, for less than half of buying them separately · ` : ''}one payment · yours to keep · print as many as you need</small></p>
       <div class="buyrow">${buttons}</div>
-      ${(!b.etsy && !b.gumroad) ? '<p class="note">Listings going live shortly.</p>' : ''}
+      ${(!b.etsy && !buyDirect) ? '<p class="note">Listings going live shortly.</p>' : ''}
       <p class="note">Bundles work across collections &mdash; take the invitations from
         one and the reception from another if you would rather mix.</p>
       <p class="fine">Personal use for your own wedding. Not for resale or redistribution.</p>

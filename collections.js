@@ -187,7 +187,7 @@ const KYOTO_PRODUCTS = [
   ['Vendor Sheets', 'Six briefs — photographer, florist, caterer, music, officiant, hair and make-up'],
   ['The Wedding Website Kit', 'A complete one-page site with RSVP and guest book forms'],
   ['Keepsakes', 'Vows, anniversary letter, open-when letters, Plan B, getting-ready timeline'],
-  ['And more', 'Engagement announcements, rehearsal dinner, welcome bags, advice cards, toast cards, envelope etiquette, print shop guide'],
+  ['And more', 'Engagement announcements, rehearsal dinner, guest welcome guides, advice cards, toast cards, envelope etiquette, print shop guide'],
 ];
 
 
@@ -196,6 +196,196 @@ const KYOTO_PRODUCTS = [
    meta description on palette.html, so the day a sixteenth collection was added
    the site went on telling customers there were fifteen while showing them
    sixteen plates. A number that describes a list belongs to the list. */
+/* GUMROAD BUY LINKS — one per collection per product, each opening Gumroad with
+   that collection's version already selected (from GUMROAD/gumroad_links.json).
+   Collection pages use the Complete Collection link; chapter pages use their own. */
+const GUMROAD_LINKS = {
+ "Kyoto": {
+  "VI_The_Complete_Collection": "https://willowandgild.gumroad.com/l/cumsgm?option=Kj_msLmv7I6kk7k0WeSP9Q%3D%3D",
+  "I_The_Announcement": "https://willowandgild.gumroad.com/l/kyrnvj?option=r7cHRixtK7MbE1Sx2-PFMQ%3D%3D",
+  "Ia_Your_Wedding_Online": "https://willowandgild.gumroad.com/l/aoligf?option=7H7OXER2mARpawXQBIKXmA%3D%3D",
+  "II_The_Planning": "https://willowandgild.gumroad.com/l/xqtshn?option=9m9SThwWW8qfp2eJX6fdbg%3D%3D",
+  "III_The_Invitation": "https://willowandgild.gumroad.com/l/umhtb?option=mSXiKRRc8R3J5NK20dwTuQ%3D%3D",
+  "IV_The_Ceremony": "https://willowandgild.gumroad.com/l/vuowab?option=2RlO3lLhKqpUwCc1rh6uvg%3D%3D",
+  "V_The_Reception": "https://willowandgild.gumroad.com/l/vazyke?option=AeKtoa7HFJwB8Eov1-Th4w%3D%3D",
+  "VI_With_Thanks": "https://willowandgild.gumroad.com/l/qpytg?option=NHXBoMp5wDOy6DXl3fovQg%3D%3D"
+ },
+ "EnglishRose": {
+  "VI_The_Complete_Collection": "https://willowandgild.gumroad.com/l/cumsgm?option=-YcL0_iUBeulqpzSQM5ZxA%3D%3D",
+  "I_The_Announcement": "https://willowandgild.gumroad.com/l/kyrnvj?option=-TXHveNX9CnxWcpqAQz8tw%3D%3D",
+  "Ia_Your_Wedding_Online": "https://willowandgild.gumroad.com/l/aoligf?option=OCOkmN6Tx_4ceJ-Hh9075A%3D%3D",
+  "II_The_Planning": "https://willowandgild.gumroad.com/l/xqtshn?option=2RMxPYMO77pFQhrSfomQyg%3D%3D",
+  "III_The_Invitation": "https://willowandgild.gumroad.com/l/umhtb?option=ZuD-gmLUz41sHVBaieuHnA%3D%3D",
+  "IV_The_Ceremony": "https://willowandgild.gumroad.com/l/vuowab?option=nprxXpy8lLKFCICyJiYH0A%3D%3D",
+  "V_The_Reception": "https://willowandgild.gumroad.com/l/vazyke?option=hrF6dV17NufVTwYqoEB81A%3D%3D",
+  "VI_With_Thanks": "https://willowandgild.gumroad.com/l/qpytg?option=y5oush5RRkw12SBcdnvLqg%3D%3D"
+ },
+ "ArtDeco": {
+  "VI_The_Complete_Collection": "https://willowandgild.gumroad.com/l/cumsgm?option=9YUHw6zbPkgi26gddQUa9w%3D%3D",
+  "I_The_Announcement": "https://willowandgild.gumroad.com/l/kyrnvj?option=PHpogRJE78IQiW927pvZFQ%3D%3D",
+  "Ia_Your_Wedding_Online": "https://willowandgild.gumroad.com/l/aoligf?option=qwrUtCB2m3MIVpxQ_w-qQw%3D%3D",
+  "II_The_Planning": "https://willowandgild.gumroad.com/l/xqtshn?option=hecGSu2st9H97VDjg-6_Dg%3D%3D",
+  "III_The_Invitation": "https://willowandgild.gumroad.com/l/umhtb?option=SvMAHEeoKp_WhkaRtl2lPg%3D%3D",
+  "IV_The_Ceremony": "https://willowandgild.gumroad.com/l/vuowab?option=sA6jog1Nj-YxZ0krVBHzMw%3D%3D",
+  "V_The_Reception": "https://willowandgild.gumroad.com/l/vazyke?option=-fZ1FMrrxVNVCwWtz2ODyA%3D%3D",
+  "VI_With_Thanks": "https://willowandgild.gumroad.com/l/qpytg?option=PS3QTMIJBY5vaI6Joz1JeA%3D%3D"
+ },
+ "OliveGold": {
+  "VI_The_Complete_Collection": "https://willowandgild.gumroad.com/l/cumsgm?option=64gCP-CPXfe-3JH3MVV-rg%3D%3D",
+  "I_The_Announcement": "https://willowandgild.gumroad.com/l/kyrnvj?option=bsOpctvQrxSLD-18NgaUIg%3D%3D",
+  "Ia_Your_Wedding_Online": "https://willowandgild.gumroad.com/l/aoligf?option=d4KzyAktQOUF6n3ulsrKZg%3D%3D",
+  "II_The_Planning": "https://willowandgild.gumroad.com/l/xqtshn?option=7zyVbxUxT2NZR1NJrRllYg%3D%3D",
+  "III_The_Invitation": "https://willowandgild.gumroad.com/l/umhtb?option=sGtoNiMMbrL0e_q3F4c7sA%3D%3D",
+  "IV_The_Ceremony": "https://willowandgild.gumroad.com/l/vuowab?option=MVHdvzVUtlklTInk1t2TMQ%3D%3D",
+  "V_The_Reception": "https://willowandgild.gumroad.com/l/vazyke?option=jj6AniVofkpRYrxzhPXnIw%3D%3D",
+  "VI_With_Thanks": "https://willowandgild.gumroad.com/l/qpytg?option=f1s9uMidS9LpDM2_xBljkQ%3D%3D"
+ },
+ "BlueWillow": {
+  "VI_The_Complete_Collection": "https://willowandgild.gumroad.com/l/cumsgm?option=lUR38n7Ervaay3009vs4xw%3D%3D",
+  "I_The_Announcement": "https://willowandgild.gumroad.com/l/kyrnvj?option=2HBVnvkHnUr0_zmQLrWJEA%3D%3D",
+  "Ia_Your_Wedding_Online": "https://willowandgild.gumroad.com/l/aoligf?option=1quOeIA_rx9XG7SsVQhvnA%3D%3D",
+  "II_The_Planning": "https://willowandgild.gumroad.com/l/xqtshn?option=V57pGoKvYGOtjMVOaEBm7w%3D%3D",
+  "III_The_Invitation": "https://willowandgild.gumroad.com/l/umhtb?option=Mqwb16LgMmyu0FG7Kgb3OQ%3D%3D",
+  "IV_The_Ceremony": "https://willowandgild.gumroad.com/l/vuowab?option=s2qWEXOFdMgmXe3VD2L-9A%3D%3D",
+  "V_The_Reception": "https://willowandgild.gumroad.com/l/vazyke?option=R4IU9tzJNayTuyH7Gy639Q%3D%3D",
+  "VI_With_Thanks": "https://willowandgild.gumroad.com/l/qpytg?option=M_XAgPy5gcAVwakD6GglCA%3D%3D"
+ },
+ "Conservatory": {
+  "VI_The_Complete_Collection": "https://willowandgild.gumroad.com/l/cumsgm?option=DxPbXLPALnZdfi08xPWGWQ%3D%3D",
+  "I_The_Announcement": "https://willowandgild.gumroad.com/l/kyrnvj?option=YezSqQFGx5saRuSSX4l7MQ%3D%3D",
+  "Ia_Your_Wedding_Online": "https://willowandgild.gumroad.com/l/aoligf?option=vM8vR8nzhQVXdV5zbA5QOA%3D%3D",
+  "II_The_Planning": "https://willowandgild.gumroad.com/l/xqtshn?option=JnITBD5PDyNCrp5c1LkJMg%3D%3D",
+  "III_The_Invitation": "https://willowandgild.gumroad.com/l/umhtb?option=Y01R1k5mGYhBjCgQSGh8wA%3D%3D",
+  "IV_The_Ceremony": "https://willowandgild.gumroad.com/l/vuowab?option=GZlGKzxnNp_TbYrPHGxOkA%3D%3D",
+  "V_The_Reception": "https://willowandgild.gumroad.com/l/vazyke?option=594ONLqqu8tfig1L5xManQ%3D%3D",
+  "VI_With_Thanks": "https://willowandgild.gumroad.com/l/qpytg?option=_BFJzSmVXruUZxg40d39Vg%3D%3D"
+ },
+ "Riviera": {
+  "VI_The_Complete_Collection": "https://willowandgild.gumroad.com/l/cumsgm?option=xcQd35M04OCftZ5nvbXdfw%3D%3D",
+  "I_The_Announcement": "https://willowandgild.gumroad.com/l/kyrnvj?option=BwDuFYp8Y_Ob5croRcfXsA%3D%3D",
+  "Ia_Your_Wedding_Online": "https://willowandgild.gumroad.com/l/aoligf?option=RqaQ5Htv5UjkVE1F1jp59A%3D%3D",
+  "II_The_Planning": "https://willowandgild.gumroad.com/l/xqtshn?option=5uG-trZjtOj0EqXdiEv66Q%3D%3D",
+  "III_The_Invitation": "https://willowandgild.gumroad.com/l/umhtb?option=13vcEccCfLQ9bQl5LlQ2CQ%3D%3D",
+  "IV_The_Ceremony": "https://willowandgild.gumroad.com/l/vuowab?option=NjcVZWeOnXAXE3tdz8n50g%3D%3D",
+  "V_The_Reception": "https://willowandgild.gumroad.com/l/vazyke?option=6MMKq3PWtxneVyBqLhQkrA%3D%3D",
+  "VI_With_Thanks": "https://willowandgild.gumroad.com/l/qpytg?option=WRLP_H_X5BWkrW7suI0Nvw%3D%3D"
+ },
+ "Orchard": {
+  "VI_The_Complete_Collection": "https://willowandgild.gumroad.com/l/cumsgm?option=AORFiECtvYIgUFB8PaNMoA%3D%3D",
+  "I_The_Announcement": "https://willowandgild.gumroad.com/l/kyrnvj?option=tZrAbK5Hdp8IbnugvaqrMA%3D%3D",
+  "Ia_Your_Wedding_Online": "https://willowandgild.gumroad.com/l/aoligf?option=EoLf_JV5i5TSG77BSihviQ%3D%3D",
+  "II_The_Planning": "https://willowandgild.gumroad.com/l/xqtshn?option=unpBwrgBYB-TmMXfG9zhTg%3D%3D",
+  "III_The_Invitation": "https://willowandgild.gumroad.com/l/umhtb?option=cN_VxT54WhZ_RchtI_D-Jg%3D%3D",
+  "IV_The_Ceremony": "https://willowandgild.gumroad.com/l/vuowab?option=tsz_ghe_zoJNVqloywIpAQ%3D%3D",
+  "V_The_Reception": "https://willowandgild.gumroad.com/l/vazyke?option=cbmGUeMdSL0rHChNe4YDTg%3D%3D",
+  "VI_With_Thanks": "https://willowandgild.gumroad.com/l/qpytg?option=gsN3NyaIQ6wKv-jMI3Z9cg%3D%3D"
+ },
+ "Nordic": {
+  "VI_The_Complete_Collection": "https://willowandgild.gumroad.com/l/cumsgm?option=6BSMFzNuBshyRNYr24_CnA%3D%3D",
+  "I_The_Announcement": "https://willowandgild.gumroad.com/l/kyrnvj?option=P9xVHPAajYYAYfToBAXsZg%3D%3D",
+  "Ia_Your_Wedding_Online": "https://willowandgild.gumroad.com/l/aoligf?option=u5g6vj5PvZJecCHvn-vxgg%3D%3D",
+  "II_The_Planning": "https://willowandgild.gumroad.com/l/xqtshn?option=qNW9o1s2zDczShvahx-YfA%3D%3D",
+  "III_The_Invitation": "https://willowandgild.gumroad.com/l/umhtb?option=WfLr-9QRCOqkFCq5aLctmg%3D%3D",
+  "IV_The_Ceremony": "https://willowandgild.gumroad.com/l/vuowab?option=Tg6vkwKGnQhW310Rm9f4mg%3D%3D",
+  "V_The_Reception": "https://willowandgild.gumroad.com/l/vazyke?option=dgduYhD7vHDRmjOBNXXlyQ%3D%3D",
+  "VI_With_Thanks": "https://willowandgild.gumroad.com/l/qpytg?option=ddW9e-GaUQltPuIFrXrrZg%3D%3D"
+ },
+ "Winter": {
+  "VI_The_Complete_Collection": "https://willowandgild.gumroad.com/l/cumsgm?option=NA4fs_LJ6l6XmtoKCiLpzw%3D%3D",
+  "I_The_Announcement": "https://willowandgild.gumroad.com/l/kyrnvj?option=mcZzZjG06DWix-lI66Jo7Q%3D%3D",
+  "Ia_Your_Wedding_Online": "https://willowandgild.gumroad.com/l/aoligf?option=-EWue8v4mN3TT50x6Fz0uA%3D%3D",
+  "II_The_Planning": "https://willowandgild.gumroad.com/l/xqtshn?option=WQu4lxiLfK_UQAHTICQCwQ%3D%3D",
+  "III_The_Invitation": "https://willowandgild.gumroad.com/l/umhtb?option=1Vkvc-XdRdTwzQKJ7IXRBw%3D%3D",
+  "IV_The_Ceremony": "https://willowandgild.gumroad.com/l/vuowab?option=FAJ0KAxoGn9N2G1wTM47BQ%3D%3D",
+  "V_The_Reception": "https://willowandgild.gumroad.com/l/vazyke?option=1_EpVPIUfYqwLnzWOFXgxA%3D%3D",
+  "VI_With_Thanks": "https://willowandgild.gumroad.com/l/qpytg?option=ZYWO1RF6rtiVYcfMgXAF-Q%3D%3D"
+ },
+ "Chateau": {
+  "VI_The_Complete_Collection": "https://willowandgild.gumroad.com/l/cumsgm?option=R-fapqKj9yxbD6CehfE7zw%3D%3D",
+  "I_The_Announcement": "https://willowandgild.gumroad.com/l/kyrnvj?option=8C_PIT5hMCJVuC-SPaY_5A%3D%3D",
+  "Ia_Your_Wedding_Online": "https://willowandgild.gumroad.com/l/aoligf?option=0wz2Z6Q3Pcqj-4KX6OVqBQ%3D%3D",
+  "II_The_Planning": "https://willowandgild.gumroad.com/l/xqtshn?option=8Wz-q6_U5VP_rJn8LheTqw%3D%3D",
+  "III_The_Invitation": "https://willowandgild.gumroad.com/l/umhtb?option=pl5dpHc7Gr_aL-nFr2ugdA%3D%3D",
+  "IV_The_Ceremony": "https://willowandgild.gumroad.com/l/vuowab?option=lfNbVtzXT8oKZW5O2pQYxQ%3D%3D",
+  "V_The_Reception": "https://willowandgild.gumroad.com/l/vazyke?option=WL6_W-j1PNf1K9Ujn6dLZw%3D%3D",
+  "VI_With_Thanks": "https://willowandgild.gumroad.com/l/qpytg?option=4l-DIg31EzLdSjzWhhn8Hg%3D%3D"
+ },
+ "Woodlands": {
+  "VI_The_Complete_Collection": "https://willowandgild.gumroad.com/l/cumsgm?option=dTh_yoKxdTgoVLGHAR2ROg%3D%3D",
+  "I_The_Announcement": "https://willowandgild.gumroad.com/l/kyrnvj?option=ovrznKF_HoE-_u3cgdB0wQ%3D%3D",
+  "Ia_Your_Wedding_Online": "https://willowandgild.gumroad.com/l/aoligf?option=3htRZ6ewf5xA2HjdqM3hBg%3D%3D",
+  "II_The_Planning": "https://willowandgild.gumroad.com/l/xqtshn?option=h6j_C3glQJBns9noTeI9DQ%3D%3D",
+  "III_The_Invitation": "https://willowandgild.gumroad.com/l/umhtb?option=_w_miocHXX3DUztd62iWLA%3D%3D",
+  "IV_The_Ceremony": "https://willowandgild.gumroad.com/l/vuowab?option=6Rc-I5dZymEuttxBWKoXrw%3D%3D",
+  "V_The_Reception": "https://willowandgild.gumroad.com/l/vazyke?option=gkMi1o4G_EfrtfRDkK72mg%3D%3D",
+  "VI_With_Thanks": "https://willowandgild.gumroad.com/l/qpytg?option=cb9nlZxqpQ3btnhaUxna0A%3D%3D"
+ },
+ "Classic": {
+  "VI_The_Complete_Collection": "https://willowandgild.gumroad.com/l/cumsgm?option=ZdnN1ltRfTvCh9fgOTWxrg%3D%3D",
+  "I_The_Announcement": "https://willowandgild.gumroad.com/l/kyrnvj?option=JdzYlLSZ0fXfFdvL1yikCw%3D%3D",
+  "Ia_Your_Wedding_Online": "https://willowandgild.gumroad.com/l/aoligf?option=NpcHune5tQk9YoHPXDWHJA%3D%3D",
+  "II_The_Planning": "https://willowandgild.gumroad.com/l/xqtshn?option=YE65sm55ThgkPVST2ju5OA%3D%3D",
+  "III_The_Invitation": "https://willowandgild.gumroad.com/l/umhtb?option=ensZGCIgXJO5UWmBkFhNQQ%3D%3D",
+  "IV_The_Ceremony": "https://willowandgild.gumroad.com/l/vuowab?option=Sp-JUdTuusFWHPlVntV23A%3D%3D",
+  "V_The_Reception": "https://willowandgild.gumroad.com/l/vazyke?option=u9FSafrrNW7cJX73ONDi6Q%3D%3D",
+  "VI_With_Thanks": "https://willowandgild.gumroad.com/l/qpytg?option=cfiUhyfNMcrIJfDxl2nG6A%3D%3D"
+ },
+ "Minimal": {
+  "VI_The_Complete_Collection": "https://willowandgild.gumroad.com/l/cumsgm?option=JsQAmkzHTHd5wkzZ7aozwg%3D%3D",
+  "I_The_Announcement": "https://willowandgild.gumroad.com/l/kyrnvj?option=OvP9f4_7NaV9Uzqa9mYXpg%3D%3D",
+  "Ia_Your_Wedding_Online": "https://willowandgild.gumroad.com/l/aoligf?option=rC6GNkQcqyIKEYoYwE4HQQ%3D%3D",
+  "II_The_Planning": "https://willowandgild.gumroad.com/l/xqtshn?option=7U_IKoFgLPKteuVESTgfgA%3D%3D",
+  "III_The_Invitation": "https://willowandgild.gumroad.com/l/umhtb?option=5mWvkmPe7RmnP0ycuIQSnA%3D%3D",
+  "IV_The_Ceremony": "https://willowandgild.gumroad.com/l/vuowab?option=la_g2hRnhku7Mx8uGTlsnA%3D%3D",
+  "V_The_Reception": "https://willowandgild.gumroad.com/l/vazyke?option=K9tQt5rBXVgqPEpjNJTlMw%3D%3D",
+  "VI_With_Thanks": "https://willowandgild.gumroad.com/l/qpytg?option=R1UtD4OcVMa7CcSt3I-vYA%3D%3D"
+ },
+ "MidCentury": {
+  "VI_The_Complete_Collection": "https://willowandgild.gumroad.com/l/cumsgm?option=0QuJ_2YVN3QGIS7h2F2IIg%3D%3D",
+  "I_The_Announcement": "https://willowandgild.gumroad.com/l/kyrnvj?option=K-1psoFOKYCp7akRlGWbuQ%3D%3D",
+  "Ia_Your_Wedding_Online": "https://willowandgild.gumroad.com/l/aoligf?option=WODmU0wklqwKRjlRW6binA%3D%3D",
+  "II_The_Planning": "https://willowandgild.gumroad.com/l/xqtshn?option=mfK2wMpWqN-PvlDVqhGbAA%3D%3D",
+  "III_The_Invitation": "https://willowandgild.gumroad.com/l/umhtb?option=XG0cADOzzka2S_2t5Trf6g%3D%3D",
+  "IV_The_Ceremony": "https://willowandgild.gumroad.com/l/vuowab?option=x-GKzDr1uPZ-2xhb7BEuyg%3D%3D",
+  "V_The_Reception": "https://willowandgild.gumroad.com/l/vazyke?option=KxpefGAp05yvxBJtVnS6Tg%3D%3D",
+  "VI_With_Thanks": "https://willowandgild.gumroad.com/l/qpytg?option=c-H_DXAMoPFoqd1YaTGJoA%3D%3D"
+ },
+ "Nocturne": {
+  "VI_The_Complete_Collection": "https://willowandgild.gumroad.com/l/cumsgm?option=Ba7LBN26PyP-Xlhgb_uscQ%3D%3D",
+  "I_The_Announcement": "https://willowandgild.gumroad.com/l/kyrnvj?option=wpPaOkDbafyCkGWZt8cF8w%3D%3D",
+  "Ia_Your_Wedding_Online": "https://willowandgild.gumroad.com/l/aoligf?option=AM6Meb80PTfNdWca3Nd6Mg%3D%3D",
+  "II_The_Planning": "https://willowandgild.gumroad.com/l/xqtshn?option=IlFotV8OqGYm7OAkA3Wmng%3D%3D",
+  "III_The_Invitation": "https://willowandgild.gumroad.com/l/umhtb?option=yRozCxGYbSfp4646fbpqVA%3D%3D",
+  "IV_The_Ceremony": "https://willowandgild.gumroad.com/l/vuowab?option=ikJ1v77mCqj9tQR_beVrkw%3D%3D",
+  "V_The_Reception": "https://willowandgild.gumroad.com/l/vazyke?option=oYg56y0gtvOg07DRYJttSA%3D%3D",
+  "VI_With_Thanks": "https://willowandgild.gumroad.com/l/qpytg?option=14hTKZRsbPdwA8rgDKjzNg%3D%3D"
+ },
+ "Gold": {
+  "VI_The_Complete_Collection": "https://willowandgild.gumroad.com/l/cumsgm?option=p3OJgbcvBUYdOxAHCFAhww%3D%3D",
+  "I_The_Announcement": "https://willowandgild.gumroad.com/l/kyrnvj?option=HxeEQa0NVOeSHKd3fGx0Og%3D%3D",
+  "Ia_Your_Wedding_Online": "https://willowandgild.gumroad.com/l/aoligf?option=ipFq2YFcFhTAYMGKygAxrw%3D%3D",
+  "II_The_Planning": "https://willowandgild.gumroad.com/l/xqtshn?option=MbaoC5yuL-Zy3_UbB7NHyw%3D%3D",
+  "III_The_Invitation": "https://willowandgild.gumroad.com/l/umhtb?option=_86TyFpjmYyfhHz9iFx2fw%3D%3D",
+  "IV_The_Ceremony": "https://willowandgild.gumroad.com/l/vuowab?option=NFFIOim6aFEQcdIQpSjDZw%3D%3D",
+  "V_The_Reception": "https://willowandgild.gumroad.com/l/vazyke?option=XEgULNz9ABUGNSB1nWjjoQ%3D%3D",
+  "VI_With_Thanks": "https://willowandgild.gumroad.com/l/qpytg?option=YBFsn_9PMjWwQUfvBKfyhg%3D%3D"
+ },
+ "Vineyard": {
+  "VI_The_Complete_Collection": "https://willowandgild.gumroad.com/l/cumsgm?option=KU-3paOyrwYOSEwdtOJ2_A%3D%3D",
+  "I_The_Announcement": "https://willowandgild.gumroad.com/l/kyrnvj?option=BcrOZn00sRPY1S7XhHJBzQ%3D%3D",
+  "Ia_Your_Wedding_Online": "https://willowandgild.gumroad.com/l/aoligf?option=PaCgPUlcvY-a1OjVd6Hkbg%3D%3D",
+  "II_The_Planning": "https://willowandgild.gumroad.com/l/xqtshn?option=JdkLD6g2wEfN-PaCUWF4sA%3D%3D",
+  "III_The_Invitation": "https://willowandgild.gumroad.com/l/umhtb?option=Z0kiAMnXHtYN7tvBVYylyQ%3D%3D",
+  "IV_The_Ceremony": "https://willowandgild.gumroad.com/l/vuowab?option=eP4Cb5slC9yKFM-OxtWnQQ%3D%3D",
+  "V_The_Reception": "https://willowandgild.gumroad.com/l/vazyke?option=HM65Y8UHpma6NZuqhQvU9Q%3D%3D",
+  "VI_With_Thanks": "https://willowandgild.gumroad.com/l/qpytg?option=fSAMr_NmWzBX7Tev9OI1QA%3D%3D"
+ }
+};
+COLLECTIONS.forEach(function (c) {
+  var l = GUMROAD_LINKS[c.id];
+  if (l && !c.gumroad) c.gumroad = l['VI_The_Complete_Collection'];
+});
+
 const COLLECTION_COUNT = COLLECTIONS.length;
 const COLLECTION_COUNT_WORD = (function (n) {
   const w = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven',

@@ -45,7 +45,7 @@ const SITE = {
   // TO GO LIVE: bring willowandgild.com up in Vercel first and confirm it
   // loads. THEN change this line and the two hosts in vercel.json together,
   // and re-run build_site_meta.py.
-  ORIGIN: 'https://willow-and-gild.vercel.app',
+  ORIGIN: 'https://www.willowandgild.com',
 
   /* the hostname Vercel gives you, so vercel.json and the canonical agree on
      what is being redirected AWAY from. If ORIGIN is still the vercel.app

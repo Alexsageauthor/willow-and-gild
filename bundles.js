@@ -36,7 +36,7 @@ const BUNDLES = [
     who: 'For couples who would rather decide once.',
     shots: ['invitation','menu_hero','placecards','seating','planner','tablenumber','tags','thankyou'],
     includes: [
-      'All six chapters, start to finish',
+      'Every W&G package, start to finish',
       'The Wedding Planner and the Budget Planner',
       'The Invitation Suite — type your names once, every card fills',
       'Seating plan, six table number designs, five place card options',

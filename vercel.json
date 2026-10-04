@@ -64,5 +64,18 @@
       "source": "/downloads",
       "destination": "/downloads.html"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "willow-and-gild.vercel.app"
+        }
+      ],
+      "destination": "https://www.willowandgild.com/:path*",
+      "permanent": true
+    }
   ]
 }
